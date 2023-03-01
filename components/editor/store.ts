@@ -1,9 +1,5 @@
 import { atom } from 'jotai'
 
-export const urlAtom = atom<string | undefined>('')
-export const styleAtom = atom({})
-
-export const positionAtom = atom({
-  x: 0,
-  y: 0,
-})
+export const frameYAtom = atom(0)
+export const frameXAtom = atom(0)
+export const boardAtom = atom(0)

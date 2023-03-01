@@ -1,4 +1,4 @@
 export { Board } from './board'
-export { Framer } from './framer'
+export { Frame } from './frame'
 export { Photo } from './photo'
-export { Toolbar } from './toolbar'
+export { Sidebar } from './sidebar'

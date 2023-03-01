@@ -3,13 +3,13 @@ export const config = {
   board: {
     ratio: {
       w: 16,
-      h: 9
-    }
+      h: 9,
+    },
   },
   watermark: {
     logo: 'leica',
     style: {
-      padding: 40
-    }
-  }
+      padding: 40,
+    },
+  },
 }

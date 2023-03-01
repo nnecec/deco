@@ -7,7 +7,7 @@ specifiers:
   '@nnecec/eslint-config': ^0.2.2
   '@nnecec/prettier-config': ^0.2.0
   '@tailwindcss/typography': ^0.5.9
-  '@types/node': 18.14.5
+  '@types/node': 18.14.6
   '@types/react': 18.0.28
   '@types/react-dom': 18.0.11
   '@types/sharp': ^0.31.1
@@ -18,7 +18,7 @@ specifiers:
   eslint-config-next: ^13.2.3
   exifr: ^7.1.3
   exifreader: ^4.9.2
-  framer-motion: ^10.0.1
+  framer-motion: ^10.0.2
   jotai: ^2.0.3
   moveable: ^0.43.1
   next: ^13.2.3
@@ -41,7 +41,7 @@ dependencies:
   dayjs: 1.11.7
   exifr: 7.1.3
   exifreader: 4.9.2
-  framer-motion: 10.0.1_biqbaboplfbrettd7655fr4n2y
+  framer-motion: 10.0.2_biqbaboplfbrettd7655fr4n2y
   jotai: 2.0.3_react@18.2.0
   moveable: 0.43.1
   next: 13.2.3_biqbaboplfbrettd7655fr4n2y
@@ -56,7 +56,7 @@ dependencies:
 devDependencies:
   '@nnecec/eslint-config': 0.2.2_qj2huljz5l7dtkmyq2u37z36t4
   '@nnecec/prettier-config': 0.2.0
-  '@types/node': 18.14.5
+  '@types/node': 18.14.6
   '@types/react': 18.0.28
   '@types/react-dom': 18.0.11
   '@types/sharp': 0.31.1
@@ -532,7 +532,7 @@ packages:
     resolution: {integrity: sha512-ZUxbzKl0IfJILTS6t7ip5fQQM/J3TJYubDm3nMbgubNNYS62eXeUpoLUC8/7fJNiFYHTrGPQn7hspDUzIHX3UA==}
     dependencies:
       '@types/minimatch': 5.1.2
-      '@types/node': 18.14.5
+      '@types/node': 18.14.6
     dev: true
 
   /@types/hoist-non-react-statics/3.3.1:
@@ -560,8 +560,8 @@ packages:
     resolution: {integrity: sha512-K0VQKziLUWkVKiRVrx4a40iPaxTUefQmjtkQofBkYRcoaaL/8rhwDWww9qWbrgicNOgnpIsMxyNIUM4+n6dUIA==}
     dev: true
 
-  /@types/node/18.14.5:
-    resolution: {integrity: sha512-CRT4tMK/DHYhw1fcCEBwME9CSaZNclxfzVMe7GsO6ULSwsttbj70wSiX6rZdIjGblu93sTJxLdhNIT85KKI7Qw==}
+  /@types/node/18.14.6:
+    resolution: {integrity: sha512-93+VvleD3mXwlLI/xASjw0FzKcwzl3OdTCzm1LaRfqgS21gfFtK3zDXM5Op9TeeMsJVOaJ2VRDpT9q4Y3d0AvA==}
     dev: true
 
   /@types/normalize-package-data/2.4.1:
@@ -594,7 +594,7 @@ packages:
   /@types/sharp/0.31.1:
     resolution: {integrity: sha512-5nWwamN9ZFHXaYEincMSuza8nNfOof8nmO+mcI+Agx1uMUk4/pQnNIcix+9rLPXzKrm1pS34+6WRDbDV0Jn7ag==}
     dependencies:
-      '@types/node': 18.14.5
+      '@types/node': 18.14.6
     dev: true
 
   /@types/unist/2.0.6:
@@ -2047,8 +2047,8 @@ packages:
     resolution: {integrity: sha512-MhLuK+2gUcnZe8ZHlaaINnQLl0xRIGRfcGk2yl8xoQAfHrSsL3rYu6FCmBdkdbhc9EPlwyGHewaRsvwRMJtAlA==}
     dev: true
 
-  /framer-motion/10.0.1_biqbaboplfbrettd7655fr4n2y:
-    resolution: {integrity: sha512-/N7gBA9gH8PkStyNQ67P/lx8UhL/7Y8z9Ku7FfgOF77sSG8wu8781kX7I5ZUgflRRtQXo8qH4Rev23004G1zcQ==}
+  /framer-motion/10.0.2_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-1k8y1e6DMRQ/r6or4TBxRhE1cXlDE5bm+SFeWLeh7ng0sfSbpROC2Qd1OEHq6lLXNARar/KKoj/EQ6eIvn60Uw==}
     peerDependencies:
       react: ^18.0.0
       react-dom: ^18.0.0
