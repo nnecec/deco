@@ -2,9 +2,8 @@ import type { PropsWithChildren } from 'react'
 import clsx from 'clsx'
 import { useAtom } from 'jotai'
 
-import { useDraggable } from '~/hooks/use-draggable'
-
-import { frameXAtom, frameYAtom } from './store'
+import { Draggable } from '~/components/draggable'
+import { Resizable } from '~/components/resizable'
 
 export type FramerProps = {
   className?: string
@@ -14,54 +13,25 @@ export const Frame = ({
   children,
   className,
 }: PropsWithChildren<FramerProps>) => {
-  const [frameY, setFrameY] = useAtom(frameYAtom)
-  const [frameX, setFrameX] = useAtom(frameXAtom)
-  const [yHandle, yDelta] = useDraggable({
-    onDrag: ({ delta }) => {
-      setFrameY(delta.y)
-    },
-  })
-  const [xHandle, xDelta] = useDraggable({
-    onDrag: ({ delta }) => {
-      setFrameX(delta.x)
-    },
-  })
-
   return (
-    <div
-      className={clsx(className, 'relative')}
-      style={{
-        paddingTop: -frameY,
-        paddingBottom: -frameY,
-        paddingLeft: -frameX,
-        paddingRight: -frameX,
-      }}
-    >
-      <button
-        ref={yHandle}
-        className="absolute"
-        style={{
-          top: 0,
-          left: '50%',
-          touchAction: 'none',
-          transform: `translate(0px, ${yDelta.y}px)`,
-        }}
-      >
-        top
-      </button>
+    <div className={clsx(className, 'relative h-[200px] w-[200px]')}>
+      <Draggable>
+        <button
+          className="absolute z-10 bg-pink-400"
+          style={{
+            top: 0,
+            left: '50%',
+          }}
+        >
+          top
+        </button>
+      </Draggable>
 
-      <button
-        ref={xHandle}
-        className="absolute"
-        style={{
-          left: 0,
-          top: '50%',
-          touchAction: 'none',
-          transform: `translate(${xDelta.x}px, 0px)`,
-        }}
-      >
-        left
-      </button>
+      <Resizable>
+        <div className="h-[200px] w-[200px] border border-sky-500">
+          resizable box
+        </div>
+      </Resizable>
 
       {children}
     </div>
