@@ -1,7 +1,8 @@
-import type { RefObject } from 'react'
 import { useRef, useState } from 'react'
 
 import { useEventListener } from '~/components/use-event-listener'
+
+import type { RefObject } from 'react'
 
 interface Position {
   x: number
@@ -10,11 +11,12 @@ interface Position {
 
 export interface Props {
   onDrag?: (position: Position) => void
+  axis?: 'x' | 'y'
 }
 
-export function useDraggable<T extends HTMLElement>({ onDrag }: Props = {}): [
+export function useDraggable<T extends HTMLElement>({ onDrag, axis }: Props = {}): [
   RefObject<T>,
-  { x; y; grabbing: boolean },
+  { x: number; y: number; grabbing: boolean },
 ] {
   const targetRef = useRef<T>(null)
   const [position, setPosition] = useState<Position>({ x: 0, y: 0 })
@@ -63,10 +65,18 @@ export function useDraggable<T extends HTMLElement>({ onDrag }: Props = {}): [
   useEventListener('pointermove', move)
   useEventListener('pointerup', end)
 
+  const { x, y } = axis
+    ? {
+        x: axis === 'x' ? position.x : undefined,
+        y: axis === 'y' ? position.y : undefined,
+      }
+    : position
+
   return [
     targetRef,
     {
-      ...position,
+      x,
+      y,
       grabbing,
     },
   ]
