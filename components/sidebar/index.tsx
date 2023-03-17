@@ -1,21 +1,23 @@
-import { useState } from 'react'
 import { useAtom } from 'jotai'
 
-import { frameAspectRatioAtom } from '../editor/store'
-import { Radio, Tabs } from '../ui'
+import { boardAspectRatioAtom, photoBorderRadiusAtom, photoScaleAtom } from '../editor/store'
+import { Radio, Slider, Tabs } from '../ui'
 
 export type ToolbarProps = {
   presets?: any
 }
 
 export const Sidebar = ({ presets }: ToolbarProps) => {
-  const [aspectRatio, setAspectRatio] = useAtom(frameAspectRatioAtom)
+  const [aspectRatio, setAspectRatio] = useAtom(boardAspectRatioAtom)
+  const [borderRadius, setBorderRadius] = useAtom(photoBorderRadiusAtom)
+  const [scale, setScale] = useAtom(photoScaleAtom)
+
   return (
     <div className="flex h-full flex-col p-2">
       <Tabs
         options={[
           {
-            key: '1',
+            key: 'Frame',
             label: 'Frame',
             children: (
               <div>
@@ -30,9 +32,13 @@ export const Sidebar = ({ presets }: ToolbarProps) => {
                     { label: '2:3', value: '2/3' },
                   ]}
                 />
+
+                <Slider label="Photo round" value={borderRadius} onChange={setBorderRadius} />
+                <Slider label="Photo scale" value={scale} onChange={setScale} />
               </div>
             ),
           },
+
           {
             key: '2',
             label: 'Mark',

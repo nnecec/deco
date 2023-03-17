@@ -12,11 +12,8 @@ export type FramerProps = {
 }
 
 export const Frame = ({ children, className }: PropsWithChildren<FramerProps>) => {
-
   return (
-    <div
-      className={clsx(className, 'relative')}
-    >
+    <div className={clsx(className, 'relative')}>
       {/* <Draggable>
         <button
           className="absolute z-10 bg-pink-400"

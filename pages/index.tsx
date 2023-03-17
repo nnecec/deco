@@ -23,7 +23,7 @@ const Home: NextPage = () => {
                 </div>
               ) : (
                 // <Photo src={URL.createObjectURL(file)} />
-                <Photo src="https://images.unsplash.com/photo-1678737046425-c85475e7855f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1270&q=80" />
+                <Photo src="https://images.unsplash.com/photo-1678729465761-008074bef96c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1880&q=80" />
               )}
             </label>
             <input id="avatar" name="avatar" {...inputProps} />

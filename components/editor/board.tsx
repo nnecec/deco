@@ -4,7 +4,7 @@ import { useAtom } from 'jotai'
 
 import type { PropsWithChildren, ReactNode } from 'react'
 
-import { frameAspectRatioAtom } from './store'
+import { boardAspectRatioAtom } from './store'
 
 export type BoardProps = {
   extra?: ReactNode
@@ -12,11 +12,10 @@ export type BoardProps = {
 }
 
 export const Board = ({ children, className }: PropsWithChildren<BoardProps>) => {
-  const [aspectRatio] = useAtom(frameAspectRatioAtom)
+  const [aspectRatio] = useAtom(boardAspectRatioAtom)
   return (
     <motion.div
       className={clsx(className, 'relative flex items-center justify-center bg-white')}
-      // layout
       style={{
         aspectRatio,
       }}

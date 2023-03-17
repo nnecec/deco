@@ -14,10 +14,7 @@ export interface Props {
   axis?: 'x' | 'y'
 }
 
-export function useDraggable<T extends HTMLElement>({ onDrag, axis }: Props = {}): [
-  RefObject<T>,
-  { x: number; y: number; grabbing: boolean },
-] {
+export function useDraggable<T extends HTMLElement>({ onDrag, axis }: Props = {}){
   const targetRef = useRef<T>(null)
   const [position, setPosition] = useState<Position>({ x: 0, y: 0 })
   const initialPosition = useRef<Position>() // when pointer down, update the position
@@ -79,5 +76,5 @@ export function useDraggable<T extends HTMLElement>({ onDrag, axis }: Props = {}
       y,
       grabbing,
     },
-  ]
+  ] as const
 }
