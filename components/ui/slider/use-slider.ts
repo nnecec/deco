@@ -1,4 +1,6 @@
+import type { Ref } from 'react'
 import { useRef } from 'react'
+import type { AriaSliderProps } from 'react-aria'
 import {
   mergeProps,
   useFocusRing,
@@ -6,11 +8,8 @@ import {
   useSlider as useAriaSlider,
   useSliderThumb,
 } from 'react-aria'
-import { useSliderState } from 'react-stately'
-
-import type { Ref } from 'react'
-import type { AriaSliderProps } from 'react-aria'
 import type { SliderStateOptions } from 'react-stately'
+import { useSliderState } from 'react-stately'
 
 import type { As, PropGetter } from '../types'
 

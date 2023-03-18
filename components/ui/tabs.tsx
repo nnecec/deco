@@ -1,7 +1,6 @@
+import type { ReactNode } from 'react'
 import { Tab } from '@headlessui/react'
 import clsx from 'clsx'
-
-import type { ReactNode } from 'react'
 
 interface Option {
   key: string

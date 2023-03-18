@@ -1,9 +1,10 @@
-import {motion} from 'framer-motion'
+import { motion } from 'framer-motion'
+import type { NextPage } from 'next'
 
 import { Board, Frame, Photo, Sidebar } from '~/components/editor'
 import { useUpload } from '~/components/upload'
-
-import type { NextPage } from 'next'
+import { useEffect } from 'react'
+import { prominent } from '~/components/color'
 
 const Home: NextPage = () => {
   const [file, inputProps] = useUpload()
@@ -23,7 +24,7 @@ const Home: NextPage = () => {
                 </div>
               ) : (
                 // <Photo src={URL.createObjectURL(file)} />
-                <Photo src="https://images.unsplash.com/photo-1678729465761-008074bef96c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1880&q=80" />
+                <Photo src="https://images.unsplash.com/photo-1677414519330-b95a8ee85c67?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1440&q=80" />
               )}
             </label>
             <input id="avatar" name="avatar" {...inputProps} />

@@ -1,10 +1,8 @@
+import type { PropsWithChildren } from 'react'
 import { Children, cloneElement, isValidElement } from 'react'
 
-import type { PropsWithChildren } from 'react'
-
-import { useDraggable } from './use-draggable'
-
 import type { Props } from './use-draggable'
+import { useDraggable } from './use-draggable'
 
 export const Draggable = <T extends HTMLElement>({
   children,

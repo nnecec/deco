@@ -5,7 +5,7 @@ import type {
   InputHTMLAttributes,
   RefObject,
 } from 'react'
-import { useLayoutEffect, useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 
 import type { UploadProps } from './types'
 

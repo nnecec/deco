@@ -1,6 +1,13 @@
 import { useAtom } from 'jotai'
+import { useEffect, useState } from 'react'
+import { prominent } from '../color'
 
-import { boardAspectRatioAtom, photoBorderRadiusAtom, photoScaleAtom } from '../editor/store'
+import {
+  boardAspectRatioAtom,
+  boardBackgroundAtom,
+  photoBorderRadiusAtom,
+  photoScaleAtom,
+} from '../editor/store'
 import { Radio, Slider, Tabs } from '../ui'
 
 export type ToolbarProps = {
@@ -9,6 +16,7 @@ export type ToolbarProps = {
 
 export const Sidebar = ({ presets }: ToolbarProps) => {
   const [aspectRatio, setAspectRatio] = useAtom(boardAspectRatioAtom)
+  const [background, setBackground] = useAtom(boardBackgroundAtom)
   const [borderRadius, setBorderRadius] = useAtom(photoBorderRadiusAtom)
   const [scale, setScale] = useAtom(photoScaleAtom)
 
@@ -38,7 +46,6 @@ export const Sidebar = ({ presets }: ToolbarProps) => {
               </div>
             ),
           },
-
           {
             key: '2',
             label: 'Mark',

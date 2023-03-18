@@ -22,7 +22,7 @@ export const Watermark = ({ exif = {} }: WatermarkProps) => {
 
       <div className="flex gap-[20px]">
         <img src={logo.zeiss} alt="" width={40} />
-        <div className="border-r-1 w-[1px]"></div>
+        <div className="border-r-1 w-[1px]" />
         <div>
           <div className="text-lg font-bold text-black">
             {exif.focalLength}mm f/{exif.f} {exif.shutterSpeed} ISO{exif.iso}

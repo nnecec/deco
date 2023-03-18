@@ -1,9 +1,8 @@
 import { forwardRef } from 'react'
 import { VisuallyHidden } from 'react-aria'
 
-import { useSlider } from './use-slider'
-
 import type { UseSliderProps } from './use-slider'
+import { useSlider } from './use-slider'
 
 export type SliderProps = Omit<UseSliderProps, 'ref'>
 

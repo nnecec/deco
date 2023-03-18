@@ -1,6 +1,5 @@
-import { RadioGroup } from '@headlessui/react'
-
 import type { Dispatch, ReactNode, SetStateAction } from 'react'
+import { RadioGroup } from '@headlessui/react'
 
 interface Option {
   label: ReactNode

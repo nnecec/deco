@@ -2,8 +2,6 @@ import { useRef, useState } from 'react'
 
 import { useEventListener } from '~/components/use-event-listener'
 
-import type { RefObject } from 'react'
-
 interface Position {
   x: number
   y: number
