@@ -28,12 +28,10 @@ export const Board = ({ children, className }: PropsWithChildren<BoardProps>) =>
   return (
     <motion.div
       className={clsx(className, 'relative flex items-center justify-center')}
-      style={
-        {
-          aspectRatio,
-          background: `linear-gradient(45deg, ${colors[0]},${colors[1]}, ${colors[2]})`,
-        } as CSSProperties
-      }
+      style={{
+        aspectRatio,
+        background: `linear-gradient(45deg, ${colors[0]},${colors[1]}, ${colors[2]})`,
+      }}
     >
       {children}
     </motion.div>

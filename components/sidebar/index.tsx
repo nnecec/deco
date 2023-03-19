@@ -8,7 +8,7 @@ import {
   photoBorderRadiusAtom,
   photoScaleAtom,
 } from '../editor/store'
-import { Radio, Slider, Tabs } from '../ui'
+import { RadioGroup, Radio, Slider, Tabs } from '../ui'
 
 export type ToolbarProps = {
   presets?: any
@@ -29,17 +29,19 @@ export const Sidebar = ({ presets }: ToolbarProps) => {
             label: 'Frame',
             children: (
               <div>
-                <Radio
-                  value={aspectRatio}
-                  onChange={setAspectRatio}
-                  options={[
+                <RadioGroup label="比例" onChange={e=> setAspectRatio(e)}>
+                  {[
                     { label: '1:1', value: '1/1' },
                     { label: '4:3', value: '4/3' },
                     { label: '3:4', value: '3/4' },
                     { label: '3:2', value: '3/2' },
                     { label: '2:3', value: '2/3' },
-                  ]}
-                />
+                  ].map(({ label, value }) => (
+                    <Radio key={value} value={value}>
+                      {label}
+                    </Radio>
+                  ))}
+                </RadioGroup>
 
                 <Slider label="Photo round" value={borderRadius} onChange={setBorderRadius} />
                 <Slider label="Photo scale" value={scale} onChange={setScale} />

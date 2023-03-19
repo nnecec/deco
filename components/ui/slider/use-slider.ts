@@ -41,7 +41,6 @@ export const useSlider = ({ ref, as, ...props }: UseSliderProps) => {
   const getBaseProps: PropGetter = () => {
     return {
       ...groupProps,
-      ...labelProps,
       className: `block mb-2 text-sm font-medium text-gray-900 dark:text-white ${state.orientation}`,
     }
   }

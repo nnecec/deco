@@ -3,14 +3,12 @@ import type { NextPage } from 'next'
 
 import { Board, Frame, Photo, Sidebar } from '~/components/editor'
 import { useUpload } from '~/components/upload'
-import { useEffect } from 'react'
-import { prominent } from '~/components/color'
 
 const Home: NextPage = () => {
   const [file, inputProps] = useUpload()
 
   return (
-    <div className="flex h-screen w-screen gap-4 dark:bg-black">
+    <div className="flex h-screen w-screen gap-4 bg-red-500 dark:bg-black">
       <div className="basis-[248px]">
         <Sidebar />
       </div>
