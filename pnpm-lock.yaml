@@ -22,6 +22,7 @@ specifiers:
   postcss: ^8.4.21
   react: 18.2.0
   react-aria: ^3.23.1
+  react-colorful: ^5.6.1
   react-dom: 18.2.0
   react-intl: ^6.3.1
   react-stately: ^3.21.0
@@ -41,6 +42,7 @@ dependencies:
   next: 13.2.4_biqbaboplfbrettd7655fr4n2y
   react: 18.2.0
   react-aria: 3.23.1_biqbaboplfbrettd7655fr4n2y
+  react-colorful: 5.6.1_biqbaboplfbrettd7655fr4n2y
   react-dom: 18.2.0_react@18.2.0
   react-intl: 6.3.1_odn5rdmyrxuyfnlhepsb7fjnvi
   react-stately: 3.21.0_react@18.2.0
@@ -4431,6 +4433,16 @@ packages:
       '@react-aria/tooltip': 3.4.0_react@18.2.0
       '@react-aria/utils': 3.15.0_react@18.2.0
       '@react-aria/visually-hidden': 3.7.0_react@18.2.0
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+    dev: false
+
+  /react-colorful/5.6.1_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-1exovf0uGTGyq5mXQT0zgQ80uvj2PCwvF8zY1RN9/vbJVSjSo3fsB/4L3ObbF7u70NduSiK4xu4Y6q1MHoUGEw==}
+    peerDependencies:
+      react: '>=16.8.0'
+      react-dom: '>=16.8.0'
+    dependencies:
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
     dev: false
