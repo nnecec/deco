@@ -1,5 +1,5 @@
-import sharp from 'sharp'
 import exifr from 'exifr'
+import sharp from 'sharp'
 
 import { exifToHuman } from '~/utils/parser'
 
@@ -9,6 +9,6 @@ export const getMetadata = async (image: File) => {
   const jpeg = await sharp(input).jpeg().toBuffer()
   return {
     metadata: exifToHuman(info),
-    jpeg: jpeg.toString('base64')
+    jpeg: jpeg.toString('base64'),
   }
 }

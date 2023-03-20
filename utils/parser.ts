@@ -12,6 +12,6 @@ export const exifToHuman = exif => {
       : undefined,
     longitude: Array.isArray(exif.GPSLongitude)
       ? `${exif.GPSLongitude[0]}°${exif.GPSLongitude[1]}'${exif.GPSLongitude[2]}"E`
-      : undefined
+      : undefined,
   }
 }

@@ -1,4 +1,5 @@
 import { useSetAtom } from 'jotai'
+
 import { presets as defaultPresets } from '../presets'
 import { styleAtom } from '../store'
 export type ToolbarProps = {
@@ -10,13 +11,13 @@ export const Toolbar = ({ presets }: ToolbarProps) => {
 
   const finalPresets = {
     ...defaultPresets,
-    ...presets
+    ...presets,
   }
 
   const presetOptions = Object.keys(finalPresets)
 
   return (
-    <div className="absolute top-0 left-0 right-0">
+    <div className="absolute inset-x-0 top-0">
       <div className="form-control w-full max-w-xs">
         <label className="label">
           <span className="label-text">Preset</span>

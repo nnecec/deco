@@ -1,3 +1,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+@layer utilities {
+  .transition-background {
+    transition-property: "background";
+    transition-timing-function: "ease";
+    transition-duration: 250ms;
+  }
+  .transition-transform-opacity {
+    transition-property: "transform, opacity";
+    transition-timing-function: "ease";
+    transition-duration: 250ms;
+  }
+}
