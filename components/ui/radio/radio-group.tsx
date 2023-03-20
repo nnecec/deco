@@ -1,9 +1,11 @@
 import { forwardRef } from 'react'
+
 import { RadioContext } from './context'
+import { useRadioGroup } from './use-radio-group'
 
-import { useRadioGroup, UseRadioGroupProps } from './use-radio-group'
+import type { UseRadioGroupProps } from './use-radio-group';
 
-export interface RadioGroupProps extends Omit<UseRadioGroupProps, 'ref'> {}
+export type RadioGroupProps = Omit<UseRadioGroupProps, 'ref'>
 
 export const RadioGroup = forwardRef<any, RadioGroupProps>((props, ref) => {
   const {

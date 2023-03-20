@@ -1,24 +1,15 @@
-import { RadioGroupState, useRadioGroupState } from 'react-stately'
-import {
-  AriaRadioProps,
-  mergeProps,
-  useFocusRing,
-  useHover,
-  useRadio as useAriaRadio,
-} from 'react-aria'
-import {
-  createContext,
-  CSSProperties,
-  ReactNode,
-  Ref,
-  useContext,
-  useId,
-  useMemo,
-  useRef,
-} from 'react'
-import { As, PropGetter } from '../types'
-import { RadioContext } from './context'
+import { createContext, useContext, useId, useMemo, useRef } from 'react'
+import { mergeProps, useFocusRing, useHover, useRadio as useAriaRadio } from 'react-aria'
+import { useRadioGroupState } from 'react-stately'
 import clsx from 'clsx'
+
+import type { CSSProperties, ReactNode, Ref } from 'react'
+import type { AriaRadioProps } from 'react-aria'
+import type { RadioGroupState } from 'react-stately'
+
+import { RadioContext } from './context'
+
+import type { As, PropGetter } from '../types'
 
 export type UseRadioProps = AriaRadioProps &
   RadioGroupState & {
@@ -41,7 +32,7 @@ export const useRadio = ({
   className,
   ...props
 }: UseRadioProps) => {
-  let groupContext = useContext(RadioContext)
+  const groupContext = useContext(RadioContext)
 
   const Component = as || 'label'
 
@@ -83,7 +74,7 @@ export const useRadio = ({
     return {
       ...props,
       ref,
-      className: 'relative max-w-fit inline-flex items-center justify-start cursor-pointer',
+      className: 'relative cursor-pointer',
       ...mergeProps(hoverProps, props),
     }
   }
@@ -95,11 +86,13 @@ export const useRadio = ({
       'data-hover-unchecked': isHovered && !isSelected,
       'data-focus': isFocused,
       'data-focus-visible': isFocused && isFocusVisible,
+      'data-disabled': isDisabled,
+      'data-checked': isSelected,
       className: clsx(
-        'relative inline-flex items-center justify-center flex-shrink-0 overflow-hidden border-solid border-2 box-border border-neutral data-[hover-unchecked=true]:bg-neutral-700',
-        'data-[checked=true]:border-primary',
-        'w-5 h-5',
-        'rounded-full transition-background',
+        'flex items-center justify-center overflow-hidden border-2 border-neutral-500 p-2 data-[hover-unchecked=true]:bg-neutral-900',
+        'data-[checked=true]:bg-neutral-800',
+        'h-full w-full',
+        'transition-background rounded-xl',
       ),
     }
   }
@@ -116,23 +109,7 @@ export const useRadio = ({
     ...props,
     id: labelId,
     htmlFor: inputId,
-    className: 'ml-2 block text-sm font-medium text-gray-700 dark:text-gray-400 text-base',
-  })
-
-  const getLabelWrapperProps: PropGetter = (props = {}) => ({
-    ...props,
-    className: 'flex flex-col ml-1 ml-1',
-  })
-
-  const getControlProps: PropGetter = (props = {}) => ({
-    ...props,
-    'data-disabled': isDisabled,
-    'data-checked': isSelected,
-    className: clsx(
-      'z-10 w-2 h-2 opacity-0 scale-0 origin-center data-[checked=true]:opacity-100 data-[checked=true]:scale-100 bg-primary text-neutral-300',
-      'w-2 h-2',
-      'rounded-full transition-transform-opacity',
-    ),
+    className: 'block text-sm font-medium text-neutral-800 dark:text-neutral-200 text-base',
   })
 
   return {
@@ -146,7 +123,5 @@ export const useRadio = ({
     getWrapperProps,
     getInputProps,
     getLabelProps,
-    getLabelWrapperProps,
-    getControlProps,
   }
 }

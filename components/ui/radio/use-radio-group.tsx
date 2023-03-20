@@ -1,7 +1,13 @@
-import { RadioGroupProps, RadioGroupState, useRadioGroupState } from 'react-stately'
-import { AriaRadioGroupProps, mergeProps, useRadioGroup as useAriaRadioGroup } from 'react-aria'
-import { CSSProperties, ReactNode, Ref, useMemo } from 'react'
-import { As, PropGetter } from '../types'
+import { useMemo } from 'react'
+import { mergeProps, useRadioGroup as useAriaRadioGroup } from 'react-aria'
+import { useRadioGroupState } from 'react-stately'
+import clsx from 'clsx'
+
+import type { CSSProperties, ReactNode, Ref } from 'react'
+import type { AriaRadioGroupProps } from 'react-aria'
+import type { RadioGroupProps } from 'react-stately'
+
+import type { As, PropGetter } from '../types'
 
 export type UseRadioGroupProps = AriaRadioGroupProps &
   RadioGroupProps & {
@@ -53,7 +59,7 @@ export function useRadioGroup({
   const getRadioGroupProps: PropGetter = () => {
     return {
       ref,
-      className: 'relative flex flex-col gap-2',
+      className: clsx(className, 'relative flex flex-col gap-2'),
       ...mergeProps(radioGroupProps, props),
     }
   }
@@ -67,7 +73,7 @@ export function useRadioGroup({
 
   const getWrapperProps: PropGetter = () => {
     return {
-      className: 'flex flex-col flex-wrap gap-2 data-[orientation=horizontal]:flex-row',
+      className: 'grid grid-cols-3 gap-2 data-[orientation=horizontal]:grid-cols-1',
       role: 'presentation',
       'data-orientation': orientation,
     }

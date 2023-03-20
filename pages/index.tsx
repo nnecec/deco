@@ -1,8 +1,9 @@
 import { motion } from 'framer-motion'
-import type { NextPage } from 'next'
 
 import { Board, Frame, Photo, Sidebar } from '~/components/editor'
 import { useUpload } from '~/components/upload'
+
+import type { NextPage } from 'next'
 
 const Home: NextPage = () => {
   const [file, inputProps] = useUpload()

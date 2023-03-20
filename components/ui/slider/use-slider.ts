@@ -1,6 +1,4 @@
-import type { Ref } from 'react'
 import { useRef } from 'react'
-import type { AriaSliderProps } from 'react-aria'
 import {
   mergeProps,
   useFocusRing,
@@ -8,8 +6,12 @@ import {
   useSlider as useAriaSlider,
   useSliderThumb,
 } from 'react-aria'
-import type { SliderStateOptions } from 'react-stately'
 import { useSliderState } from 'react-stately'
+import clsx from 'clsx'
+
+import type { Ref } from 'react'
+import type { AriaSliderProps } from 'react-aria'
+import type { SliderStateOptions } from 'react-stately'
 
 import type { As, PropGetter } from '../types'
 
@@ -46,6 +48,7 @@ export const useSlider = ({ ref, as, ...props }: UseSliderProps) => {
   }
   const getLabelProps: PropGetter = () => {
     return {
+      className: 'relative text-neutral-500',
       ...labelProps,
     }
   }
@@ -56,22 +59,27 @@ export const useSlider = ({ ref, as, ...props }: UseSliderProps) => {
     }
   }
 
+  const getWrapperProps: PropGetter = () => {
+    return {
+      className: `relative flex h-5 w-full touch-none items-center`,
+    }
+  }
+
   const getTrackProps: PropGetter = () => {
     return {
       ...trackProps,
       ref: trackRef,
-      className: `w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700 ${
-        state.isDisabled ? 'disabled' : ''
-      }`,
+      className: clsx(
+        `relative h-1 w-full grow cursor-pointer appearance-none rounded-full bg-neutral-200 dark:bg-primary`,
+        state.isDisabled ? 'opacity-50' : '',
+      ),
     }
   }
 
   const getThumbProps: PropGetter = () => {
     return {
       ...thumbProps,
-      className: `w-4 h-4 rounded-full bg-black ${isFocusVisible ? 'focus' : ''} ${
-        isDragging ? 'dragging' : ''
-      }`,
+      className: clsx(`block h-5 w-5 rounded-full bg-neutral-900 dark:bg-neutral-100`),
     }
   }
 
@@ -87,6 +95,7 @@ export const useSlider = ({ ref, as, ...props }: UseSliderProps) => {
     getBaseProps,
     getLabelProps,
     getOutputProps,
+    getWrapperProps,
     getTrackProps,
     getThumbProps,
     getInputProps,

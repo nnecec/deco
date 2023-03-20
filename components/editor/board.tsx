@@ -1,10 +1,13 @@
-import { CSSProperties, PropsWithChildren, ReactNode, useEffect, useState } from 'react'
+import { CSSProperties, useEffect, useState } from 'react'
 import clsx from 'clsx'
 import { motion } from 'framer-motion'
 import { useAtom } from 'jotai'
 
-import { boardAspectRatioAtom, boardBackgroundAtom, photoSrcAtom } from './store'
+import type { PropsWithChildren, ReactNode} from 'react';
+
 import { prominent } from '../color'
+
+import { boardAspectRatioAtom, boardBackgroundAtom, photoSrcAtom } from './store'
 
 export type BoardProps = {
   extra?: ReactNode
@@ -27,10 +30,11 @@ export const Board = ({ children, className }: PropsWithChildren<BoardProps>) =>
 
   return (
     <motion.div
+      id="board"
       className={clsx(className, 'relative flex items-center justify-center')}
       style={{
         aspectRatio,
-        background: `linear-gradient(45deg, ${colors[0]},${colors[1]}, ${colors[2]})`,
+        background: `linear-gradient(45deg, ${colors[0]}, ${colors[2]})`,
       }}
     >
       {children}

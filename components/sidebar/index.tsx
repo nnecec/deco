@@ -1,14 +1,16 @@
-import { useAtom } from 'jotai'
 import { useEffect, useState } from 'react'
-import { prominent } from '../color'
+import { toJpeg } from 'html-to-image'
+import html2canvas from 'html2canvas'
+import { useAtom } from 'jotai'
 
+import { prominent } from '../color'
 import {
   boardAspectRatioAtom,
   boardBackgroundAtom,
   photoBorderRadiusAtom,
   photoScaleAtom,
 } from '../editor/store'
-import { RadioGroup, Radio, Slider, Tabs } from '../ui'
+import { Radio, RadioGroup, Slider, Tabs } from '../ui'
 
 export type ToolbarProps = {
   presets?: any
@@ -20,6 +22,15 @@ export const Sidebar = ({ presets }: ToolbarProps) => {
   const [borderRadius, setBorderRadius] = useAtom(photoBorderRadiusAtom)
   const [scale, setScale] = useAtom(photoScaleAtom)
 
+  const handleExport = () => {
+    toJpeg(document.querySelector('#board')).then(dataUrl => {
+      const link = document.createElement('a')
+      link.download = 'my-image-name.jpeg'
+      link.href = dataUrl
+      link.click()
+    })
+  }
+
   return (
     <div className="flex h-full flex-col p-2">
       <Tabs
@@ -29,8 +40,9 @@ export const Sidebar = ({ presets }: ToolbarProps) => {
             label: 'Frame',
             children: (
               <div>
-                <RadioGroup label="比例" onChange={e=> setAspectRatio(e)}>
+                <RadioGroup label="比例" value={aspectRatio} onChange={e => setAspectRatio(e)}>
                   {[
+                    { label: 'Adjust', value: '' },
                     { label: '1:1', value: '1/1' },
                     { label: '4:3', value: '4/3' },
                     { label: '3:4', value: '3/4' },
@@ -45,6 +57,7 @@ export const Sidebar = ({ presets }: ToolbarProps) => {
 
                 <Slider label="Photo round" value={borderRadius} onChange={setBorderRadius} />
                 <Slider label="Photo scale" value={scale} onChange={setScale} />
+                <button onClick={handleExport}>export</button>
               </div>
             ),
           },
