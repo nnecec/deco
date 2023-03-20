@@ -79,7 +79,10 @@ export const useSlider = ({ ref, as, ...props }: UseSliderProps) => {
   const getThumbProps: PropGetter = () => {
     return {
       ...thumbProps,
-      className: clsx(`block h-5 w-5 rounded-full bg-neutral-900 dark:bg-neutral-100`),
+      className: clsx(
+        `block h-5 w-5 rounded-full bg-neutral-900 dark:bg-neutral-100`,
+        isDragging && 'bg-neutral-700 dark:bg-neutral-300',
+      ),
     }
   }
 

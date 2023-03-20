@@ -6,8 +6,6 @@
     "start": "next start"
   },
   "dependencies": {
-    "@headlessui/react": "^1.7.13",
-    "@headlessui/tailwindcss": "^0.1.2",
     "clsx": "^1.2.1",
     "dayjs": "^1.11.7",
     "exifr": "^7.1.3",

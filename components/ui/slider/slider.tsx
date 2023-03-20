@@ -26,7 +26,6 @@ export const Slider = forwardRef<HTMLLabelElement, SliderProps>((props, ref) => 
       {props.label && (
         <div>
           <label {...getLabelProps()}>{props.label}</label>
-          {/* <output {...getOutputProps()} /> */}
         </div>
       )}
       <div {...getWrapperProps()}>

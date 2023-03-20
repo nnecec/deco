@@ -10,7 +10,7 @@ import {
   photoBorderRadiusAtom,
   photoScaleAtom,
 } from '../editor/store'
-import { Radio, RadioGroup, Slider, Tabs } from '../ui'
+import { Radio, RadioGroup, Slider } from '../ui'
 
 export type ToolbarProps = {
   presets?: any
@@ -33,41 +33,27 @@ export const Sidebar = ({ presets }: ToolbarProps) => {
 
   return (
     <div className="flex h-full flex-col p-2">
-      <Tabs
-        options={[
-          {
-            key: 'Frame',
-            label: 'Frame',
-            children: (
-              <div>
-                <RadioGroup label="比例" value={aspectRatio} onChange={e => setAspectRatio(e)}>
-                  {[
-                    { label: 'Adjust', value: '' },
-                    { label: '1:1', value: '1/1' },
-                    { label: '4:3', value: '4/3' },
-                    { label: '3:4', value: '3/4' },
-                    { label: '3:2', value: '3/2' },
-                    { label: '2:3', value: '2/3' },
-                  ].map(({ label, value }) => (
-                    <Radio key={value} value={value}>
-                      {label}
-                    </Radio>
-                  ))}
-                </RadioGroup>
+      <div>
+        <RadioGroup label="比例" value={aspectRatio} onChange={e => setAspectRatio(e)}>
+          {[
+            { label: 'Adjust', value: '' },
+            { label: '1:1', value: '1/1' },
+            { label: '4:3', value: '4/3' },
+            { label: '3:4', value: '3/4' },
+            { label: '3:2', value: '3/2' },
+            { label: '2:3', value: '2/3' },
+          ].map(({ label, value }) => (
+            <Radio key={value} value={value}>
+              {label}
+            </Radio>
+          ))}
+        </RadioGroup>
 
-                <Slider label="Photo round" value={borderRadius} onChange={setBorderRadius} />
-                <Slider label="Photo scale" value={scale} onChange={setScale} />
-                <button onClick={handleExport}>export</button>
-              </div>
-            ),
-          },
-          {
-            key: '2',
-            label: 'Mark',
-            children: 'Mark',
-          },
-        ]}
-      />
+        <Slider label="Photo round" value={borderRadius} onChange={setBorderRadius} />
+        <Slider label="Photo scale" value={scale} onChange={setScale} />
+        <button onClick={handleExport}>export</button>
+      </div>
+      ),
     </div>
   )
 }
