@@ -1,10 +1,11 @@
-import type { PropsWithChildren } from 'react'
 import clsx from 'clsx'
 import { motion } from 'framer-motion'
 import { useAtom } from 'jotai'
 
 import { Draggable } from '~/components/draggable'
 import { Resizable } from '~/components/resizable'
+
+import type { PropsWithChildren } from 'react'
 
 export type FramerProps = {
   className?: string

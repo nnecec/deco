@@ -1,10 +1,12 @@
-import type { PropsWithChildren } from 'react'
 import { cloneElement } from 'react'
+
+import type { PropsWithChildren } from 'react'
 
 import { useDraggable } from '../draggable'
 
-import type { Props } from './use-resizable'
 import { useResizable } from './use-resizable'
+
+import type { Props } from './use-resizable'
 
 export const Resizable = <T extends HTMLElement>({ children, x, y }: PropsWithChildren<Props>) => {
   const [nwse, nwsePosition] = useDraggable<T>()

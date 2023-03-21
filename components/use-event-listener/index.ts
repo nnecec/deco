@@ -1,5 +1,6 @@
-import type { RefObject } from 'react'
 import { useEffect, useRef } from 'react'
+
+import type { RefObject } from 'react'
 
 type Options = Pick<AddEventListenerOptions, 'capture' | 'passive' | 'once'>
 

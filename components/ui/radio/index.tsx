@@ -1,7 +1,7 @@
-export * from './radio-group'
 export * from './radio'
-export * from './use-radio-group'
+export * from './radio-group'
 export * from './use-radio'
+export * from './use-radio-group'
 
 // import { useRadio, useRadioGroup } from 'react-aria'
 // import { useRadioGroupState, useRadioState } from 'react-stately'

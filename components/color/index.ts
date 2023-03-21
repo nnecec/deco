@@ -33,7 +33,7 @@ const getArgs = ({
 } = {}): Args => ({ amount, format, group, sample })
 
 const format = (input: Input, args: Args): Output => {
-  const list = input.map((val) => {
+  const list = input.map(val => {
     const rgb = Array.isArray(val) ? val : val.split(',').map(Number) as Rgb
     return args.format === 'hex' ? rgbToHex(rgb) : rgb
   })
@@ -47,7 +47,7 @@ const group = (number: number, grouping: number): number => {
   return Math.min(grouped, 255)
 }
 
-const rgbToHex = (rgb: Rgb): Hex => '#' + rgb.map((val) => {
+const rgbToHex = (rgb: Rgb): Hex => '#' + rgb.map(val => {
   const hex = val.toString(16)
 
   return hex.length === 1 ? '0' + hex : hex
@@ -59,7 +59,7 @@ const getImageData = (src: Url): Promise<Data> =>
     const context = <CanvasRenderingContext2D>canvas.getContext('2d')
     const img = new Image
 
-    img.onload = () => {
+    img.addEventListener('load', () => {
       canvas.height = img.height
       canvas.width = img.width
       context.drawImage(img, 0, 0)
@@ -67,8 +67,8 @@ const getImageData = (src: Url): Promise<Data> =>
       const data = context.getImageData(0, 0, img.width, img.height).data
 
       resolve(data)
-    }
-    img.onerror = () => reject(Error('Image loading failed.'))
+    })
+    img.onerror = () => reject(new Error('Image loading failed.'))
     img.crossOrigin = ''
     img.src = src
   })
@@ -87,7 +87,7 @@ const getAverage = (data: Data, args: Args): Output => {
   return format([[
     Math.round(rgb.r / amount),
     Math.round(rgb.g / amount),
-    Math.round(rgb.b / amount)
+    Math.round(rgb.b / amount),
   ]], args)
 }
 
@@ -100,7 +100,7 @@ const getProminent = (data: Data, args: Args): Output => {
       group(data[i], args.group),
       group(data[i + 1], args.group),
       group(data[i + 2], args.group),
-    ].join()
+    ].join(',')
 
     colors[rgb] = colors[rgb] ? colors[rgb] + 1 : 1
   }
@@ -110,15 +110,15 @@ const getProminent = (data: Data, args: Args): Output => {
       .sort(([_keyA, valA], [_keyB, valB]) => valA > valB ? -1 : 1)
       .slice(0, args.amount)
       .map(([rgb]) => rgb),
-    args
+    args,
   )
 }
 
 const process = (handler: Handler, item: Item, args?: Partial<Args>): Promise<Output> =>
   new Promise((resolve, reject) =>
     getImageData(getSrc(item))
-      .then((data) => resolve(handler(data, getArgs(args))))
-      .catch((error) => reject(error))
+      .then(data => resolve(handler(data, getArgs(args))))
+      .catch(error => reject(error)),
 )
 
 const average = (item: Item, args?: Partial<Args>) => process(getAverage, item, args)

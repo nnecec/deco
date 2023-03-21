@@ -1,15 +1,10 @@
-import type {
-  ChangeEvent,
-  ComponentPropsWithRef,
-  DragEvent,
-  InputHTMLAttributes,
-  RefObject,
-} from 'react'
 import { useRef, useState } from 'react'
+
+import type { ChangeEvent, InputHTMLAttributes } from 'react'
 
 import type { UploadProps } from './types'
 
-export const useUpload = ({ accept }: UploadProps = {}): [
+export const useUpload = ({ accept = '*' }: UploadProps = {}): [
   File | undefined,
   InputHTMLAttributes<HTMLInputElement>,
 ] => {
@@ -23,7 +18,7 @@ export const useUpload = ({ accept }: UploadProps = {}): [
 
   const inputProps = {
     type: 'file',
-    accept: 'image/*',
+    accept,
     multiple: false,
     style: { display: 'none' },
     onChange: (e: ChangeEvent<HTMLInputElement>) => {
