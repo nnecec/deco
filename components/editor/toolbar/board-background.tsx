@@ -1,19 +1,15 @@
-import { useState } from "react";
-import { HexColorPicker } from "react-colorful";
+import { useState } from 'react'
+import { HexColorPicker } from 'react-colorful'
 import { useAtom } from 'jotai'
 
-import {
-  boardAspectRatioAtom,
-  boardBackgroundAtom,
-  photoBorderRadiusAtom,
-  photoScaleAtom,
-} from '../../store'
+import { boardBackgroundAtom } from '../store'
 
 export const BoardBackground = () => {
-
-  const [color, setColor] = useState("#aabbcc");
+  const [boardBackground, setBoardBackground] = useAtom(boardBackgroundAtom)
 
   return (
-    <HexColorPicker color={color} onChange={setColor} style={{width: '100%'}}/>
+    <div>
+      <HexColorPicker color={boardBackground} onChange={setBoardBackground} style={{ width: '100%' }} />
+    </div>
   )
 }

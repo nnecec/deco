@@ -1,6 +1,16 @@
 import { motion } from 'framer-motion'
 
-import { Board, Frame, Photo, Sidebar } from '~/components/editor'
+import {
+  Board,
+  BoardAspectRatio,
+  BoardBackground,
+  Export,
+  Frame,
+  Photo,
+  PhotoBorderRadius,
+  PhotoScale,
+} from '~/components/editor'
+import { Progress } from '~/components/ui'
 import { useUpload } from '~/components/upload'
 
 import type { NextPage } from 'next'
@@ -9,9 +19,19 @@ const Home: NextPage = () => {
   const [file, inputProps] = useUpload()
 
   return (
-    <div className="flex h-screen w-screen gap-4 bg-red-500 dark:bg-black">
+    <div className="flex h-screen w-screen gap-4 bg-black">
       <div className="basis-[248px]">
-        <Sidebar />
+        <div className="flex h-full flex-col p-2">
+          <div>
+            <BoardAspectRatio />
+            <PhotoBorderRadius />
+            <PhotoScale />
+            <BoardBackground />
+            <Export />
+            <Progress value={50}/>
+          </div>
+          ),
+        </div>
       </div>
       <motion.div layout className="relative flex h-full grow items-center justify-center">
         <Board>

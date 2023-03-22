@@ -109,7 +109,7 @@ export const useRadio = ({
     ...props,
     id: labelId,
     htmlFor: inputId,
-    className: 'block text-sm font-medium text-neutral-800 dark:text-neutral-200 text-base',
+    className: 'block text-sm font-medium text-neutral-200 text-base',
   })
 
   return {

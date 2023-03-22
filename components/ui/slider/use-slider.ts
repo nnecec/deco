@@ -43,7 +43,7 @@ export const useSlider = ({ ref, as, ...props }: UseSliderProps) => {
   const getBaseProps: PropGetter = () => {
     return {
       ...groupProps,
-      className: `block mb-2 text-sm font-medium text-gray-900 dark:text-white ${state.orientation}`,
+      className: `block mb-2 text-sm font-medium text-white ${state.orientation}`,
     }
   }
   const getLabelProps: PropGetter = () => {
@@ -70,7 +70,7 @@ export const useSlider = ({ ref, as, ...props }: UseSliderProps) => {
       ...trackProps,
       ref: trackRef,
       className: clsx(
-        `relative h-1 w-full grow cursor-pointer appearance-none rounded-full bg-neutral-200 dark:bg-primary`,
+        `relative h-1 w-full grow cursor-pointer appearance-none rounded-full bg-primary`,
         state.isDisabled ? 'opacity-50' : '',
       ),
     }
@@ -80,8 +80,8 @@ export const useSlider = ({ ref, as, ...props }: UseSliderProps) => {
     return {
       ...thumbProps,
       className: clsx(
-        `block h-5 w-5 rounded-full bg-neutral-900 dark:bg-neutral-100`,
-        isDragging && 'bg-neutral-700 dark:bg-neutral-300',
+        `block h-5 w-5 rounded-full bg-neutral-100`,
+        isDragging && 'bg-neutral-300',
       ),
     }
   }
