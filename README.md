@@ -4,4 +4,4 @@
 
 # Deco
 
-**Deco**rate your artwork
+**Deco**rate your picture of art.
