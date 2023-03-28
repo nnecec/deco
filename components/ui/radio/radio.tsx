@@ -7,7 +7,7 @@ import type { UseRadioProps } from './use-radio'
 
 export type RadioProps = Omit<UseRadioProps, 'ref'>
 
-export const Radio = forwardRef<any, RadioProps>((props, ref) => {
+export const Radio = forwardRef<HTMLElement, RadioProps>((props, ref) => {
   const { Component, children, getBaseProps, getWrapperProps, getInputProps, getLabelProps } =
     useRadio({ ref, ...props })
 

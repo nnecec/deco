@@ -1,6 +1,5 @@
-import { createContext, useContext, useId, useMemo, useRef } from 'react'
+import { useContext, useId, useMemo, useRef } from 'react'
 import { mergeProps, useFocusRing, useHover, useRadio as useAriaRadio } from 'react-aria'
-import { useRadioGroupState } from 'react-stately'
 import clsx from 'clsx'
 
 import type { CSSProperties, ReactNode, Ref } from 'react'
@@ -59,7 +58,7 @@ export const useRadio = ({
 
       ...groupContext,
     },
-    groupContext.groupState,
+    groupContext!.groupState,
     inputRef,
   )
 
@@ -74,7 +73,7 @@ export const useRadio = ({
     return {
       ...props,
       ref,
-      className: 'relative cursor-pointer',
+      className: clsx(className, 'relative cursor-pointer'),
       ...mergeProps(hoverProps, props),
     }
   }
