@@ -10,8 +10,8 @@ export type UseProgressProps = AriaProgressBarProps & {
   as?: As
 }
 export const useProgress = ({ ref, as, ...props }: UseProgressProps) => {
-  const { value, minValue = 0, maxValue = 100 } = props
-  const { progressBarProps } = useProgressBar(props)
+  const { label = 'progress-bar', value, minValue = 0, maxValue = 100 } = props
+  const { progressBarProps, labelProps } = useProgressBar({ ...props, label })
 
   const percentage = value ? (value - minValue) / (maxValue - minValue) : 0
   const barWidth = `${Math.round(percentage * 100)}%`
@@ -21,8 +21,8 @@ export const useProgress = ({ ref, as, ...props }: UseProgressProps) => {
   const getProgressBarProps: PropGetter = () => {
     return {
       ...progressBarProps,
+      ...labelProps,
       ref,
-      'aria-label': 'progress-bar',
       className: `h-3 w-full overflow-hidden rounded-full bg-gray-900`,
     }
   }

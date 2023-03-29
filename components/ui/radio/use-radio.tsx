@@ -88,7 +88,7 @@ export const useRadio = ({
       'data-disabled': isDisabled,
       'data-checked': isSelected,
       className: clsx(
-        'flex items-center justify-center overflow-hidden border-2 border-neutral-500 p-2 data-[hover-unchecked=true]:bg-neutral-900',
+        'flex items-center justify-center overflow-hidden border border-neutral-500 p-2 data-[hover-unchecked=true]:bg-neutral-900',
         'data-[checked=true]:bg-neutral-800',
         'h-full w-full',
         'transition-background rounded-xl',
