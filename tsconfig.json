@@ -14,12 +14,15 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
-    "noErrorTruncation": true,
-    "baseUrl": ".",
     "paths": {
-      "~/*": ["./*"],
-    }
+      "~/*": ["./*"]
+    },
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "next.config.js", ".next/types/**/*.ts"],
   "exclude": ["node_modules"]
 }

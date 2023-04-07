@@ -3,7 +3,7 @@ import colors from 'tailwindcss/colors'
 import type { Config } from 'tailwindcss'
 
 export default {
-  content: ['./{pages,components}/**/*.{js,ts,jsx,tsx}'],
+  content: ['./{app,components}/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
       colors: {

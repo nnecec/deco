@@ -1,3 +1,5 @@
+'use client'
+
 import { motion } from 'framer-motion'
 
 import {
@@ -13,9 +15,7 @@ import {
 import { Progress } from '~/components/ui'
 import { useUpload } from '~/components/upload'
 
-import type { NextPage } from 'next'
-
-const Home: NextPage = () => {
+export default function Page() {
   const [file, inputProps] = useUpload()
 
   return (
@@ -52,5 +52,3 @@ const Home: NextPage = () => {
     </div>
   )
 }
-
-export default Home
