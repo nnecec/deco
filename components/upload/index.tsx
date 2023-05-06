@@ -1,2 +1,2 @@
 export * from './hooks'
-export * from './types'
+export type * from './types'

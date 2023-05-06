@@ -1,9 +1,9 @@
 // https://github.com/luukdv/color.js
 type Args = {
-  amount: number;
-  format: string;
-  group: number;
-  sample: number;
+  amount: number
+  format: string
+  group: number
+  sample: number
 }
 
 type Data = Uint8ClampedArray
@@ -22,19 +22,18 @@ type Rgb = [r: number, g: number, b: number]
 
 type Url = string
 
-const getSrc = (item: Item): string =>
-  typeof item === 'string' ? item : item.src
+const getSrc = (item: Item): string => (typeof item === 'string' ? item : item.src)
 
-const getArgs = ({
-  amount = 3,
-  format = 'array',
-  group = 20,
-  sample = 10,
-} = {}): Args => ({ amount, format, group, sample })
+const getArgs = ({ amount = 3, format = 'array', group = 20, sample = 10 } = {}): Args => ({
+  amount,
+  format,
+  group,
+  sample,
+})
 
 const format = (input: Input, args: Args): Output => {
   const list = input.map(val => {
-    const rgb = Array.isArray(val) ? val : val.split(',').map(Number) as Rgb
+    const rgb = Array.isArray(val) ? val : (val.split(',').map(Number) as Rgb)
     return args.format === 'hex' ? rgbToHex(rgb) : rgb
   })
 
@@ -47,17 +46,21 @@ const group = (number: number, grouping: number): number => {
   return Math.min(grouped, 255)
 }
 
-const rgbToHex = (rgb: Rgb): Hex => '#' + rgb.map(val => {
-  const hex = val.toString(16)
+const rgbToHex = (rgb: Rgb): Hex =>
+  '#' +
+  rgb
+    .map(val => {
+      const hex = val.toString(16)
 
-  return hex.length === 1 ? '0' + hex : hex
-}).join('')
+      return hex.length === 1 ? '0' + hex : hex
+    })
+    .join('')
 
 const getImageData = (src: Url): Promise<Data> =>
   new Promise((resolve, reject) => {
     const canvas = document.createElement('canvas')
-    const context = <CanvasRenderingContext2D>canvas.getContext('2d')
-    const img = new Image
+    const context = canvas.getContext('2d') as CanvasRenderingContext2D
+    const img = new Image()
 
     img.addEventListener('load', () => {
       canvas.height = img.height
@@ -84,11 +87,10 @@ const getAverage = (data: Data, args: Args): Output => {
     rgb.b += data[i + 2]
   }
 
-  return format([[
-    Math.round(rgb.r / amount),
-    Math.round(rgb.g / amount),
-    Math.round(rgb.b / amount),
-  ]], args)
+  return format(
+    [[Math.round(rgb.r / amount), Math.round(rgb.g / amount), Math.round(rgb.b / amount)]],
+    args,
+  )
 }
 
 const getProminent = (data: Data, args: Args): Output => {
@@ -107,7 +109,7 @@ const getProminent = (data: Data, args: Args): Output => {
 
   return format(
     Object.entries(colors)
-      .sort(([_keyA, valA], [_keyB, valB]) => valA > valB ? -1 : 1)
+      .sort(([_keyA, valA], [_keyB, valB]) => (valA > valB ? -1 : 1))
       .slice(0, args.amount)
       .map(([rgb]) => rgb),
     args,
@@ -119,7 +121,7 @@ const process = (handler: Handler, item: Item, args?: Partial<Args>): Promise<Ou
     getImageData(getSrc(item))
       .then(data => resolve(handler(data, getArgs(args))))
       .catch(error => reject(error)),
-)
+  )
 
 const average = (item: Item, args?: Partial<Args>) => process(getAverage, item, args)
 const prominent = (item: Item, args?: Partial<Args>) => process(getProminent, item, args)
