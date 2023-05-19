@@ -1,5 +1,6 @@
 import { useMemo } from 'react'
 import clsx from 'clsx'
+import { colord } from 'colord'
 import { motion } from 'framer-motion'
 import { useAtom } from 'jotai'
 
@@ -14,16 +15,16 @@ export type BoardProps = {
 
 export const Board = ({ children, className }: PropsWithChildren<BoardProps>) => {
   const [aspectRatio] = useAtom(boardAspectRatioAtom)
-  const [backgroundColor, setBackgroundColor] = useAtom(boardBackgroundColorAtom)
-  const [backgroundImage, setBackgroundImage] = useAtom(boardBackgroundImageAtom)
+  const [backgroundColor] = useAtom(boardBackgroundColorAtom)
+  const [backgroundImage] = useAtom(boardBackgroundImageAtom)
 
   return (
     <motion.div
       id="board"
       className={clsx(className, 'relative flex items-center justify-center')}
       style={{
-        aspectRatio,
-        backgroundColor,
+        aspectRatio: `${aspectRatio.w}/${aspectRatio.h}`,
+        backgroundColor: colord(backgroundColor).toHex(),
         backgroundImage,
       }}
     >

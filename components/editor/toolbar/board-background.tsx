@@ -1,44 +1,21 @@
-import { useEffect, useMemo, useState } from 'react'
-import { HexColorPicker } from 'react-colorful'
+import { RgbaColorPicker } from 'react-colorful'
 import { useAtom } from 'jotai'
 
-import { prominent } from '~/components/color/generator'
-import { meshGradient } from '~/components/color/mesh'
-import { ColorSlider, Radio, RadioGroup } from '~/components/ui'
+import type { RgbaColor } from 'react-colorful'
 
-import { boardBackgroundColorAtom, boardBackgroundImageAtom, photoSrcAtom } from '../store'
+import { boardBackgroundColorAtom } from '../store'
 
 export const BoardBackground = () => {
-  const [, setBoardBackgroundColor] = useAtom(boardBackgroundColorAtom)
-  const [, setBoardBackgroundImage] = useAtom(boardBackgroundImageAtom)
-  const [photo] = useAtom(photoSrcAtom)
+  const [color, setColor] = useAtom(boardBackgroundColorAtom)
 
-  const [color, setColor] = useState('#fff')
-  const [colors, setColors] = useState([])
-  const [lightness, setLightness] = useState(10)
-
-  useEffect(() => {
-    prominent(photo, { format: 'hex' }).then(data => setColors(data))
-  }, [photo])
-
-  useEffect(() => {
-    const [backgroundColor, backgroundImage] = meshGradient(color, { amount: 6, lightness })
-    setBoardBackgroundImage(backgroundImage)
-    setBoardBackgroundColor(backgroundColor)
-  }, [color, lightness, setBoardBackgroundColor, setBoardBackgroundImage])
+  const handleColorChange = (color: RgbaColor) => {
+    setColor(color)
+  }
 
   return (
     <div>
-      <ColorSlider value={lightness} onChange={setLightness} />
-      <HexColorPicker color={color} onChange={setColor} style={{ width: '100%' }} />
-
-      <RadioGroup label="Main colors" value={color} onChange={e => setColor(e)}>
-        {colors.map(color => (
-          <Radio key={color} value={color}>
-            <div className="h-4 w-4" style={{ backgroundColor: color }} />
-          </Radio>
-        ))}
-      </RadioGroup>
+      <h5 className="text-sm text-stone-400">Background</h5>
+      <RgbaColorPicker color={color} onChange={handleColorChange} style={{ width: '100%', marginTop: 8 }} />
     </div>
   )
 }

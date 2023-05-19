@@ -1,8 +1,8 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect } from 'react'
 import { useAtom } from 'jotai'
 import Image from 'next/image'
 
-import type { PropsWithChildren, ReactNode } from 'react'
+import type { PropsWithChildren } from 'react'
 
 import { photoBorderRadiusAtom, photoScaleAtom, photoSrcAtom } from './store'
 

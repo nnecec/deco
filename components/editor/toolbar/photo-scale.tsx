@@ -1,15 +1,15 @@
 import { useAtom } from 'jotai'
 
-import { Radio, RadioGroup, Slider } from '../../ui'
-import {
-  boardAspectRatioAtom,
-  boardBackgroundAtom,
-  photoBorderRadiusAtom,
-  photoScaleAtom,
-} from '../store'
+import { Slider } from '../../ui'
+import { photoScaleAtom } from '../store'
 
 export const PhotoScale = () => {
   const [scale, setScale] = useAtom(photoScaleAtom)
 
-  return <Slider label="Photo scale" value={scale} onChange={setScale} />
+  return (
+    <div>
+      <h5 className="text-sm text-stone-400">Scale</h5>
+      <Slider value={[scale]} onValueChange={value => setScale(value[0])} />
+    </div>
+  )
 }

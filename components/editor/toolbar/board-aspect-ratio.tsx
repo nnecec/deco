@@ -1,30 +1,60 @@
+import {
+  Button,
+  Dropdown,
+  DropdownItem,
+  DropdownMenu,
+  DropdownTrigger,
+  Input,
+} from '@nextui-org/react'
+import { IconDotsVertical } from '@tabler/icons-react'
 import { useAtom } from 'jotai'
 
-import { Radio, RadioGroup, Slider } from '../../ui'
-import {
-  boardAspectRatioAtom,
-  boardBackgroundAtom,
-  photoBorderRadiusAtom,
-  photoScaleAtom,
-} from '../store'
+import { boardAspectRatioAtom } from '../store'
 
 export const BoardAspectRatio = () => {
   const [aspectRatio, setAspectRatio] = useAtom(boardAspectRatioAtom)
 
   return (
-    <RadioGroup label="比例" value={aspectRatio} onChange={e => setAspectRatio(e)}>
-      {[
-        { label: 'Adjust', value: '' },
-        { label: '1:1', value: '1/1' },
-        { label: '4:3', value: '4/3' },
-        { label: '3:4', value: '3/4' },
-        { label: '3:2', value: '3/2' },
-        { label: '2:3', value: '2/3' },
-      ].map(({ label, value }) => (
-        <Radio key={value} value={value}>
-          {label}
-        </Radio>
-      ))}
-    </RadioGroup>
+    <div>
+      <div className="flex gap-2">
+        <Input
+          label="Width"
+          type="number"
+          value={aspectRatio.w}
+          onValueChange={w => {
+            setAspectRatio({ ...aspectRatio, w })
+          }}
+        />
+        <Input
+          label="Height"
+          type="number"
+          value={aspectRatio.h}
+          onValueChange={h => {
+            setAspectRatio({ ...aspectRatio, h })
+          }}
+        />
+
+        <Dropdown placement="bottom-end">
+          <DropdownTrigger>
+            <Button className="h-auto w-20" isIconOnly>
+              <IconDotsVertical />
+            </Button>
+          </DropdownTrigger>
+          <DropdownMenu
+            aria-label="Actions"
+            onAction={value => {
+              const [w, h] = (value as string).split('/')
+              setAspectRatio({ w, h })
+            }}
+          >
+            <DropdownItem key="1/1">1:1</DropdownItem>
+            <DropdownItem key="4/3">4:3</DropdownItem>
+            <DropdownItem key="3/4">3:4</DropdownItem>
+            <DropdownItem key="3/2">3:2</DropdownItem>
+            <DropdownItem key="2/3">2:3</DropdownItem>
+          </DropdownMenu>
+        </Dropdown>
+      </div>
+    </div>
   )
 }
