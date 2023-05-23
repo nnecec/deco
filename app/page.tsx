@@ -38,7 +38,7 @@ export default function Page() {
               <motion.div className="basis-[260px]">
                 <div className="flex h-full flex-col justify-between p-4 pr-0">
                   <div className="flex flex-col gap-4">
-                    <h1 className="rounded-lg bg-neutral-100 px-3 py-2 text-4xl">Decoo</h1>
+                    <h1 className="rounded-lg py-2 text-4xl">Decox <span className="text-xs"><a href="https://twitter.com/nnecec_cn" target="_blank">@nnecec</a></span></h1>
                     <BoardAspectRatio />
                     <PhotoBorderRadius />
                     <PhotoScale />

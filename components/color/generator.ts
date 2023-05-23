@@ -10,7 +10,7 @@ type Data = Uint8ClampedArray
 
 type Handler = (data: Data, args: Args) => Output
 
-type Hex = string
+export type Hex = string
 
 type Input = (Hex | Rgb)[]
 
@@ -18,7 +18,7 @@ type Item = Url | HTMLImageElement
 
 type Output = Hex | Rgb | (Hex | Rgb)[]
 
-type Rgb = [r: number, g: number, b: number]
+export type Rgb = [r: number, g: number, b: number]
 
 type Url = string
 

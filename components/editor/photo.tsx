@@ -20,7 +20,7 @@ export const Photo = ({ src }: PropsWithChildren<PhotoProps>) => {
 
   return (
     <div
-      id="decoo-photo"
+      id="decox-photo"
       className="overflow-hidden"
       style={{
         borderRadius,

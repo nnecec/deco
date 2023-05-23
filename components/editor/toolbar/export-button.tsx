@@ -7,7 +7,7 @@ import type { ButtonProps } from '@nextui-org/react';
 const handleExport = () => {
   toJpeg(document.querySelector('#board')).then(dataUrl => {
     const link = document.createElement('a')
-    link.download = `${faker.color.human()} ${faker.animal.cat()}.jpeg`
+    link.download = `${faker.color.human()} ${faker.animal.cat().toLowerCase()}.jpeg`
     link.href = dataUrl
     link.click()
   })
