@@ -1,9 +1,15 @@
 'use client'
 
+import { useState } from 'react'
 import { SSRProvider } from 'react-aria'
-import { NextUIProvider } from '@nextui-org/react'
+import { Button, NextUIProvider, Tooltip } from '@nextui-org/react'
+import {
+  IconLayoutSidebarLeftCollapse,
+  IconLayoutSidebarRightCollapse,
+  IconPhotoUp,
+} from '@tabler/icons-react'
 import { motion } from 'framer-motion'
-import { ThemeProvider } from "next-themes";
+import { ThemeProvider } from 'next-themes'
 
 import {
   Board,
@@ -18,36 +24,58 @@ import {
 import { useUpload } from '~/components/upload'
 
 export default function Page() {
-  const [file, inputProps] = useUpload()
+  const [file, inputProps] = useUpload({
+    accept: 'image/jpg, image/png, image/jpeg',
+  })
+  const [hideSidebar, setHideSidebar] = useState(false)
 
   return (
     <ThemeProvider attribute="class" defaultTheme="dark">
       <NextUIProvider>
         <SSRProvider>
           <div className="flex h-screen w-screen bg-stone-800">
-            <div className="basis-[260px]">
-              <div className="flex h-full flex-col justify-between p-4 pr-0">
-                <div className="flex flex-col gap-4">
-                  <BoardAspectRatio />
-                  <PhotoBorderRadius />
-                  <PhotoScale />
-                  <BoardBackground />
+            {!hideSidebar && (
+              <motion.div className="basis-[260px]">
+                <div className="flex h-full flex-col justify-between p-4 pr-0">
+                  <div className="flex flex-col gap-4">
+                    <h1 className="rounded-lg bg-neutral-100 px-3 py-2 text-4xl">Decoo</h1>
+                    <BoardAspectRatio />
+                    <PhotoBorderRadius />
+                    <PhotoScale />
+                    <BoardBackground />
+                  </div>
+                  <ExportButton isDisabled={!file} />
                 </div>
-                <ExportButton />
-              </div>
-            </div>
+              </motion.div>
+            )}
             <motion.div className="h-full grow p-4">
-              <div className="relative flex h-full items-center justify-center rounded-xl bg-black shadow">
+              <div className="group relative flex h-full items-center justify-center overflow-hidden rounded-xl bg-black shadow-xl">
+                <div className="absolute left-4 top-4 opacity-0 transition-opacity group-hover:opacity-100">
+                  <Button isIconOnly onPress={() => setHideSidebar(!hideSidebar)}>
+                    {hideSidebar ? (
+                      <IconLayoutSidebarRightCollapse />
+                    ) : (
+                      <IconLayoutSidebarLeftCollapse />
+                    )}
+                  </Button>
+                </div>
                 <Board>
                   <Frame className="">
-                    <label htmlFor="avatar" className="block">
-                      {file ? (
-                        <Photo src={URL.createObjectURL(file)} />
-                      ) : (
-                        <Photo src="https://images.unsplash.com/photo-1677414519330-b95a8ee85c67?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1440&q=80" />
-                      )}
-                    </label>
-                    <input id="avatar" name="avatar" {...inputProps} />
+                    <Tooltip content="Click to upload your artwork.">
+                      <label htmlFor="avatar" className="block cursor-pointer">
+                        {file ? (
+                          <Photo src={URL.createObjectURL(file)} />
+                        ) : (
+                          <div className="flex h-[500px] w-[500px] items-center justify-center bg-neutral-100">
+                            <div className="flex flex-col items-center gap-2">
+                              <IconPhotoUp size={40} className="text-neutral-500" />
+                              <p className="text-xl text-neutral-500">Upload your Artwork.</p>
+                            </div>
+                          </div>
+                        )}
+                        <input id="avatar" name="avatar" {...inputProps} />
+                      </label>
+                    </Tooltip>
                   </Frame>
                 </Board>
               </div>

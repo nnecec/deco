@@ -36,7 +36,7 @@ export const BoardAspectRatio = () => {
 
         <Dropdown placement="bottom-end">
           <DropdownTrigger>
-            <Button className="h-auto w-20" isIconOnly>
+            <Button className="h-auto w-20" isIconOnly variant="ghost">
               <IconDotsVertical />
             </Button>
           </DropdownTrigger>
