@@ -24,6 +24,16 @@ type Url = string
 
 const getSrc = (item: Item): string => (typeof item === 'string' ? item : item.src)
 
+const rgbToHex = (rgb: Rgb): Hex =>
+  '#' +
+  rgb
+    .map(val => {
+      const hex = val.toString(16)
+
+      return hex.length === 1 ? '0' + hex : hex
+    })
+    .join('')
+
 const getArgs = ({ amount = 3, format = 'array', group = 20, sample = 10 } = {}): Args => ({
   amount,
   format,
@@ -46,16 +56,6 @@ const group = (number: number, grouping: number): number => {
   return Math.min(grouped, 255)
 }
 
-const rgbToHex = (rgb: Rgb): Hex =>
-  '#' +
-  rgb
-    .map(val => {
-      const hex = val.toString(16)
-
-      return hex.length === 1 ? '0' + hex : hex
-    })
-    .join('')
-
 const getImageData = (src: Url): Promise<Data> =>
   new Promise((resolve, reject) => {
     const canvas = document.createElement('canvas')
@@ -71,7 +71,7 @@ const getImageData = (src: Url): Promise<Data> =>
 
       resolve(data)
     })
-    img.onerror = () => reject(new Error('Image loading failed.'))
+    img.addEventListener('error', () => reject(new Error('Image loading failed.')))
     img.crossOrigin = ''
     img.src = src
   })
@@ -127,3 +127,10 @@ const average = (item: Item, args?: Partial<Args>) => process(getAverage, item, 
 const prominent = (item: Item, args?: Partial<Args>) => process(getProminent, item, args)
 
 export { average, prominent }
+
+export const getColors = async (item: Item, args?: Partial<Args>) => {
+  const colors = await prominent(item, { ...args, amount: 4 })
+  const color = await average(item, args)
+
+  return [...(colors as []), color]
+}

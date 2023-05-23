@@ -5,7 +5,7 @@ import { colord } from 'colord'
 import { useAtom } from 'jotai'
 
 import type { Hex } from '~/components/color/generator'
-import { prominent } from '~/components/color/generator'
+import { getColors } from '~/components/color/generator'
 
 import type { RgbaColor } from 'react-colorful'
 
@@ -22,7 +22,7 @@ export const BoardBackground = () => {
 
   useEffect(() => {
     if (photo) {
-      prominent(photo, { format: 'hex', amount: 5 }).then(data => setColors(data as Hex[]))
+      getColors(photo, { format: 'hex' }).then(data => setColors(data))
     } else {
       setColors([])
     }
