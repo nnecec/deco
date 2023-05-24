@@ -7,7 +7,7 @@ import type { PropsWithChildren } from 'react'
 import { photoBorderRadiusAtom, photoScaleAtom, photoSrcAtom } from './store'
 
 export type PhotoProps = {
-  src: string
+  src?: string
 }
 export const Photo = ({ src }: PropsWithChildren<PhotoProps>) => {
   const [borderRadius] = useAtom(photoBorderRadiusAtom)

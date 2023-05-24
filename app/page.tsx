@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { SSRProvider } from 'react-aria'
 import { Button, NextUIProvider, Tooltip } from '@nextui-org/react'
 import {
@@ -29,6 +29,16 @@ export default function Page() {
   })
   const [hideSidebar, setHideSidebar] = useState(false)
 
+  const url = useMemo(() => (file ? URL.createObjectURL(file) : undefined), [file])
+
+  useEffect(() => {
+    if (url) {
+      return () => {
+        URL.revokeObjectURL(url)
+      }
+    }
+  }, [url])
+
   return (
     <ThemeProvider attribute="class" defaultTheme="dark">
       <NextUIProvider>
@@ -38,7 +48,14 @@ export default function Page() {
               <motion.div className="basis-[260px]">
                 <div className="flex h-full flex-col justify-between p-4 pr-0">
                   <div className="flex flex-col gap-4">
-                    <h1 className="rounded-lg py-2 text-4xl">Decox <span className="text-xs"><a href="https://twitter.com/nnecec_cn" target="_blank">@nnecec</a></span></h1>
+                    <h1 className="rounded-lg py-2 text-4xl">
+                      Decox
+                      <span className="ml-2 text-xs">
+                        <a href="https://twitter.com/nnecec_cn" target="_blank">
+                          @nnecec
+                        </a>
+                      </span>
+                    </h1>
                     <BoardAspectRatio />
                     <PhotoBorderRadius />
                     <PhotoScale />
@@ -63,8 +80,8 @@ export default function Page() {
                   <Frame className="">
                     <Tooltip content="Click to upload your artwork.">
                       <label htmlFor="avatar" className="block cursor-pointer">
-                        {file ? (
-                          <Photo src={URL.createObjectURL(file)} />
+                        {url ? (
+                          <Photo src={url} />
                         ) : (
                           <div className="flex h-[500px] w-[500px] items-center justify-center bg-neutral-100">
                             <div className="flex flex-col items-center gap-2">
