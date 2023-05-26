@@ -57,7 +57,7 @@ export default function Page() {
                       Decox
                       <span className="ml-2 text-xs">
                         <a href="https://twitter.com/nnecec_cn" target="_blank">
-                          @nnecec
+                          @Foccia.Studio
                         </a>
                       </span>
                     </h1>
