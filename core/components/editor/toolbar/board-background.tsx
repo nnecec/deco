@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { RgbaColorPicker } from 'react-colorful'
 import { Button, Switch, Tooltip } from '@nextui-org/react'
 import { colord } from 'colord'
@@ -23,7 +23,7 @@ export const BoardBackground = () => {
 
   const handleColorChange = (color: RgbaColor) => {
     if (enableMesh) {
-      const [c, i] = meshGradient(colord(color).toHex(), { amount: 5, lightness })
+      const [, i] = meshGradient(colord(color).toHex(), { amount: 5, lightness })
       setImage(i)
     } else {
       setImage('none')
