@@ -12,7 +12,6 @@
     "@radix-ui/colors": "^0.1.8",
     "@radix-ui/react-slider": "^1.1.1",
     "@tabler/icons-react": "^2.20.0",
-    "chroma-js": "^2.4.2",
     "clsx": "^1.2.1",
     "colord": "^2.9.3",
     "dayjs": "^1.11.7",
@@ -32,7 +31,6 @@
   "devDependencies": {
     "@nnecec/eslint-config": "^0.2.7",
     "@nnecec/prettier-config": "^0.2.2",
-    "@types/chroma-js": "^2.4.0",
     "@types/node": "20.2.4",
     "@types/react": "18.2.7",
     "@types/react-dom": "18.2.4",

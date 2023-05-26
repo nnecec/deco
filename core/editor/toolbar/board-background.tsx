@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { RgbaColorPicker } from 'react-colorful'
 import { Button, Switch, Tooltip } from '@nextui-org/react'
+import { IconReload } from '@tabler/icons-react'
 import { colord } from 'colord'
 import { useAtom } from 'jotai'
 
@@ -9,8 +10,7 @@ import { getColors } from '~/core/components/color/generator'
 
 import type { RgbaColor } from 'react-colorful'
 
-import { meshGradient } from '../../color/mesh'
-import { Slider } from '../../slider'
+import { meshGradient } from '../../components/color/mesh'
 import { boardBackgroundColorAtom, boardBackgroundImageAtom, photoSrcAtom } from '../store'
 
 export const BoardBackground = () => {
@@ -19,11 +19,10 @@ export const BoardBackground = () => {
   const [photo] = useAtom(photoSrcAtom)
   const [colors, setColors] = useState<Hex[]>([])
   const [enableMesh, setEnableMesh] = useState(false)
-  const [lightness, setLightness] = useState(60)
 
   const handleColorChange = (color: RgbaColor) => {
     if (enableMesh) {
-      const [, i] = meshGradient(colord(color).toHex(), { amount: 5, lightness })
+      const [, i] = meshGradient(colord(color).toHex(), { amount: 5 })
       setImage(i)
     } else {
       setImage('none')
@@ -33,7 +32,7 @@ export const BoardBackground = () => {
 
   useEffect(() => {
     handleColorChange(color)
-  }, [enableMesh, lightness])
+  }, [enableMesh])
 
   useEffect(() => {
     if (photo) {
@@ -58,7 +57,7 @@ export const BoardBackground = () => {
           <h5 className="py-2 text-xs text-stone-400">Prominent Colors</h5>
           <div className="flex gap-1">
             {colors.map(c => (
-              <Tooltip content={c} key={c}>
+              <Tooltip content={c} key={c} showArrow placement="right">
                 <Button
                   radius="full"
                   size="sm"
@@ -69,16 +68,17 @@ export const BoardBackground = () => {
               </Tooltip>
             ))}
           </div>
-          <div className="flex justify-between">
-            <h5 className="py-2 text-xs text-stone-400">Mesh Mode</h5>
+          <h5 className="grow py-2 text-xs text-stone-400">Mesh Mode</h5>
+          <div className="flex items-center justify-between">
             <Switch isSelected={enableMesh} onValueChange={value => setEnableMesh(value)} />
+            {enableMesh && (
+              <Tooltip content="regenerate" placement="left" showArrow>
+                <Button isIconOnly radius="full" size="sm" onPress={() => handleColorChange(color)}>
+                  <IconReload size={14} />
+                </Button>
+              </Tooltip>
+            )}
           </div>
-          {enableMesh && (
-            <>
-              <h5 className="text-xs text-stone-400">Lightness</h5>
-              <Slider value={[lightness]} onValueChange={value => setLightness(value[0])} />
-            </>
-          )}
         </>
       )}
     </div>

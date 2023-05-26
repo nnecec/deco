@@ -1,6 +1,6 @@
 import { useAtom } from 'jotai'
 
-import { Slider } from '../../slider'
+import { Slider } from '../../components/slider'
 import { photoScaleAtom } from '../store'
 
 export const PhotoScale = () => {

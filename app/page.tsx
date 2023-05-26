@@ -10,6 +10,7 @@ import {
 import { motion } from 'framer-motion'
 import { ThemeProvider } from 'next-themes'
 
+import { useUpload } from '~/core/components/upload'
 import {
   Board,
   BoardAspectRatio,
@@ -19,8 +20,7 @@ import {
   Photo,
   PhotoBorderRadius,
   PhotoScale,
-} from '~/core/components/editor'
-import { useUpload } from '~/core/components/upload'
+} from '~/core/editor'
 
 export default function Page() {
   const [file, inputProps] = useUpload({
