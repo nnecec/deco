@@ -45,7 +45,7 @@ export default function Page() {
         <SSRProvider>
           <div className="flex h-screen w-screen bg-stone-800">
             {!hideSidebar && (
-              <motion.div className="basis-[260px]">
+              <motion.div className="min-w-[260px] max-w-[260px]">
                 <div className="flex h-full flex-col justify-between p-4 pr-0">
                   <div className="flex flex-col gap-4">
                     <h1 className="rounded-lg py-2 text-4xl">
@@ -86,7 +86,10 @@ export default function Page() {
                           <div className="flex h-[500px] w-[500px] items-center justify-center bg-neutral-100">
                             <div className="flex flex-col items-center gap-2">
                               <IconPhotoUp size={40} className="text-neutral-500" />
-                              <p className="text-xl text-neutral-500">Upload your Artwork.</p>
+                              <p className="text-xl text-neutral-500">Upload to {" "}
+                                <span className="bg-gradient-to-r from-pink-500 to-blue-500 bg-clip-text text-transparent">
+                                  Decox your Artwork
+                                </span></p>
                             </div>
                           </div>
                         )}

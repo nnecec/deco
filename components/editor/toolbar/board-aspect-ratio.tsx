@@ -54,6 +54,7 @@ export const BoardAspectRatio = () => {
             <DropdownItem key="2/3">2:3</DropdownItem>
           </DropdownMenu>
         </Dropdown>
+
       </div>
     </div>
   )
