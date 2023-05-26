@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { SSRProvider } from 'react-aria'
 import { Button, NextUIProvider, Tooltip } from '@nextui-org/react'
 import {
@@ -27,17 +27,22 @@ export default function Page() {
   const [file, inputProps] = useUpload({
     accept: 'image/jpg, image/png, image/jpeg',
   })
-  const [hideSidebar, setHideSidebar] = useState(false)
-
-  const url = useMemo(() => (file ? URL.createObjectURL(file) : undefined), [file])
+  const [hideSidebar, setHideSidebar] = useState<boolean>(false)
+  const [tempImageUrl, setTempImageUrl] = useState<string>('')
 
   useEffect(() => {
-    if (url) {
+    if (file) {
+      setTempImageUrl(URL.createObjectURL(file))
+    }
+  }, [file])
+
+  useEffect(() => {
+    if (tempImageUrl) {
       return () => {
-        URL.revokeObjectURL(url)
+        URL.revokeObjectURL(tempImageUrl)
       }
     }
-  }, [url])
+  }, [tempImageUrl])
 
   return (
     <ThemeProvider attribute="class" defaultTheme="dark">
@@ -80,18 +85,18 @@ export default function Page() {
                   <Frame className="">
                     <Tooltip content="Click to upload your artwork.">
                       <label htmlFor="avatar" className="block cursor-pointer">
-                        {url ? (
-                          <Photo src={url} />
+                        {tempImageUrl ? (
+                          <Photo src={tempImageUrl} />
                         ) : (
-                          <div className="flex h-[500px] w-[500px] items-center justify-center bg-neutral-100">
-                            <div className="flex flex-col items-center gap-2">
-                              <IconPhotoUp size={40} className="text-neutral-500" />
-                              <p className="text-xl text-neutral-500">Upload to {" "}
-                                <span className="bg-gradient-to-r from-pink-500 to-blue-500 bg-clip-text text-transparent">
-                                  Decox your Artwork
-                                </span></p>
+                            <div className="flex h-[500px] w-[500px] items-center justify-center bg-neutral-100">
+                              <div className="flex flex-col items-center gap-2">
+                                <IconPhotoUp size={40} className="text-neutral-500" />
+                                <p className="text-xl text-neutral-500">Upload to {" "}
+                                  <span className="bg-gradient-to-r from-pink-500 to-blue-500 bg-clip-text text-transparent">
+                                    Decox your Artwork
+                                  </span></p>
+                              </div>
                             </div>
-                          </div>
                         )}
                         <input id="avatar" name="avatar" {...inputProps} />
                       </label>
