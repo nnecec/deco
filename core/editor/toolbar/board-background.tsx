@@ -36,7 +36,7 @@ export const BoardBackground = () => {
 
   useEffect(() => {
     if (photo) {
-      getColors(photo, { format: 'hex' }).then(data => setColors(data))
+      getColors(photo, { format: 'hex' }).then(data => setColors(data as Hex[]))
     } else {
       setColors([])
     }

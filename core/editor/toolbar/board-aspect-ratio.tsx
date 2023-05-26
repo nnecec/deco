@@ -21,7 +21,7 @@ export const BoardAspectRatio = () => {
           label="Width"
           type="number"
           value={aspectRatio.w}
-          onValueChange={w => {
+          onValueChange={(w: number) => {
             setAspectRatio({ ...aspectRatio, w })
           }}
         />
@@ -29,7 +29,7 @@ export const BoardAspectRatio = () => {
           label="Height"
           type="number"
           value={aspectRatio.h}
-          onValueChange={h => {
+          onValueChange={(h: number) => {
             setAspectRatio({ ...aspectRatio, h })
           }}
         />
@@ -44,7 +44,7 @@ export const BoardAspectRatio = () => {
             aria-label="Actions"
             onAction={value => {
               const [w, h] = (value as string).split('/')
-              setAspectRatio({ w, h })
+              setAspectRatio({ w: Number(w), h: Number(h) })
             }}
           >
             <DropdownItem key="1/1">1:1</DropdownItem>
@@ -54,7 +54,6 @@ export const BoardAspectRatio = () => {
             <DropdownItem key="2/3">2:3</DropdownItem>
           </DropdownMenu>
         </Dropdown>
-
       </div>
     </div>
   )

@@ -1,4 +1,4 @@
-export const exifToHuman = exif => {
+export const exifToHuman = (exif: any) => {
   return {
     brand: exif.Make,
     model: exif.Model,

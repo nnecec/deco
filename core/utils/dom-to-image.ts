@@ -1,4 +1,7 @@
+/* eslint-disable eslint-comments/no-unlimited-disable */
+/* eslint-disable unicorn/no-abusive-eslint-disable */
 /* eslint-disable */
+// @ts-nocheck
 /**
  * https://github.com/tsayen/dom-to-image/blob/master/src/dom-to-image.js
  */
@@ -15,7 +18,7 @@
     // Default is to fail on error, no placeholder
     imagePlaceholder: undefined,
     // Default cache bust is false, it will use the cache
-    cacheBust: false
+    cacheBust: false,
   }
 
   var domtoimage = {
@@ -29,8 +32,8 @@
       images: images,
       util: util,
       inliner: inliner,
-      options: {}
-    }
+      options: {},
+    },
   }
 
   if (typeof module !== 'undefined') module.exports = domtoimage
@@ -66,7 +69,7 @@
           clone,
           options.width || util.width(node),
           options.height || util.height(node),
-          options.escapePercentSign
+          options.escapePercentSign,
         )
       })
 
@@ -92,9 +95,7 @@
    * */
   function toPixelData(node, options) {
     return draw(node, options || {}).then(function (canvas) {
-      return canvas
-        .getContext('2d')
-        .getImageData(0, 0, util.width(node), util.height(node)).data
+      return canvas.getContext('2d').getImageData(0, 0, util.width(node), util.height(node)).data
     })
   }
 
@@ -189,8 +190,7 @@
       })
 
     function makeNodeCopy(node) {
-      if (node instanceof HTMLCanvasElement)
-        return util.makeImage(node.toDataURL())
+      if (node instanceof HTMLCanvasElement) return util.makeImage(node.toDataURL())
       return node.cloneNode(false)
     }
 
@@ -198,11 +198,9 @@
       var children = original.childNodes
       if (children.length === 0) return Promise.resolve(clone)
 
-      return cloneChildrenInOrder(clone, util.asArray(children), filter).then(
-        function () {
-          return clone
-        }
-      )
+      return cloneChildrenInOrder(clone, util.asArray(children), filter).then(function () {
+        return clone
+      })
 
       function cloneChildrenInOrder(parent, children, filter) {
         var done = Promise.resolve()
@@ -243,7 +241,7 @@
               target.setProperty(
                 name,
                 source.getPropertyValue(name),
-                source.getPropertyPriority(name)
+                source.getPropertyPriority(name),
               )
             })
           }
@@ -264,16 +262,12 @@
           var className = util.uid()
           clone.className = clone.className + ' ' + className
           var styleElement = document.createElement('style')
-          styleElement.appendChild(
-            formatPseudoElementStyle(className, element, style)
-          )
+          styleElement.appendChild(formatPseudoElementStyle(className, element, style))
           clone.appendChild(styleElement)
 
           function formatPseudoElementStyle(className, element, style) {
             var selector = '.' + className + ':' + element
-            var cssText = style.cssText
-              ? formatCssText(style)
-              : formatCssProperties(style)
+            var cssText = style.cssText ? formatCssText(style) : formatCssProperties(style)
             return document.createTextNode(selector + '{' + cssText + '}')
 
             function formatCssText(style) {
@@ -298,10 +292,8 @@
       }
 
       function copyUserInput() {
-        if (original instanceof HTMLTextAreaElement)
-          clone.innerHTML = original.value
-        if (original instanceof HTMLInputElement)
-          clone.setAttribute('value', original.value)
+        if (original instanceof HTMLTextAreaElement) clone.innerHTML = original.value
+        if (original instanceof HTMLInputElement) clone.setAttribute('value', original.value)
       }
 
       function fixSvg() {
@@ -344,11 +336,7 @@
         return util.escapeXhtml(str, escapePercentSign)
       })
       .then(function (xhtml) {
-        return (
-          '<foreignObject x="0" y="0" width="100%" height="100%">' +
-          xhtml +
-          '</foreignObject>'
-        )
+        return '<foreignObject x="0" y="0" width="100%" height="100%">' + xhtml + '</foreignObject>'
       })
       .then(function (foreignObject) {
         return (
@@ -382,7 +370,7 @@
       escapeXhtml: escapeXhtml,
       makeImage: makeImage,
       width: width,
-      height: height
+      height: height,
     }
 
     function mimes() {
@@ -403,7 +391,7 @@
         jpeg: JPEG,
         gif: 'image/gif',
         tiff: 'image/tiff',
-        svg: 'image/svg+xml'
+        svg: 'image/svg+xml',
       }
     }
 
@@ -428,13 +416,12 @@
         var length = binaryString.length
         var binaryArray = new Uint8Array(length)
 
-        for (var i = 0; i < length; i++)
-          binaryArray[i] = binaryString.charCodeAt(i)
+        for (var i = 0; i < length; i++) binaryArray[i] = binaryString.charCodeAt(i)
 
         resolve(
           new Blob([binaryArray], {
-            type: 'image/png'
-          })
+            type: 'image/png',
+          }),
         )
       })
     }
@@ -467,9 +454,7 @@
 
         function fourRandomChars() {
           /* see http://stackoverflow.com/a/6248722/2519373 */
-          return (
-            '0000' + ((Math.random() * Math.pow(36, 4)) << 0).toString(36)
-          ).slice(-4)
+          return ('0000' + ((Math.random() * Math.pow(36, 4)) << 0).toString(36)).slice(-4)
         }
       }
     }
@@ -518,9 +503,7 @@
             if (placeholder) {
               resolve(placeholder)
             } else {
-              fail(
-                'cannot fetch resource: ' + url + ', status: ' + request.status
-              )
+              fail('cannot fetch resource: ' + url + ', status: ' + request.status)
             }
 
             return
@@ -538,12 +521,7 @@
           if (placeholder) {
             resolve(placeholder)
           } else {
-            fail(
-              'timeout of ' +
-                TIMEOUT +
-                'ms occured while fetching resource: ' +
-                url
-            )
+            fail('timeout of ' + TIMEOUT + 'ms occured while fetching resource: ' + url)
           }
         }
 
@@ -612,8 +590,8 @@
       shouldProcess: shouldProcess,
       impl: {
         readUrls: readUrls,
-        inline: inline
-      }
+        inline: inline,
+      },
     }
 
     function shouldProcess(string) {
@@ -645,10 +623,7 @@
         })
 
       function urlAsRegex(url) {
-        return new RegExp(
-          '(url\\([\'"]?)(' + util.escape(url) + ')([\'"]?\\))',
-          'g'
-        )
+        return new RegExp('(url\\([\'"]?)(' + util.escape(url) + ')([\'"]?\\))', 'g')
       }
     }
 
@@ -677,8 +652,8 @@
     return {
       resolveAll: resolveAll,
       impl: {
-        readAll: readAll
-      }
+        readAll: readAll,
+      },
     }
 
     function resolveAll() {
@@ -687,7 +662,7 @@
           return Promise.all(
             webFonts.map(function (webFont) {
               return webFont.resolve()
-            })
+            }),
           )
         })
         .then(function (cssStrings) {
@@ -717,14 +692,9 @@
         var cssRules = []
         styleSheets.forEach(function (sheet) {
           try {
-            util
-              .asArray(sheet.cssRules || [])
-              .forEach(cssRules.push.bind(cssRules))
+            util.asArray(sheet.cssRules || []).forEach(cssRules.push.bind(cssRules))
           } catch (e) {
-            console.log(
-              'Error while reading CSS rules from ' + sheet.href,
-              e.toString()
-            )
+            console.log('Error while reading CSS rules from ' + sheet.href, e.toString())
           }
         })
         return cssRules
@@ -738,7 +708,7 @@
           },
           src: function () {
             return webFontRule.style.getPropertyValue('src')
-          }
+          },
         }
       }
     }
@@ -748,13 +718,13 @@
     return {
       inlineAll: inlineAll,
       impl: {
-        newImage: newImage
-      }
+        newImage: newImage,
+      },
     }
 
     function newImage(element) {
       return {
-        inline: inline
+        inline: inline,
       }
 
       function inline(get) {
@@ -784,7 +754,7 @@
           return Promise.all(
             util.asArray(node.childNodes).map(function (child) {
               return inlineAll(child)
-            })
+            }),
           )
       })
 
@@ -799,7 +769,7 @@
             node.style.setProperty(
               'background',
               inlined,
-              node.style.getPropertyPriority('background')
+              node.style.getPropertyPriority('background'),
             )
           })
           .then(function () {

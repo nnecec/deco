@@ -15,7 +15,9 @@ export const Photo = ({ src }: PropsWithChildren<PhotoProps>) => {
   const [photo, setPhoto] = useAtom(photoSrcAtom)
 
   useEffect(() => {
-    setPhoto(src)
+    if (src) {
+      setPhoto(src)
+    }
   }, [setPhoto, src])
 
   return (
