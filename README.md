@@ -2,6 +2,4 @@
 
 > created by Bing.AI
 
-# Decox
-
-**Decox**rate your picture of art.
+# **Decox** your Artwork!
