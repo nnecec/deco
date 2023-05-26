@@ -1,12 +1,16 @@
+import { Inter } from 'next/font/google'
+
 import '~/core/styles/globals.css'
+
+const inter = Inter({ subsets: ['latin'] })
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <title>Decox your Artwork</title>
-      <meta name="description" content="Decox your picture of ART!" />
+      <title>Deco your Artwork</title>
+      <meta name="description" content="Deco your picture of ART!" />
       <link rel="icon" href="/favicon.ico" />
-      <body>{children}</body>
+      <body className={inter.className}>{children}</body>
     </html>
   )
 }

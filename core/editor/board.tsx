@@ -1,7 +1,5 @@
-import { useMemo } from 'react'
 import clsx from 'clsx'
 import { colord } from 'colord'
-import { motion } from 'framer-motion'
 import { useAtom } from 'jotai'
 
 import type { PropsWithChildren, ReactNode } from 'react'
@@ -19,7 +17,7 @@ export const Board = ({ children, className }: PropsWithChildren<BoardProps>) =>
   const [backgroundImage] = useAtom(boardBackgroundImageAtom)
 
   return (
-    <motion.div
+    <div
       id="board"
       className={clsx(className, 'relative flex items-center justify-center')}
       style={{
@@ -29,6 +27,6 @@ export const Board = ({ children, className }: PropsWithChildren<BoardProps>) =>
       }}
     >
       {children}
-    </motion.div>
+    </div>
   )
 }

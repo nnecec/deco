@@ -2,10 +2,10 @@ import clsx from 'clsx'
 
 import type { PropsWithChildren } from 'react'
 
-export type FramerProps = {
+export type FrameProps = {
   className?: string
 }
 
-export const Frame = ({ children, className }: PropsWithChildren<FramerProps>) => {
+export const Frame = ({ children, className }: PropsWithChildren<FrameProps>) => {
   return <div className={clsx(className, 'relative')}>{children}</div>
 }

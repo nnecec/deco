@@ -2,4 +2,4 @@
 
 > created by Bing.AI
 
-# **Decox** your Artwork!
+# **Deco** your Artwork!
