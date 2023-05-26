@@ -20,8 +20,8 @@ import {
   Photo,
   PhotoBorderRadius,
   PhotoScale,
-} from '~/components/editor'
-import { useUpload } from '~/components/upload'
+} from '~/core/components/editor'
+import { useUpload } from '~/core/components/upload'
 
 export default function Page() {
   const [file, inputProps] = useUpload({

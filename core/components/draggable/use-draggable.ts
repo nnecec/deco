@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react'
 
-import { useEventListener } from '~/components/use-event-listener'
+import { useEventListener } from '~/core/components/use-event-listener'
 
 interface Position {
   x: number
