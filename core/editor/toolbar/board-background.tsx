@@ -1,8 +1,10 @@
+'use client'
 import { useEffect, useState } from 'react'
 import { RgbaColorPicker } from 'react-colorful'
 import { Button, Switch, Tooltip } from '@nextui-org/react'
 import { IconReload } from '@tabler/icons-react'
 import { colord } from 'colord'
+import { motion } from 'framer-motion'
 import { useAtom } from 'jotai'
 
 import type { Hex } from '~/core/components/color/generator'
@@ -12,6 +14,8 @@ import type { RgbaColor } from 'react-colorful'
 
 import { meshGradient } from '../../components/color/mesh'
 import { boardBackgroundColorAtom, boardBackgroundImageAtom, photoSrcAtom } from '../store'
+
+const MotionButton = motion(Button)
 
 export const BoardBackground = () => {
   const [color, setColor] = useAtom(boardBackgroundColorAtom)
@@ -36,7 +40,10 @@ export const BoardBackground = () => {
 
   useEffect(() => {
     if (photo) {
-      getColors(photo, { format: 'hex' }).then(data => setColors(data as Hex[]))
+      getColors(photo, { format: 'hex' }).then((data: any) => {
+        setColors(data)
+        handleColorChange({ ...colord(data[Math.round(5 * Math.random())]).toRgb(), a: 1 })
+      })
     } else {
       setColors([])
     }
@@ -73,9 +80,16 @@ export const BoardBackground = () => {
             <Switch isSelected={enableMesh} onValueChange={value => setEnableMesh(value)} />
             {enableMesh && (
               <Tooltip content="regenerate" placement="left" showArrow>
-                <Button isIconOnly radius="full" size="sm" onPress={() => handleColorChange(color)}>
+                <MotionButton
+                  isIconOnly
+                  radius="full"
+                  size="sm"
+                  onPress={() => handleColorChange(color)}
+                  whileTap={{ rotate: 60 }}
+                  style={{ tranform: 'rotate(60deg)' }}
+                >
                   <IconReload size={14} />
-                </Button>
+                </MotionButton>
               </Tooltip>
             )}
           </div>

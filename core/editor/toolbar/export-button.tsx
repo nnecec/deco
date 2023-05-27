@@ -1,3 +1,4 @@
+import { useRef, useState } from 'react'
 import { faker } from '@faker-js/faker'
 import { Button } from '@nextui-org/react'
 import { toJpeg } from 'html-to-image'
@@ -17,9 +18,60 @@ const handleExport = () => {
 }
 
 export const ExportButton = (props: ButtonProps) => {
+  const divRef = useRef<HTMLInputElement>(null)
+  const [isFocused, setIsFocused] = useState(false)
+  const [position, setPosition] = useState({ x: 0, y: 0 })
+  const [opacity, setOpacity] = useState(0)
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLElement>) => {
+    if (!divRef.current || isFocused) return
+
+    const div = divRef.current
+    const rect = div.getBoundingClientRect()
+
+    setPosition({ x: e.clientX - rect.left, y: e.clientY - rect.top })
+  }
+
+  const handleFocus = () => {
+    setIsFocused(true)
+    setOpacity(1)
+  }
+
+  const handleBlur = () => {
+    setIsFocused(false)
+    setOpacity(0)
+  }
+
+  const handleMouseEnter = () => {
+    setOpacity(1)
+  }
+
+  const handleMouseLeave = () => {
+    setOpacity(0)
+  }
+
   return (
-    <Button {...props} onClick={handleExport}>
-      export
-    </Button>
+    <div className="relative">
+      <Button
+        onMouseMove={handleMouseMove}
+        onBlur={handleBlur}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+        className="w-full border bg-transparent transition-colors duration-500 focus:border-slate-500/20 focus:outline-none"
+        {...props}
+        onClick={handleExport}
+      >
+        Export
+      </Button>
+      <div
+        ref={divRef}
+        style={{
+          opacity,
+          WebkitMaskImage: `radial-gradient(30% 30px at ${position.x}px ${position.y}px, black 45%, transparent)`,
+        }}
+        aria-hidden="true"
+        className="pointer-events-none absolute left-0 top-0 z-10 h-full w-full cursor-default rounded-md border border-slate-300/60 bg-[transparent] opacity-0  transition-opacity duration-500"
+      />
+    </div>
   )
 }
