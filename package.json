@@ -6,11 +6,11 @@
     "start": "next start"
   },
   "dependencies": {
-    "@faker-js/faker": "^8.0.1",
+    "@faker-js/faker": "^8.0.2",
     "@nextui-org/react": "dev-v2",
     "@nextui-org/theme": "dev-v2",
     "@radix-ui/colors": "^0.1.8",
-    "@radix-ui/react-slider": "^1.1.1",
+    "@radix-ui/react-slider": "^1.1.2",
     "@tabler/icons-react": "^2.20.0",
     "clsx": "^1.2.1",
     "colord": "^2.9.3",
@@ -29,16 +29,16 @@
     "tailwindcss": "^3.3.2"
   },
   "devDependencies": {
-    "@nnecec/eslint-config": "^0.2.7",
+    "@nnecec/eslint-config": "^0.3.0",
     "@nnecec/prettier-config": "^0.2.2",
-    "@types/node": "20.2.4",
+    "@types/node": "20.2.5",
     "@types/react": "18.2.7",
     "@types/react-dom": "18.2.4",
     "autoprefixer": "^10.4.14",
     "cssnano": "^6.0.1",
     "eslint": "^8.41.0",
     "eslint-config-next": "^13.4.4",
-    "postcss": "^8.4.23",
+    "postcss": "^8.4.24",
     "typescript": "5.0.4"
   }
 }
