@@ -6,7 +6,7 @@ import {
   DropdownTrigger,
   Input,
 } from '@nextui-org/react'
-import { IconDotsVertical } from '@tabler/icons-react'
+import { DotsVerticalIcon } from '@radix-ui/react-icons'
 import { useAtom } from 'jotai'
 
 import { boardAspectRatioAtom } from '../store'
@@ -37,7 +37,7 @@ export const BoardAspectRatio = () => {
         <Dropdown placement="bottom-end">
           <DropdownTrigger>
             <Button className="h-auto w-20" isIconOnly variant="ghost">
-              <IconDotsVertical />
+              <DotsVerticalIcon />
             </Button>
           </DropdownTrigger>
           <DropdownMenu

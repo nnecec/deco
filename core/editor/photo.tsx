@@ -4,14 +4,13 @@ import Image from 'next/image'
 
 import type { PropsWithChildren } from 'react'
 
-import { photoBorderRadiusAtom, photoScaleAtom, photoSrcAtom } from './store'
+import { photoBorderRadiusAtom, photoSrcAtom } from './store'
 
 export type PhotoProps = {
   src?: string
 }
 export const Photo = ({ src }: PropsWithChildren<PhotoProps>) => {
   const [borderRadius] = useAtom(photoBorderRadiusAtom)
-  const [scale] = useAtom(photoScaleAtom)
   const [photo, setPhoto] = useAtom(photoSrcAtom)
 
   useEffect(() => {
@@ -26,7 +25,6 @@ export const Photo = ({ src }: PropsWithChildren<PhotoProps>) => {
       className="overflow-hidden"
       style={{
         borderRadius,
-        transform: `scale(${1 - scale / 250})`,
       }}
     >
       <Image src={photo} height={500} width={500} alt="your artwork" />

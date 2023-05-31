@@ -1,5 +1,9 @@
-import { config } from './xiaomi-leica'
+import type { FrameMode } from '~/core/types'
 
-export const presets = {
-  'xiaomi-leica': config,
+import { PolaroidFrame } from './polaroid'
+import { XiaomiLeicaFrame } from './xiaomi-leica'
+
+export const frameModePresets: Record<string, FrameMode> = {
+  'Xiaomi - Leica': XiaomiLeicaFrame,
+  Polaroid: PolaroidFrame,
 }

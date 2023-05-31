@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react'
 import { RgbaColorPicker } from 'react-colorful'
 import { Button, Switch, Tooltip } from '@nextui-org/react'
-import { IconReload } from '@tabler/icons-react'
+import { ReloadIcon } from '@radix-ui/react-icons'
 import { colord } from 'colord'
 import { motion } from 'framer-motion'
 import { useAtom } from 'jotai'
@@ -88,7 +88,7 @@ export const BoardBackground = () => {
                   whileTap={{ rotate: 60 }}
                   style={{ tranform: 'rotate(60deg)' }}
                 >
-                  <IconReload size={14} />
+                  <ReloadIcon />
                 </MotionButton>
               </Tooltip>
             )}

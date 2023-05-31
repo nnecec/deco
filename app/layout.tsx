@@ -1,8 +1,6 @@
-import { Inter } from 'next/font/google'
+import { inter } from '~/core/fonts'
 
 import '~/core/styles/globals.css'
-
-const inter = Inter({ subsets: ['latin'] })
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (

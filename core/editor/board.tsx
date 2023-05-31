@@ -11,6 +11,13 @@ export type BoardProps = {
   className?: string
 }
 
+/**
+ * Board is the background component of bottom layer of the editor.
+ * Renders a board component with specified aspectRatio, backgroundColor, and backgroundImage.
+ *
+ * @param {PropsWithChildren<BoardProps>} props - The props object with children and className properties.
+ * @return {JSX.Element} The board component with given properties and children.
+ */
 export const Board = ({ children, className }: PropsWithChildren<BoardProps>) => {
   const [aspectRatio] = useAtom(boardAspectRatioAtom)
   const [backgroundColor] = useAtom(boardBackgroundColorAtom)

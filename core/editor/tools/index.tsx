@@ -1,5 +1,6 @@
 export * from './board-aspect-ratio'
 export * from './board-background'
 export * from './export-button'
+export * from './frame-mode'
+export * from './frame-scale'
 export * from './photo-border-radius'
-export * from './photo-scale'

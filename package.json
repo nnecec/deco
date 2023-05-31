@@ -7,11 +7,11 @@
   },
   "dependencies": {
     "@faker-js/faker": "^8.0.2",
-    "@nextui-org/react": "dev-v2",
-    "@nextui-org/theme": "dev-v2",
-    "@radix-ui/colors": "^0.1.8",
+    "@nextui-org/react": "0.0.0-dev-v2-20230528191554",
+    "@nextui-org/theme": "0.0.0-dev-v2-20230528191554",
+    "@radix-ui/react-icons": "^1.3.0",
+    "@radix-ui/react-select": "^1.2.2",
     "@radix-ui/react-slider": "^1.1.2",
-    "@tabler/icons-react": "^2.20.0",
     "clsx": "^1.2.1",
     "colord": "^2.9.3",
     "dayjs": "^1.11.7",
@@ -31,6 +31,7 @@
   "devDependencies": {
     "@nnecec/eslint-config": "^0.3.0",
     "@nnecec/prettier-config": "^0.2.2",
+    "@swc-jotai/react-refresh": "^0.0.8",
     "@types/node": "20.2.5",
     "@types/react": "18.2.7",
     "@types/react-dom": "18.2.4",
