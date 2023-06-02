@@ -24,6 +24,7 @@ export const Frame = ({ children, className }: PropsWithChildren<FrameProps>) =>
 
   return (
     <motion.div
+      id="frame"
       className={clsx(className, 'relative', frame?.className)}
       style={{
         scale: 1 - frameScale / 250,

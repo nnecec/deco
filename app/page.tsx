@@ -97,14 +97,19 @@ export default function Page() {
                 <ChevronLeftIcon />
               </Button>
             </motion.div>
-            <MotionBoard layout>
-              <Frame>
-                <Tooltip content="Click to upload your artwork.">
+
+            <motion.div className="" layout>
+              <MotionBoard layout>
+                <Frame>
+                  {/* <Tooltip content="Click to upload your artwork."> */}
                   <label htmlFor="artwork" className="block cursor-pointer">
                     {artworkURL ? (
-                      <Photo src={artworkURL} />
+                      <Photo
+                        src={artworkURL}
+                        className="max-h-[80vh] w-[80vw] max-w-[600px] md:max-h-[65vh] md:w-[65vw] lg:max-h-[50vh] lg:w-[50vw]"
+                      />
                     ) : (
-                      <div className="flex h-[500px] w-[500px] items-center justify-center bg-neutral-900">
+                      <div className="flex aspect-square w-[500px] items-center justify-center bg-neutral-900">
                         <div className="flex flex-col items-center gap-2">
                           <UploadIcon className="h-8 w-8 text-neutral-500" />
                           <p className="text-2xl text-neutral-500">
@@ -118,9 +123,10 @@ export default function Page() {
                     )}
                     <input id="artwork" name="artwork" {...inputProps} />
                   </label>
-                </Tooltip>
-              </Frame>
-            </MotionBoard>
+                  {/* </Tooltip> */}
+                </Frame>
+              </MotionBoard>
+            </motion.div>
           </div>
         </motion.div>
       </LayoutGroup>

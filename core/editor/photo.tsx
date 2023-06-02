@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import clsx from 'clsx'
 import { useAtom } from 'jotai'
 import Image from 'next/image'
 
@@ -8,8 +9,9 @@ import { photoBorderRadiusAtom, photoSrcAtom } from './store'
 
 export type PhotoProps = {
   src?: string
+  className?: string
 }
-export const Photo = ({ src }: PropsWithChildren<PhotoProps>) => {
+export const Photo = ({ src, className }: PropsWithChildren<PhotoProps>) => {
   const [borderRadius] = useAtom(photoBorderRadiusAtom)
   const [photo, setPhoto] = useAtom(photoSrcAtom)
 
@@ -22,12 +24,19 @@ export const Photo = ({ src }: PropsWithChildren<PhotoProps>) => {
   return (
     <div
       id="deco-artwork"
-      className="overflow-hidden"
+      // className="overflow-hidden"
+      className={clsx(className, 'object-contain')}
       style={{
         borderRadius,
       }}
     >
-      <Image src={photo} height={500} width={500} alt="your artwork" />
+      <Image
+        className="h-full w-full object-contain"
+        src={photo}
+        height={500}
+        width={500}
+        alt="your artwork"
+      />
     </div>
   )
 }
