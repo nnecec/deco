@@ -1,6 +1,6 @@
 import { useAtom } from 'jotai'
 
-import { Slider } from '../../components/slider'
+import { Slider } from '~/core/components/slider'
 import { photoBorderRadiusAtom } from '../store'
 
 export const PhotoBorderRadius = () => {

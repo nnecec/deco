@@ -25,12 +25,12 @@ export const Frame = ({ children, className }: PropsWithChildren<FrameProps>) =>
   return (
     <motion.div
       id="frame"
-      className={clsx(className, 'relative', frame?.className)}
+      className={clsx(className, 'relative h-full', frame?.className)}
       style={{
         scale: 1 - frameScale / 250,
       }}
     >
-      <div>{children}</div>
+      {children}
 
       {frame?.items?.map(item => {
         return createElement(

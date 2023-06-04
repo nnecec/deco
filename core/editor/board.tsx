@@ -28,9 +28,9 @@ export const Board = forwardRef(
     return (
       <div
         id="board"
-        className={clsx(className, 'relative flex items-center justify-center')}
+        className={clsx(className, 'relative flex items-center justify-center min-h-0 overflow-hidden')}
         style={{
-          // aspectRatio: `${aspectRatio.w}/${aspectRatio.h}`,
+          aspectRatio: `${aspectRatio.w}/${aspectRatio.h}`,
           backgroundColor: colord(backgroundColor).toHex(),
           backgroundImage,
         }}
