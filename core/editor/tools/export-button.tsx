@@ -52,7 +52,7 @@ export const ExportButton = (props: ButtonProps) => {
         onBlur={handleBlur}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
-        className="w-full border bg-transparent duration-500 transition-colors focus:border-slate-500/20 focus:outline-none"
+        className="w-full border border-zinc-600/60 bg-transparent duration-500 transition-colors focus:border-slate-500/20 focus:outline-none"
         {...props}
         onClick={handleExport}
       >
@@ -65,7 +65,7 @@ export const ExportButton = (props: ButtonProps) => {
           WebkitMaskImage: `radial-gradient(30% 30px at ${position.x}px ${position.y}px, black 45%, transparent)`,
         }}
         aria-hidden="true"
-        className="pointer-events-none absolute left-0 top-0 z-10 h-full w-full cursor-default rounded-md border border-slate-300/60 bg-[transparent] opacity-0  duration-500 transition-opacity"
+        className="pointer-events-none absolute inset-0 z-10 cursor-default rounded-xl border border-slate-300/60 bg-transparent opacity-0 duration-500 transition-opacity"
       />
     </div>
   )
