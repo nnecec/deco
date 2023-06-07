@@ -5,12 +5,9 @@ import { Button, Switch, Tooltip } from '@nextui-org/react'
 import { ReloadIcon } from '@radix-ui/react-icons'
 import { colord } from 'colord'
 import { motion } from 'framer-motion'
-import { useAtom } from 'jotai'
+import { useAtom, useAtomValue, useSetAtom } from 'jotai'
 
-import type { Hex } from '~/core/components/color/generator'
 import { getColors } from '~/core/components/color/generator'
-
-import type { RgbaColor } from 'react-colorful'
 
 import { meshGradient } from '../../components/color/mesh'
 import { boardBackgroundColorAtom, boardBackgroundImageAtom, photoSrcAtom } from '../store'
@@ -19,45 +16,28 @@ const MotionButton = motion(Button)
 
 export const BoardBackground = () => {
   const [color, setColor] = useAtom(boardBackgroundColorAtom)
-  const [, setImage] = useAtom(boardBackgroundImageAtom)
-  const [photo] = useAtom(photoSrcAtom)
-  const [colors, setColors] = useState<Hex[]>([])
-  const [enableMesh, setEnableMesh] = useState(false)
-
-  const handleColorChange = (color: RgbaColor) => {
-    if (enableMesh) {
-      const [, i] = meshGradient(colord(color).toHex(), { amount: 5 })
-      setImage(i)
-    } else {
-      setImage('none')
-    }
-    setColor(color)
-  }
-
-  useEffect(() => {
-    handleColorChange(color)
-  }, [enableMesh])
+  const setImage = useSetAtom(boardBackgroundImageAtom)
+  const photo = useAtomValue(photoSrcAtom)
+  const [colors, setColors] = useState([])
 
   useEffect(() => {
     if (photo) {
       getColors(photo, { format: 'hex' }).then((data: any) => {
         setColors(data)
-        handleColorChange({ ...colord(data[Math.round(5 * Math.random())]).toRgb(), a: 1 })
+        setColor({ ...colord(data[Math.round(5 * Math.random())]).toRgb(), a: 1 })
       })
     } else {
       setColors([])
     }
-  }, [photo])
+  }, [photo, setColor])
+
+  const [enableMesh, setEnableMesh] = useState(false)
 
   return (
     <div>
       <h5 className="text-sm text-stone-400">Background</h5>
 
-      <RgbaColorPicker
-        color={color}
-        onChange={handleColorChange}
-        style={{ width: '100%', marginTop: 8 }}
-      />
+      <RgbaColorPicker color={color} onChange={setColor} style={{ width: '100%', marginTop: 8 }} />
 
       {colors.length > 0 && (
         <>
@@ -77,14 +57,25 @@ export const BoardBackground = () => {
           </div>
           <h5 className="grow py-2 text-xs text-stone-400">Mesh Mode</h5>
           <div className="flex items-center justify-between">
-            <Switch isSelected={enableMesh} onValueChange={value => setEnableMesh(value)} />
+            <Switch
+              isSelected={enableMesh}
+              onValueChange={value => {
+                setEnableMesh(value)
+                if (enableMesh) {
+                  const [, i] = meshGradient(colord(color).toHex(), { amount: 5 })
+                  setImage(i)
+                } else {
+                  setImage('none')
+                }
+              }}
+            />
             {enableMesh && (
               <Tooltip content="regenerate" placement="left" showArrow>
                 <MotionButton
                   isIconOnly
                   radius="full"
                   size="sm"
-                  onPress={() => handleColorChange(color)}
+                  onPress={() => setColor(color)}
                   whileTap={{ rotate: 60 }}
                   style={{ tranform: 'rotate(60deg)' }}
                 >

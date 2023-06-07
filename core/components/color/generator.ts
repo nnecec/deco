@@ -1,3 +1,4 @@
+'use client'
 // https://github.com/luukdv/color.js
 type Args = {
   amount: number

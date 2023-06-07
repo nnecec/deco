@@ -50,9 +50,9 @@ export default function Page() {
           {!hideSidebar && (
             <motion.div
               className="min-w-[260px] max-w-[260px]"
-              initial={{ opacity: 0, x: -100 }}
+              initial={{ opacity: 0, x: -60 }}
               animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -100 }}
+              exit={{ opacity: 0, x: -60 }}
               layout
             >
               <div className="flex h-full flex-col justify-between p-4 pr-0">
@@ -84,7 +84,7 @@ export default function Page() {
             </motion.div>
           )}
         </AnimatePresence>
-        <motion.div className="h-full grow p-4" layout>
+        <motion.div className="h-full grow p-2" layout>
           <div className="group relative flex h-full items-center justify-center overflow-hidden rounded-xl bg-black shadow-xl">
             <motion.div
               className="absolute left-4 top-4 opacity-0 transition-opacity group-hover:opacity-100"

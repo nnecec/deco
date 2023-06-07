@@ -24,12 +24,18 @@ export const Photo = ({ src, className }: PropsWithChildren<PhotoProps>) => {
   return (
     <div
       id="deco-artwork"
-      className={clsx(className, 'overflow-hidden h-full')}
+      className={clsx(className, 'h-full overflow-hidden')}
       style={{
         borderRadius,
       }}
     >
-      <Image className="object-contain h-full" src={photo} height={500} width={500} alt="your artwork" />
+      <Image
+        className="h-full object-contain"
+        src={photo}
+        height={500}
+        width={500}
+        alt="your artwork"
+      />
     </div>
   )
 }
