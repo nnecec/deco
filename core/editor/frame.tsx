@@ -32,7 +32,7 @@ export const Frame = ({ children, className }: PropsWithChildren<FrameProps>) =>
     >
       {children}
 
-      {frame?.items?.map(item => {
+      {frame?.items?.map((item: any) => {
         return createElement(
           item.component ?? motion.div,
           {

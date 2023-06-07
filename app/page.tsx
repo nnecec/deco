@@ -1,6 +1,6 @@
 'use client'
 
-import { Fragment, useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { Button, Tab, Tabs, Tooltip } from '@nextui-org/react'
 import { ChevronLeftIcon, UploadIcon } from '@radix-ui/react-icons'
 import clsx from 'clsx'
@@ -102,7 +102,7 @@ export default function Page() {
               <MotionBoard layout>
                 <Frame>
                   <Tooltip content="Click to upload your artwork.">
-                    <label htmlFor="artwork" className="block cursor-pointer h-full">
+                    <label htmlFor="artwork" className="block h-full cursor-pointer">
                       {artworkURL ? (
                         <Photo
                           src={artworkURL}
