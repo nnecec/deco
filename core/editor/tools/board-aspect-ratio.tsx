@@ -20,17 +20,17 @@ export const BoardAspectRatio = () => {
         <Input
           label="Width"
           type="number"
-          value={aspectRatio.w}
-          onValueChange={(w: number) => {
-            setAspectRatio({ ...aspectRatio, w })
+          value={String(aspectRatio.w)}
+          onValueChange={w => {
+            setAspectRatio({ ...aspectRatio, w: Number(w) })
           }}
         />
         <Input
           label="Height"
           type="number"
-          value={aspectRatio.h}
-          onValueChange={(h: number) => {
-            setAspectRatio({ ...aspectRatio, h })
+          value={String(aspectRatio.h)}
+          onValueChange={h => {
+            setAspectRatio({ ...aspectRatio, h: Number(h) })
           }}
         />
 
