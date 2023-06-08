@@ -1,4 +1,3 @@
-import { colord } from 'colord'
 import { atom } from 'jotai'
 
 import { getColors } from '~/core/components/color/generator'
@@ -12,7 +11,7 @@ export const photoSrcAtom = atom('')
 export const photoBorderRadiusAtom = atom(0)
 
 // board
-export const boardAspectRatioAtom = atom({ w: 1, h: 1 })
+export const boardAspectRatioAtom = atom({ h: 1, w: 1 })
 export const boardBackgroundImageAtom = atom('none')
 
 export const boardProminentColorsAtom = atom<Promise<any[]>>(async get => {
@@ -23,7 +22,7 @@ export const boardProminentColorsAtom = atom<Promise<any[]>>(async get => {
   return []
 })
 
-export const boardBackgroundColorAtom = atom({ r: 200, g: 200, b: 200, a: 1 })
+export const boardBackgroundColorAtom = atom({ a: 1, b: 200, g: 200, r: 200 })
 
 // export const boardBackgroundColorAtom = atom(async get => {
 //   const prominentColors = await get(boardProminentColorsAtom)

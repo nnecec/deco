@@ -36,20 +36,20 @@ export const BoardBackground = () => {
     <div>
       <h5 className="text-sm text-stone-400">Background</h5>
 
-      <RgbaColorPicker color={color} onChange={setColor} style={{ width: '100%', marginTop: 8 }} />
+      <RgbaColorPicker color={color} onChange={setColor} style={{ marginTop: 8, width: '100%' }} />
 
       {colors?.length > 0 && (
         <>
           <h5 className="py-2 text-xs text-stone-400">Prominent Colors</h5>
           <div className="flex gap-1">
             {colors.map(c => (
-              <Tooltip content={c} key={c} showArrow placement="top">
+              <Tooltip content={c} key={c} placement="top" showArrow>
                 <Button
+                  isIconOnly
+                  onPress={() => setColor(colord(c).toRgb())}
                   radius="full"
                   size="sm"
                   style={{ backgroundColor: c }}
-                  isIconOnly
-                  onPress={() => setColor(colord(c).toRgb())}
                 />
               </Tooltip>
             ))}
@@ -57,26 +57,24 @@ export const BoardBackground = () => {
           <h5 className="grow py-2 text-xs text-stone-400">Mesh Mode</h5>
           <div className="flex items-center justify-between">
             <Switch
-              isSelected={enableMesh}
               onValueChange={value => {
                 setEnableMesh(value)
                 mesh(value)
               }}
+              isSelected={enableMesh}
             />
-            {enableMesh && (
-              <Tooltip content="regenerate" placement="left" showArrow>
+            {enableMesh ? <Tooltip content="regenerate" placement="left" showArrow>
                 <MotionButton
                   isIconOnly
+                  onPress={() => mesh(true)}
                   radius="full"
                   size="sm"
-                  onPress={() => mesh(true)}
-                  whileTap={{ rotate: 60 }}
                   style={{ tranform: 'rotate(60deg)' }}
+                  whileTap={{ rotate: 60 }}
                 >
                   <ReloadIcon />
                 </MotionButton>
-              </Tooltip>
-            )}
+              </Tooltip> : null}
           </div>
         </>
       )}

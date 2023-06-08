@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react'
 
 import type { RefObject } from 'react'
 
-type Options = Pick<AddEventListenerOptions, 'capture' | 'passive' | 'once'>
+type Options = Pick<AddEventListenerOptions, 'capture' | 'once' | 'passive'>
 
 export const useEventListener = <T extends EventTarget>(
   eventName: keyof WindowEventMap,
@@ -30,8 +30,8 @@ export const useEventListener = <T extends EventTarget>(
 
     target.addEventListener(eventName, handlerRef.current, {
       capture,
-      passive,
       once,
+      passive,
     })
 
     return () => {

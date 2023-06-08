@@ -8,8 +8,8 @@ import type { PropsWithChildren, ReactNode } from 'react'
 import { boardAspectRatioAtom, boardBackgroundColorAtom, boardBackgroundImageAtom } from './store'
 
 export type BoardProps = {
-  extra?: ReactNode
   className?: string
+  extra?: ReactNode
 }
 
 /**
@@ -27,13 +27,13 @@ export const Board = forwardRef(
 
     return (
       <div
-        id="board"
-        className={clsx(className, 'relative flex items-center justify-center min-h-0 overflow-hidden')}
         style={{
           aspectRatio: `${aspectRatio.w}/${aspectRatio.h}`,
           backgroundColor: colord(backgroundColor).toHex(),
           backgroundImage,
         }}
+        className={clsx(className, 'relative flex items-center justify-center min-h-0 overflow-hidden')}
+        id="board"
         ref={ref}
       >
         {children}

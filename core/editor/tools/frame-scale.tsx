@@ -10,10 +10,10 @@ export const FrameScale = () => {
     <div>
       <h5 className="text-sm text-stone-400">Scale</h5>
       <Slider
-        value={[scale]}
         onValueChange={value => {
           setScale(value[0])
         }}
+        value={[scale]}
       />
     </div>
   )

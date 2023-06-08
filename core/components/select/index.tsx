@@ -2,7 +2,7 @@ import { ChevronDownIcon } from '@radix-ui/react-icons'
 
 type Option = {
   label: string
-  value: string | ReadonlyArray<string> | number | undefined
+  value: ReadonlyArray<string> | number | string | undefined
 }
 
 type SelectProps = React.SelectHTMLAttributes<HTMLSelectElement> & {

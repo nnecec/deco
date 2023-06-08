@@ -8,8 +8,8 @@ import type { PropsWithChildren } from 'react'
 import { photoBorderRadiusAtom, photoSrcAtom } from './store'
 
 export type PhotoProps = {
-  src?: string
   className?: string
+  src?: string
 }
 export const Photo = ({ src, className }: PropsWithChildren<PhotoProps>) => {
   const [borderRadius] = useAtom(photoBorderRadiusAtom)
@@ -23,18 +23,18 @@ export const Photo = ({ src, className }: PropsWithChildren<PhotoProps>) => {
 
   return (
     <div
-      id="deco-artwork"
-      className={clsx(className, 'h-full overflow-hidden')}
       style={{
         borderRadius,
       }}
+      className={clsx(className, 'h-full overflow-hidden')}
+      id="deco-artwork"
     >
       <Image
-        className="h-full object-contain"
-        src={photo}
-        height={500}
-        width={500}
         alt="your artwork"
+        className="h-full object-contain"
+        height={500}
+        src={photo}
+        width={500}
       />
     </div>
   )

@@ -18,20 +18,20 @@ export const BoardAspectRatio = () => {
     <div>
       <div className="flex gap-2">
         <Input
-          label="Width"
-          type="number"
-          value={String(aspectRatio.w)}
           onValueChange={w => {
             setAspectRatio({ ...aspectRatio, w: Number(w) })
           }}
+          label="Width"
+          type="number"
+          value={String(aspectRatio.w)}
         />
         <Input
-          label="Height"
-          type="number"
-          value={String(aspectRatio.h)}
           onValueChange={h => {
             setAspectRatio({ ...aspectRatio, h: Number(h) })
           }}
+          label="Height"
+          type="number"
+          value={String(aspectRatio.h)}
         />
 
         <Dropdown placement="bottom-end">
@@ -41,11 +41,11 @@ export const BoardAspectRatio = () => {
             </Button>
           </DropdownTrigger>
           <DropdownMenu
-            aria-label="Actions"
             onAction={value => {
               const [w, h] = (value as string).split('/')
-              setAspectRatio({ w: Number(w), h: Number(h) })
+              setAspectRatio({ h: Number(h), w: Number(w) })
             }}
+            aria-label="Actions"
           >
             <DropdownItem key="1/1">1:1</DropdownItem>
             <DropdownItem key="4/3">4:3</DropdownItem>

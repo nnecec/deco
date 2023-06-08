@@ -48,24 +48,24 @@ export const ExportButton = (props: ButtonProps) => {
   return (
     <div className="relative">
       <Button
-        onMouseMove={handleMouseMove}
+        className="w-full border border-zinc-600/60 bg-transparent duration-500 transition-colors focus:border-slate-500/20 focus:outline-none"
         onBlur={handleBlur}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
-        className="w-full border border-zinc-600/60 bg-transparent duration-500 transition-colors focus:border-slate-500/20 focus:outline-none"
+        onMouseMove={handleMouseMove}
         {...props}
         onClick={handleExport}
       >
         Export
       </Button>
       <div
-        ref={divRef}
         style={{
-          opacity,
           WebkitMaskImage: `radial-gradient(30% 30px at ${position.x}px ${position.y}px, black 45%, transparent)`,
+          opacity,
         }}
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 z-10 cursor-default rounded-xl border border-slate-300/60 bg-transparent opacity-0 duration-500 transition-opacity"
+        ref={divRef}
       />
     </div>
   )

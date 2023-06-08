@@ -15,9 +15,9 @@ export type Hex = string
 
 type Input = (Hex | Rgb)[]
 
-type Item = Url | HTMLImageElement
+type Item = HTMLImageElement | Url
 
-type Output = Hex | Rgb | (Hex | Rgb)[]
+type Output = (Hex | Rgb)[] | Hex | Rgb
 
 export type Rgb = [r: number, g: number, b: number]
 
@@ -80,7 +80,7 @@ const getImageData = (src: Url): Promise<Data> =>
 const getAverage = (data: Data, args: Args): Output => {
   const gap = 4 * args.sample
   const amount = data.length / gap
-  const rgb = { r: 0, g: 0, b: 0 }
+  const rgb = { b: 0, g: 0, r: 0 }
 
   for (let i = 0; i < data.length; i += gap) {
     rgb.r += data[i]

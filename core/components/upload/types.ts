@@ -1,18 +1,10 @@
-export interface ImageType {
-  dataURL?: string;
-  file?: File;
-  [key: string]: any;
-}
-
-export type ImageListType = Array<ImageType>;
-
-export interface UploadProps {
-  // value: ImageListType;
-  // onChange: (value: ImageListType, addUpdatedIndex?: Array<number>) => void;
-  // children?: (props: ExportInterface) => React.ReactNode;
-  multiple?: boolean;
+export interface UseUploadProps {
   // maxNumber?: number;
-  accept?: string;
+  accept?: string
+  // children?: (props: ExportInterface) => React.ReactNode;
+  multiple?: boolean
+  // value: ImageListType;
+  onChange?: (files: File[]) => void
   // maxFileSize?: number;
   // resolutionWidth?: number;
   // resolutionHeight?: number;
@@ -22,29 +14,3 @@ export interface UploadProps {
   // inputProps?: React.HTMLProps<HTMLInputElement>;
   // allowNonImageType?: boolean;
 }
-
-export interface ExportInterface {
-  imageList: ImageListType;
-  onImageUpload: () => void;
-  onImageRemoveAll: () => void;
-  errors: ErrorsType;
-  onImageUpdate: (index: number) => void;
-  onImageRemove: (index: number) => void;
-  isDragging: boolean;
-  dragProps: {
-    onDrop: (e: any) => void;
-    onDragEnter: (e: any) => void;
-    onDragLeave: (e: any) => void;
-    onDragOver: (e: any) => void;
-    onDragStart: (e: any) => void;
-  };
-}
-
-export type ErrorsType = {
-  maxFileSize?: boolean;
-  maxNumber?: boolean;
-  accept?: boolean;
-  resolution?: boolean;
-} | null;
-
-export type ResolutionType = 'absolute' | 'less' | 'more' | 'ratio';

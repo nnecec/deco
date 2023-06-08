@@ -1,6 +1,6 @@
-import { createElement, useLayoutEffect } from 'react'
+import { createElement } from 'react'
 import clsx from 'clsx'
-import { motion, useMotionValue, useTransform } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { useAtom } from 'jotai'
 
 import type { HTMLMotionProps } from 'framer-motion'
@@ -24,11 +24,11 @@ export const Frame = ({ children, className }: PropsWithChildren<FrameProps>) =>
 
   return (
     <motion.div
-      id="frame"
-      className={clsx(className, 'relative h-full', frame?.className)}
       style={{
         scale: 1 - frameScale / 250,
       }}
+      className={clsx(className, 'relative h-full', frame?.className)}
+      id="frame"
     >
       {children}
 

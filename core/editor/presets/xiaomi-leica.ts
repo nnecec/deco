@@ -1,8 +1,6 @@
 import type { FrameMode } from '~/core/types'
 
 export const XiaomiLeicaFrame: FrameMode = {
-  name: 'Xiaomi x Leica',
-  logo: 'leica',
   frame: {
     className: 'pb-20 bg-white',
     items: [
@@ -20,4 +18,6 @@ export const XiaomiLeicaFrame: FrameMode = {
       },
     ],
   },
+  logo: 'leica',
+  name: 'Xiaomi x Leica',
 }

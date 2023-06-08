@@ -1,8 +1,6 @@
 import type { FrameMode } from "~/core/types";
 
 export const PolaroidFrame: FrameMode = {
-  name: 'Polaroid',
-  logo: 'insta',
   frame: {
     className: 'pt-8 pb-24 px-6 bg-white',
     items: [
@@ -20,4 +18,6 @@ export const PolaroidFrame: FrameMode = {
       },
     ],
   },
+  logo: 'insta',
+  name: 'Polaroid',
 }

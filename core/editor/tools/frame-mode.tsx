@@ -12,9 +12,9 @@ export const FrameMode = () => {
 
   return (
     <Select
+      onChange={e => setFrameMode(e.target.value)}
       options={[{ label: 'No Frame', value: '' }, ...options]}
       value={frameMode}
-      onChange={e => setFrameMode(e.target.value)}
     />
   )
 }
