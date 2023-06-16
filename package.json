@@ -19,7 +19,7 @@
     "exifreader": "^4.12.1",
     "framer-motion": "^10.12.16",
     "html-to-image": "^1.11.11",
-    "jotai": "^2.2.0",
+    "jotai": "^2.2.1",
     "next": "^13.4.6",
     "next-themes": "^0.2.1",
     "react": "18.2.0",
@@ -37,7 +37,7 @@
     "@types/react-dom": "18.2.5",
     "autoprefixer": "^10.4.14",
     "cssnano": "^6.0.1",
-    "eslint": "^8.42.0",
+    "eslint": "^8.43.0",
     "eslint-config-next": "^13.4.6",
     "postcss": "^8.4.24",
     "typescript": "5.1.3"

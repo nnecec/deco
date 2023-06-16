@@ -17,6 +17,7 @@ import {
   Photo,
   PhotoBorderRadius,
 } from '~/core/editor'
+import { PhotoBlurVignette } from '~/core/editor/tools/photo-blur-vignette'
 import { robotoMono } from '~/core/fonts'
 
 const MotionBoard = motion(Board)
@@ -68,6 +69,7 @@ export default function Page() {
                   <Tab key="board" title="Board">
                     <BoardAspectRatio />
                     <PhotoBorderRadius />
+                    <PhotoBlurVignette />
                     <FrameScale />
                     <BoardBackground />
                   </Tab>
@@ -99,7 +101,7 @@ export default function Page() {
             <MotionBoard layout>
               <Frame>
                 <Tooltip content="Click to upload your artwork.">
-                  <label className="block h-full cursor-pointer" htmlFor="artwork">
+                  <label className="block cursor-pointer" htmlFor="artwork">
                     {file ? (
                       <Photo
                         src={file}

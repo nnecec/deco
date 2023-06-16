@@ -9,6 +9,9 @@ export const frameScaleAtom = atom(0)
 // photo
 export const photoSrcAtom = atom('')
 export const photoBorderRadiusAtom = atom(0)
+export const photoBlurVignetteInsetAtom = atom(0)
+export const photoBlurVignetteTransitionAtom = atom(0)
+export const photoBlurVignetteBlurAtom = atom(0)
 
 // board
 export const boardAspectRatioAtom = atom({ h: 1, w: 1 })

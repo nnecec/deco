@@ -27,7 +27,7 @@ export const Frame = ({ children, className }: PropsWithChildren<FrameProps>) =>
       style={{
         scale: 1 - frameScale / 250,
       }}
-      className={clsx(className, 'relative h-full', frame?.className)}
+      className={clsx(className, 'relative', frame?.className)}
       id="frame"
     >
       {children}
