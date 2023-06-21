@@ -63,7 +63,8 @@ export const BoardBackground = () => {
               }}
               isSelected={enableMesh}
             />
-            {enableMesh ? <Tooltip content="regenerate" placement="left" showArrow>
+            {enableMesh ? (
+              <Tooltip content="regenerate" placement="left" showArrow>
                 <MotionButton
                   isIconOnly
                   onPress={() => mesh(true)}
@@ -74,7 +75,8 @@ export const BoardBackground = () => {
                 >
                   <ReloadIcon />
                 </MotionButton>
-              </Tooltip> : null}
+              </Tooltip>
+            ) : null}
           </div>
         </>
       )}

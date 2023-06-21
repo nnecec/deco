@@ -1,4 +1,4 @@
-import type { FrameMode } from "~/core/types";
+import type { FrameMode } from '~/core/types'
 
 export const PolaroidFrame: FrameMode = {
   frame: {

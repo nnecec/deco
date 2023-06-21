@@ -1,4 +1,4 @@
-import { createElement } from 'react'
+import { createElement, useRef } from 'react'
 import clsx from 'clsx'
 import { motion } from 'framer-motion'
 import { useAtom } from 'jotai'
@@ -14,6 +14,7 @@ export type FrameProps = {
 }
 
 export const Frame = ({ children, className }: PropsWithChildren<FrameProps>) => {
+  const ref = useRef<HTMLDivElement>(null)
   const [frameMode] = useAtom(frameModeAtom)
   const [frameScale] = useAtom(frameScaleAtom)
 
@@ -29,6 +30,7 @@ export const Frame = ({ children, className }: PropsWithChildren<FrameProps>) =>
       }}
       className={clsx(className, 'relative', frame?.className)}
       id="frame"
+      ref={ref}
     >
       {children}
 

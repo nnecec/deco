@@ -1,9 +1,14 @@
-import { forwardRef } from 'react'
+'use client'
+
+import { useEffect, useRef, useState } from 'react'
 import clsx from 'clsx'
 import { colord } from 'colord'
-import { useAtom } from 'jotai'
+import { motion } from 'framer-motion'
+import { useAtomValue } from 'jotai'
 
 import type { PropsWithChildren, ReactNode } from 'react'
+
+import { useEventListener } from '../hooks/use-event-listener'
 
 import { boardAspectRatioAtom, boardBackgroundColorAtom, boardBackgroundImageAtom } from './store'
 
@@ -12,33 +17,26 @@ export type BoardProps = {
   extra?: ReactNode
 }
 
-/**
- * Board is the background component of bottom layer of the editor.
- * Renders a board component with specified aspectRatio, backgroundColor, and backgroundImage.
- *
- * @param {PropsWithChildren<BoardProps>} props - The props object with children and className properties.
- * @return {JSX.Element} The board component with given properties and children.
- */
-export const Board = forwardRef(
-  ({ children, className }: PropsWithChildren<BoardProps>, ref: React.Ref<HTMLDivElement>) => {
-    const [aspectRatio] = useAtom(boardAspectRatioAtom)
-    const [backgroundColor] = useAtom(boardBackgroundColorAtom)
-    const [backgroundImage] = useAtom(boardBackgroundImageAtom)
+export const Board = ({ children, className }: PropsWithChildren<BoardProps>) => {
+  const { w, h } = useAtomValue(boardAspectRatioAtom)
+  const backgroundColor = useAtomValue(boardBackgroundColorAtom)
+  const backgroundImage = useAtomValue(boardBackgroundImageAtom)
+  const ref = useRef<HTMLDivElement>(null)
+  return (
+    <motion.div
+      style={{
+        aspectRatio: `${w} / ${h}`,
+        backgroundColor: colord(backgroundColor).toHex(),
+        backgroundImage,
+      }}
+      className={clsx(className, 'relative flex items-center justify-center overflow-hidden')}
+      id="board"
+      layout="size"
+      ref={ref}
+    >
+      {children}
+    </motion.div>
+  )
+}
 
-    return (
-      <div
-        style={{
-          aspectRatio: `${aspectRatio.w}/${aspectRatio.h}`,
-          backgroundColor: colord(backgroundColor).toHex(),
-          backgroundImage,
-        }}
-        className={clsx(className, 'relative flex items-center justify-center min-h-0 overflow-hidden')}
-        id="board"
-        ref={ref}
-      >
-        {children}
-      </div>
-    )
-  },
-)
 Board.displayName = 'Board'

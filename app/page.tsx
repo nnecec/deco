@@ -13,14 +13,12 @@ import {
   BoardBackground,
   ExportButton,
   Frame,
+  FrameMode,
   FrameScale,
   Photo,
   PhotoBorderRadius,
 } from '~/core/editor'
-import { PhotoBlurVignette } from '~/core/editor/tools/photo-blur-vignette'
 import { robotoMono } from '~/core/fonts'
-
-const MotionBoard = motion(Board)
 
 const sidebarButtonVariants = {
   close: { rotate: -180 },
@@ -69,13 +67,12 @@ export default function Page() {
                   <Tab key="board" title="Board">
                     <BoardAspectRatio />
                     <PhotoBorderRadius />
-                    <PhotoBlurVignette />
                     <FrameScale />
                     <BoardBackground />
                   </Tab>
-                  {/* <Tab key="frame" title="Frame">
+                  <Tab key="frame" title="Frame">
                     <FrameMode />
-                  </Tab> */}
+                  </Tab>
                 </Tabs>
               </div>
               <ExportButton />
@@ -96,35 +93,29 @@ export default function Page() {
               <ChevronLeftIcon />
             </Button>
           </motion.div>
-
-          <motion.div className="" layout>
-            <MotionBoard layout>
-              <Frame>
-                <Tooltip content="Click to upload your artwork.">
-                  <label className="block cursor-pointer" htmlFor="artwork">
-                    {file ? (
-                      <Photo
-                        src={file}
-                        // className="max-h-[80vh] w-[80vw] max-w-[600px] md:max-h-[65vh] md:w-[65vw] lg:max-h-[50vh] lg:w-[50vw]"
-                      />
-                    ) : (
-                      <div className="flex aspect-square w-[500px] items-center justify-center bg-neutral-900">
-                        <div className="flex flex-col items-center gap-2">
-                          <UploadIcon className="h-8 w-8 text-neutral-500" />
-                          <p className="text-2xl text-neutral-500">
-                            Upload to{' '}
-                            <span className="bg-gradient-to-r from-pink-500 to-blue-500 bg-clip-text text-transparent">
-                              Deco your Artwork
-                            </span>
-                          </p>
-                        </div>
+          <Board>
+            <Frame>
+              <Tooltip content="click to upload your ARTWORK.">
+                <label className="block cursor-pointer" htmlFor="artwork">
+                  {file ? (
+                    <Photo src={file} />
+                  ) : (
+                    <div className="flex aspect-square w-[30vw] items-center justify-center bg-neutral-900">
+                      <div className="flex flex-col items-center gap-2">
+                        <UploadIcon className="h-8 w-8 text-neutral-500" />
+                        <p className="text-2xl text-neutral-500">
+                          Upload to{' '}
+                          <span className="bg-gradient-to-r from-pink-500 to-blue-500 bg-clip-text text-transparent">
+                            Deco your Artwork
+                          </span>
+                        </p>
                       </div>
-                    )}
-                  </label>
-                </Tooltip>
-              </Frame>
-            </MotionBoard>
-          </motion.div>
+                    </div>
+                  )}
+                </label>
+              </Tooltip>
+            </Frame>
+          </Board>
         </div>
       </motion.div>
       <input className="hidden" id="artwork" name="artwork" ref={inputRef} type="file" />

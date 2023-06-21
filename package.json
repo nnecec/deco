@@ -40,6 +40,7 @@
     "eslint": "^8.43.0",
     "eslint-config-next": "^13.4.6",
     "postcss": "^8.4.24",
+    "postcss-preset-env": "^8.5.0",
     "typescript": "5.1.3"
   }
 }

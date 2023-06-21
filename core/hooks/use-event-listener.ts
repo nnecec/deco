@@ -22,9 +22,9 @@ export const useEventListener = <T extends EventTarget>(
       ? ('current' in element
         ? element.current
         : element)
-      : (typeof document === 'undefined'
+      : (typeof window === 'undefined'
       ? undefined
-      : document)
+      : window)
 
     if (!target) return
 
