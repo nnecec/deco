@@ -1,6 +1,6 @@
 import { useAtom } from 'jotai'
 
-import { Slider } from '../../components/slider'
+import { Slider } from '../../ui/slider'
 import { frameScaleAtom } from '../store'
 
 export const FrameScale = () => {

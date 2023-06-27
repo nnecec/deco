@@ -7,7 +7,7 @@ import { colord } from 'colord'
 import { motion } from 'framer-motion'
 import { useAtom, useAtomValue, useSetAtom } from 'jotai'
 
-import { meshGradient } from '../../components/color/mesh'
+import { meshGradient } from '../../ui/color/mesh'
 import {
   boardBackgroundColorAtom,
   boardBackgroundImageAtom,

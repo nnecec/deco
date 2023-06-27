@@ -1,6 +1,6 @@
 import { atom } from 'jotai'
 
-import { getColors } from '~/core/components/color/generator'
+import { getColors } from '~/core/ui/color/generator'
 
 // frame
 export const frameModeAtom = atom('')

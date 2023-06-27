@@ -8,7 +8,7 @@ import { useAtomValue } from 'jotai'
 
 import type { PropsWithChildren, ReactNode } from 'react'
 
-import { useEventListener } from '../hooks/use-event-listener'
+import { useEventListener } from '../utils/use-event-listener'
 
 import { boardAspectRatioAtom, boardBackgroundColorAtom, boardBackgroundImageAtom } from './store'
 

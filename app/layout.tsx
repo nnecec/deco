@@ -1,6 +1,6 @@
 import clsx from 'clsx'
 
-import { inter } from '~/core/fonts'
+import { inter } from '~/core/ui/fonts'
 
 import type { Metadata } from 'next'
 

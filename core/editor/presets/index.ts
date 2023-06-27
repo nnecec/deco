@@ -1,4 +1,4 @@
-import type { FrameMode } from '~/core/types'
+import type { FrameMode } from '~/core/utils/types'
 
 import { PolaroidFrame } from './polaroid'
 import { XiaomiLeicaFrame } from './xiaomi-leica'

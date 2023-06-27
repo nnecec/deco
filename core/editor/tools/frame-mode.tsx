@@ -1,7 +1,7 @@
 import { useMemo } from 'react'
 import { useAtom } from 'jotai'
 
-import { Select } from '~/core/components/select'
+import { Select } from '~/core/ui/select'
 
 import { frameModePresets } from '../presets'
 import { frameModeAtom } from '../store'

@@ -1,6 +1,6 @@
 import { useAtom } from 'jotai'
 
-import { Slider } from '~/core/components/slider'
+import { Slider } from '~/core/ui/slider'
 
 import { photoBorderRadiusAtom } from '../store'
 
