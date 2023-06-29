@@ -1,6 +1,7 @@
 {
   "private": true,
   "scripts": {
+    "add": "pnpm dlx shadcn-ui@latest add",
     "build": "next build",
     "dev": "next dev",
     "lint": "next lint",
@@ -11,8 +12,10 @@
     "@nextui-org/react": "0.0.0-dev-v2-20230601153241",
     "@nextui-org/theme": "0.0.0-dev-v2-20230601153241",
     "@radix-ui/react-icons": "^1.3.0",
+    "@radix-ui/react-label": "^2.0.2",
     "@radix-ui/react-select": "^1.2.2",
     "@radix-ui/react-slider": "^1.1.2",
+    "class-variance-authority": "^0.6.1",
     "clsx": "^1.2.1",
     "colord": "^2.9.3",
     "exifr": "^7.1.3",
@@ -26,7 +29,9 @@
     "react-colorful": "^5.6.1",
     "react-dom": "18.2.0",
     "react-intl": "^6.4.4",
-    "tailwindcss": "^3.3.2"
+    "tailwind-merge": "^1.13.2",
+    "tailwindcss": "^3.3.2",
+    "tailwindcss-animate": "^1.0.6"
   },
   "devDependencies": {
     "@nnecec/eslint-config": "^0.4.2",
@@ -41,6 +46,6 @@
     "eslint-config-next": "^13.4.7",
     "postcss": "^8.4.24",
     "postcss-preset-env": "^8.5.1",
-    "typescript": "5.1.3"
+    "typescript": "5.1.6"
   }
 }

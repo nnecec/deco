@@ -7,12 +7,10 @@ import { colord } from 'colord'
 import { motion } from 'framer-motion'
 import { useAtom, useAtomValue, useSetAtom } from 'jotai'
 
+import { Label } from '~/core/ui'
+
 import { meshGradient } from '../../ui/color/mesh'
-import {
-  boardBackgroundColorAtom,
-  boardBackgroundImageAtom,
-  boardProminentColorsAtom,
-} from '../store'
+import { boardBackgroundColorAtom, boardBackgroundImageAtom, boardProminentColorsAtom } from '../store'
 
 const MotionButton = motion(Button)
 
@@ -34,7 +32,7 @@ export const BoardBackground = () => {
 
   return (
     <div>
-      <h5 className="text-sm text-stone-400">Background</h5>
+      <Label>Background</Label>
 
       <RgbaColorPicker color={color} onChange={setColor} style={{ marginTop: 8, width: '100%' }} />
 

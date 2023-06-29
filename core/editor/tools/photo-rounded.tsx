@@ -1,6 +1,6 @@
 import { useAtom } from 'jotai'
 
-import { Slider } from '~/core/ui/slider'
+import { Label, Slider } from '~/core/ui'
 
 import { photoBorderRadiusAtom } from '../store'
 
@@ -9,8 +9,8 @@ export const PhotoBorderRadius = () => {
 
   return (
     <div>
-      <h5 className="text-sm text-stone-400">Rounded</h5>
-      <Slider onValueChange={value => setBorderRadius(value[0])} value={[borderRadius]} />
+      <Label htmlFor="border-radius">Rounded</Label>
+      <Slider id="border-radius" onValueChange={value => setBorderRadius(value[0])} value={[borderRadius]} />
     </div>
   )
 }

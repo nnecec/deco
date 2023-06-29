@@ -1,7 +1,7 @@
 import { useMemo } from 'react'
 import { useAtom } from 'jotai'
 
-import { Select } from '~/core/ui/select'
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '~/core/ui/select'
 
 import { frameModePresets } from '../presets'
 import { frameModeAtom } from '../store'
@@ -11,11 +11,19 @@ export const FrameMode = () => {
   const [frameMode, setFrameMode] = useAtom(frameModeAtom)
 
   return (
-    <Select
-      onChange={e => setFrameMode(e.target.value)}
-      options={[{ label: 'No Frame', value: '' }, ...options]}
-      value={frameMode}
-    />
+    <Select onValueChange={value => setFrameMode(value)} value={frameMode}>
+      <SelectTrigger className="w-[180px]">
+        <SelectValue placeholder="Select a fruit" />
+      </SelectTrigger>
+      <SelectContent>
+        <SelectItem value="">No Frame</SelectItem>
+        {options.map(option => (
+          <SelectItem key={option.value} value={option.value}>
+            {option.label}
+          </SelectItem>
+        ))}
+      </SelectContent>
+    </Select>
   )
 }
 

@@ -1,6 +1,7 @@
 import { useAtom } from 'jotai'
 
-import { Slider } from '../../ui/slider'
+import { Label, Slider } from '~/core/ui'
+
 import { frameScaleAtom } from '../store'
 
 export const FrameScale = () => {
@@ -8,11 +9,12 @@ export const FrameScale = () => {
 
   return (
     <div>
-      <h5 className="text-sm text-stone-400">Scale</h5>
+      <Label htmlFor="frame-scale">Scale</Label>
       <Slider
         onValueChange={value => {
           setScale(value[0])
         }}
+        id="frame-scale"
         value={[scale]}
       />
     </div>

@@ -5,9 +5,9 @@ import clsx from 'clsx'
 import { useAtom } from 'jotai'
 import Image from 'next/image'
 
-import type { PropsWithChildren } from 'react'
+import { useResizeObserver } from '~/core/utils/use-resize-observer'
 
-import { useResizeObserver } from '../hooks/use-resize-observer'
+import type { PropsWithChildren } from 'react'
 
 import { photoBorderRadiusAtom, photoSrcAtom } from './store'
 
@@ -15,7 +15,7 @@ export type PhotoProps = {
   className?: string
   src?: string
 }
-export const Photo = ({ src, className }: PropsWithChildren<PhotoProps>) => {
+export const Photo = ({ className, src }: PropsWithChildren<PhotoProps>) => {
   const [borderRadius] = useAtom(photoBorderRadiusAtom)
   const [photo, setPhoto] = useAtom(photoSrcAtom)
 

@@ -6,7 +6,6 @@ import { ChevronLeftIcon, UploadIcon } from '@radix-ui/react-icons'
 import clsx from 'clsx'
 import { AnimatePresence, motion } from 'framer-motion'
 
-import { useUpload } from '~/core/ui/upload'
 import {
   Board,
   BoardAspectRatio,
@@ -19,6 +18,7 @@ import {
   PhotoBorderRadius,
 } from '~/core/editor'
 import { robotoMono } from '~/core/ui/fonts'
+import { useUpload } from '~/core/ui/upload'
 
 const sidebarButtonVariants = {
   close: { rotate: -180 },
