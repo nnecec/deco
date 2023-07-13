@@ -17,7 +17,7 @@ import {
   Photo,
   PhotoBorderRadius,
 } from '~/core/editor'
-import { robotoMono } from '~/core/ui/fonts'
+import { robotoMono } from '~/core/fonts'
 import { useUpload } from '~/core/ui/upload'
 
 const sidebarButtonVariants = {
