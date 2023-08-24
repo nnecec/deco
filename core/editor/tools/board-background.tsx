@@ -31,14 +31,23 @@ export const BoardBackground = () => {
   }
 
   return (
-    <div>
-      <Label>Background</Label>
+    <div className="flex flex-col gap-2">
+      <div className="flex justify-between text-xs text-neutral-400">
+        <Label className="text-xs" htmlFor="frame-scale">
+          Background
+        </Label>
+      </div>
 
-      <RgbaColorPicker color={color} onChange={setColor} style={{ marginTop: 8, width: '100%' }} />
+      <RgbaColorPicker color={color} onChange={setColor} style={{ width: '100%' }} />
 
       {colors?.length > 0 && (
         <>
-          <h5 className="py-2 text-xs text-stone-400">Prominent Colors</h5>
+          <div className="flex justify-between text-xs text-neutral-400">
+            <Label className="text-xs" htmlFor="frame-scale">
+              Prominent Colors
+            </Label>
+          </div>
+
           <div className="flex gap-1">
             {colors.map(c => (
               <Tooltip content={c} key={c} placement="top" showArrow>
@@ -52,7 +61,12 @@ export const BoardBackground = () => {
               </Tooltip>
             ))}
           </div>
-          <h5 className="grow py-2 text-xs text-stone-400">Mesh Mode</h5>
+
+          <div className="flex justify-between text-xs text-neutral-400">
+            <Label className="text-xs" htmlFor="frame-scale">
+              Mesh Mode
+            </Label>
+          </div>
           <div className="flex items-center justify-between">
             <Switch
               onValueChange={value => {
@@ -68,7 +82,7 @@ export const BoardBackground = () => {
                   onPress={() => mesh(true)}
                   radius="full"
                   size="sm"
-                  style={{ tranform: 'rotate(60deg)' }}
+                  // style={{ tranform: 'rotate(60deg)' }}
                   whileTap={{ rotate: 60 }}
                 >
                   <ReloadIcon />

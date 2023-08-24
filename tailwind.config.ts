@@ -1,4 +1,5 @@
 import { nextui } from '@nextui-org/theme/plugin'
+// @ts-ignore what
 import animate from 'tailwindcss-animate'
 
 import type { Config } from 'tailwindcss'

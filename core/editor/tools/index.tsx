@@ -1,4 +1,4 @@
-export * from './board-aspect-ratio'
+export * from './board-padding'
 export * from './board-background'
 export * from './export-button'
 export * from './frame-mode'

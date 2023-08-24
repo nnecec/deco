@@ -2,50 +2,48 @@
 
 import { useEffect } from 'react'
 import clsx from 'clsx'
-import { useAtom } from 'jotai'
-import Image from 'next/image'
+import { motion } from 'framer-motion'
+import { useAtom, useAtomValue } from 'jotai'
 
-import { useResizeObserver } from '~/core/utils/use-resize-observer'
+import type { PropsWithChildren, ReactNode } from 'react'
 
-import type { PropsWithChildren } from 'react'
+import { useUpload } from '../ui/upload'
 
 import { photoBorderRadiusAtom, photoSrcAtom } from './store'
 
 export type PhotoProps = {
   className?: string
-  src?: string
+  placeholder?: ReactNode
 }
-export const Photo = ({ className, src }: PropsWithChildren<PhotoProps>) => {
-  const [borderRadius] = useAtom(photoBorderRadiusAtom)
-  const [photo, setPhoto] = useAtom(photoSrcAtom)
-
-  const [ref, rect] = useResizeObserver()
-
-  const style = rect.height >= rect.width ? { height: '50vh' } : { width: '30vw' }
+export const Photo = ({ className, placeholder }: PropsWithChildren<PhotoProps>) => {
+  const borderRadius = useAtomValue(photoBorderRadiusAtom)
+  const [src, setSrc] = useAtom(photoSrcAtom)
+  const [inputRef, files] = useUpload({
+    accept: 'image/jpg, image/png, image/jpeg',
+  })
 
   useEffect(() => {
-    if (src) {
-      setPhoto(src)
+    const file = files?.[0] ? URL.createObjectURL(files[0]) : ''
+    if (file) {
+      setSrc(file)
+      return () => {
+        URL.revokeObjectURL(file)
+      }
     }
-  }, [setPhoto, src])
+  }, [files, setSrc])
 
   return (
     <div
       style={{
         borderRadius,
       }}
-      className={clsx(className, 'overflow-hidden')}
+      className={clsx('overflow-hidden', className)}
       id="deco-artwork"
     >
-      <Image
-        alt="your artwork"
-        className="object-contain"
-        height={500}
-        ref={ref}
-        src={photo}
-        style={style}
-        width={500}
-      />
+      <label className="cursor-pointer" htmlFor="artwork">
+        {src ? <motion.img alt="your artwork" layout src={src} /> : placeholder}
+      </label>
+      <input className="hidden" id="artwork" name="artwork" ref={inputRef} type="file" />
     </div>
   )
 }

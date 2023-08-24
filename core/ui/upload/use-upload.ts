@@ -16,6 +16,7 @@ export const useUpload = ({ accept = '*', multiple }: UseUploadProps = {}) => {
       input.multiple = multiple ?? false
 
       function handleChange(e: Event) {
+        console.log(e)
         const inputTarget = e.target as HTMLInputElement
         const _files = [...(inputTarget?.files ?? [])]
         setFiles(_files)

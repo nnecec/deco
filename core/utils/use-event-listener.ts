@@ -11,7 +11,7 @@ export const useEventListener = <T extends EventTarget>(
   options: Options = {},
 ) => {
   const handlerRef = useRef(handler)
-  const { capture, passive, once } = options
+  const { capture, once, passive } = options
 
   useEffect(() => {
     handlerRef.current = handler
@@ -19,12 +19,12 @@ export const useEventListener = <T extends EventTarget>(
 
   useEffect(() => {
     const target = element
-      ? ('current' in element
+      ? 'current' in element
         ? element.current
-        : element)
-      : (typeof window === 'undefined'
+        : element
+      : typeof window === 'undefined'
       ? undefined
-      : window)
+      : window
 
     if (!target) return
 

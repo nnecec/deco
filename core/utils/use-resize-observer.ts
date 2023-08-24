@@ -40,23 +40,23 @@ export function useResizeObserver<T extends HTMLElement = any>() {
   )
 
   useEffect(() => {
-    if (ref.current) {
+    if (observer && ref.current) {
       observer.observe(ref.current)
     }
 
     return () => {
-      observer.disconnect()
+      observer?.disconnect()
 
       if (frameID.current) {
         cancelAnimationFrame(frameID.current)
       }
     }
-  }, [ref.current])
+  }, [observer])
 
   return [ref, rect] as const
 }
 
 export function useElementSize<T extends HTMLElement = any>() {
-  const [ref, { width, height }] = useResizeObserver<T>()
+  const [ref, { height, width }] = useResizeObserver<T>()
   return { height, ref, width }
 }

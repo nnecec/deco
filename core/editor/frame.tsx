@@ -1,7 +1,7 @@
 import { createElement, useRef } from 'react'
 import clsx from 'clsx'
 import { motion } from 'framer-motion'
-import { useAtom } from 'jotai'
+import { useAtomValue } from 'jotai'
 
 import type { HTMLMotionProps } from 'framer-motion'
 import type { PropsWithChildren } from 'react'
@@ -15,8 +15,8 @@ export type FrameProps = {
 
 export const Frame = ({ children, className }: PropsWithChildren<FrameProps>) => {
   const ref = useRef<HTMLDivElement>(null)
-  const [frameMode] = useAtom(frameModeAtom)
-  const [frameScale] = useAtom(frameScaleAtom)
+  const frameMode = useAtomValue(frameModeAtom)
+  const frameScale = useAtomValue(frameScaleAtom)
 
   const [modes] = useFrameMode()
 
@@ -24,9 +24,9 @@ export const Frame = ({ children, className }: PropsWithChildren<FrameProps>) =>
   const { frame } = mode ?? {}
 
   return (
-    <motion.div
+    <div
       style={{
-        scale: 1 - frameScale / 250,
+        scale: frameScale,
       }}
       className={clsx(className, 'relative', frame?.className)}
       id="frame"
@@ -41,10 +41,11 @@ export const Frame = ({ children, className }: PropsWithChildren<FrameProps>) =>
             drag: true,
             dragMomentum: false,
             ...item.props,
+            className: 'hover:cursor-grab active:cursor-grabbing',
           } as HTMLMotionProps<'div'>,
           item.children,
         )
       })}
-    </motion.div>
+    </div>
   )
 }
