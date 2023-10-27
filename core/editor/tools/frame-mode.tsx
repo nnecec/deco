@@ -1,4 +1,5 @@
 import { useMemo } from 'react'
+
 import { useAtom } from 'jotai'
 
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '~/core/ui/select'
@@ -16,7 +17,7 @@ export const FrameMode = () => {
         <SelectValue placeholder="Select a fruit" />
       </SelectTrigger>
       <SelectContent>
-        <SelectItem value="">No Frame</SelectItem>
+        <SelectItem value="no-frame">No Frame</SelectItem>
         {options.map(option => (
           <SelectItem key={option.value} value={option.value}>
             {option.label}

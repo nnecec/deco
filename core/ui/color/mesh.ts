@@ -1,8 +1,8 @@
 // forked from https://github.com/cristicretu/meshgrad
 
-import { colord } from 'colord'
-
 import type { AnyColor, HslColor } from 'colord'
+
+import { colord } from 'colord'
 
 export type Options = {
   amount?: number

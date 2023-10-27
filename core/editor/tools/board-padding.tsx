@@ -17,19 +17,19 @@ export const BoardPadding = () => {
       </div>
 
       <Slider
+        className="mb-1"
+        max={120}
         onValueChange={value => {
           setPadding({ ...padding, x: value[0] })
         }}
-        className="mb-1"
-        max={120}
         value={[padding.x]}
       />
 
       <Slider
+        max={120}
         onValueChange={value => {
           setPadding({ ...padding, y: value[0] })
         }}
-        max={120}
         value={[padding.y]}
       />
     </div>

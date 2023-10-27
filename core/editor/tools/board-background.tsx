@@ -1,11 +1,13 @@
 'use client'
 import { useState } from 'react'
 import { RgbaColorPicker } from 'react-colorful'
-import { Button, Switch, Tooltip } from '@nextui-org/react'
-import { ReloadIcon } from '@radix-ui/react-icons'
+
 import { colord } from 'colord'
 import { motion } from 'framer-motion'
 import { useAtom, useAtomValue, useSetAtom } from 'jotai'
+
+import { Button, Switch, Tooltip } from '@nextui-org/react'
+import { ReloadIcon } from '@radix-ui/react-icons'
 
 import { Label } from '~/core/ui'
 
@@ -69,11 +71,11 @@ export const BoardBackground = () => {
           </div>
           <div className="flex items-center justify-between">
             <Switch
+              isSelected={enableMesh}
               onValueChange={value => {
                 setEnableMesh(value)
                 mesh(value)
               }}
-              isSelected={enableMesh}
             />
             {enableMesh ? (
               <Tooltip content="regenerate" placement="left" showArrow>

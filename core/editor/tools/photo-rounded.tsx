@@ -9,8 +9,8 @@ export const PhotoBorderRadius = () => {
 
   return (
     <div className="flex flex-col gap-2">
-      <div className="text-neutral-400 text-xs flex justify-between">
-        <Label htmlFor="border-radius" className="text-xs">
+      <div className="flex justify-between text-xs text-neutral-400">
+        <Label className="text-xs" htmlFor="border-radius">
           Rounded
         </Label>
         <span>{borderRadius}px</span>

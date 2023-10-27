@@ -1,5 +1,5 @@
 // MyButton.tsx
-import { extendVariants, Switch as NextSwitch } from '@nextui-org/react'
+import { Switch as NextSwitch, extendVariants } from '@nextui-org/react'
 
 export const Switch = extendVariants(NextSwitch, {
   variants: {

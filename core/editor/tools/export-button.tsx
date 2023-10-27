@@ -1,9 +1,11 @@
+import type { ButtonProps } from '@nextui-org/react'
+
 import { useRef, useState } from 'react'
-import { faker } from '@faker-js/faker'
-import { Button } from '@nextui-org/react'
+
 import { toJpeg } from 'html-to-image'
 
-import type { ButtonProps } from '@nextui-org/react'
+import { faker } from '@faker-js/faker'
+import { Button } from '@nextui-org/react'
 
 const handleExport = () => {
   const dom = document.querySelector('#board') as HTMLElement
@@ -48,7 +50,7 @@ export const ExportButton = (props: ButtonProps) => {
   return (
     <div className="relative">
       <Button
-        className="w-full border border-zinc-600/60 bg-transparent duration-500 transition-colors focus:border-slate-500/20 focus:outline-none"
+        className="w-full border border-zinc-600/60 bg-transparent transition-colors duration-500 focus:border-slate-500/20 focus:outline-none"
         onBlur={handleBlur}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
@@ -59,13 +61,13 @@ export const ExportButton = (props: ButtonProps) => {
         Export
       </Button>
       <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 z-10 cursor-default rounded-xl border border-slate-300/60 bg-transparent opacity-0 transition-opacity duration-500"
+        ref={divRef}
         style={{
           WebkitMaskImage: `radial-gradient(30% 30px at ${position.x}px ${position.y}px, black 45%, transparent)`,
           opacity,
         }}
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 z-10 cursor-default rounded-xl border border-slate-300/60 bg-transparent opacity-0 duration-500 transition-opacity"
-        ref={divRef}
       />
     </div>
   )

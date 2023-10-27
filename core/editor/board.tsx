@@ -1,11 +1,11 @@
 'use client'
 
+import type { PropsWithChildren, ReactNode } from 'react'
+
 import clsx from 'clsx'
 import { colord } from 'colord'
 import { motion } from 'framer-motion'
 import { useAtomValue } from 'jotai'
-
-import type { PropsWithChildren, ReactNode } from 'react'
 
 import { boardBackgroundColorAtom, boardBackgroundImageAtom, boardPaddingAtom } from './store'
 
@@ -21,13 +21,13 @@ export const Board = ({ children, className }: PropsWithChildren<BoardProps>) =>
 
   return (
     <div
+      className={clsx(className, 'relative flex max-h-[80vh] max-w-[60vw] items-center justify-center')}
+      id="board"
       style={{
         backgroundColor: colord(backgroundColor).toHex(),
         backgroundImage,
         padding: `${y}px ${x}px`,
       }}
-      className={clsx(className, 'relative flex max-h-[80vh] max-w-[60vw] items-center justify-center')}
-      id="board"
     >
       {children}
     </div>

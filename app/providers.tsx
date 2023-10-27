@@ -1,7 +1,8 @@
 'use client'
 
-import { NextUIProvider } from '@nextui-org/react'
 import { Provider as JotaiProvider } from 'jotai'
+
+import { NextUIProvider } from '@nextui-org/react'
 
 export interface ProvidersProps {
   children: React.ReactNode

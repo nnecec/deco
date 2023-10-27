@@ -1,8 +1,8 @@
+import type { Metadata } from 'next'
+
 import clsx from 'clsx'
 
 import { inter } from '~/core/fonts'
-
-import type { Metadata } from 'next'
 
 import { Providers } from './providers'
 

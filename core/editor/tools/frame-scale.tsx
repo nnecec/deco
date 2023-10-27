@@ -16,13 +16,13 @@ export const FrameScale = () => {
         <span>{scale.toFixed(2)}</span>
       </div>
       <Slider
-        onValueChange={value => {
-          setScale(value[0])
-        }}
         id="frame-scale"
         inverted
         max={1}
         min={0.6}
+        onValueChange={value => {
+          setScale(value[0])
+        }}
         step={0.01}
         value={[scale]}
       />

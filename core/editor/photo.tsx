@@ -1,14 +1,13 @@
 'use client'
 
 import { useEffect } from 'react'
+import type { PropsWithChildren, ReactNode } from 'react'
+
 import clsx from 'clsx'
 import { motion } from 'framer-motion'
 import { useAtom, useAtomValue } from 'jotai'
 
-import type { PropsWithChildren, ReactNode } from 'react'
-
 import { useUpload } from '../ui/upload'
-
 import { photoBorderRadiusAtom, photoSrcAtom } from './store'
 
 export type PhotoProps = {
@@ -34,11 +33,11 @@ export const Photo = ({ className, placeholder }: PropsWithChildren<PhotoProps>)
 
   return (
     <div
+      className={clsx('overflow-hidden', className)}
+      id="deco-artwork"
       style={{
         borderRadius,
       }}
-      className={clsx('overflow-hidden', className)}
-      id="deco-artwork"
     >
       <label className="cursor-pointer" htmlFor="artwork">
         {src ? <motion.img alt="your artwork" layout src={src} /> : placeholder}

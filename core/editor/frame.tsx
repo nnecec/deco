@@ -1,10 +1,11 @@
+import type { HTMLMotionProps } from 'framer-motion'
+
 import { createElement, useRef } from 'react'
+import type { PropsWithChildren } from 'react'
+
 import clsx from 'clsx'
 import { motion } from 'framer-motion'
 import { useAtomValue } from 'jotai'
-
-import type { HTMLMotionProps } from 'framer-motion'
-import type { PropsWithChildren } from 'react'
 
 import { frameModeAtom, frameScaleAtom } from './store'
 import { useFrameMode } from './tools'
@@ -25,12 +26,12 @@ export const Frame = ({ children, className }: PropsWithChildren<FrameProps>) =>
 
   return (
     <div
-      style={{
-        scale: frameScale,
-      }}
       className={clsx(className, 'relative', frame?.className)}
       id="frame"
       ref={ref}
+      style={{
+        scale: frameScale,
+      }}
     >
       {children}
 

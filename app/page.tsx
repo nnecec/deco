@@ -1,9 +1,10 @@
 'use client'
 
-import { Tab, Tabs } from '@nextui-org/react'
-import { UploadIcon } from '@radix-ui/react-icons'
 import clsx from 'clsx'
 import { AnimatePresence, motion } from 'framer-motion'
+
+import { Tab, Tabs } from '@nextui-org/react'
+import { UploadIcon } from '@radix-ui/react-icons'
 
 import {
   Board,
