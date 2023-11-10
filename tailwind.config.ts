@@ -1,7 +1,7 @@
 import type { Config } from 'tailwindcss'
 
 import { nextui } from '@nextui-org/theme/plugin'
-// @ts-ignore what
+// @ts-expect-error what
 import animate from 'tailwindcss-animate'
 
 export default {

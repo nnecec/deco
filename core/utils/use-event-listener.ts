@@ -18,12 +18,12 @@ export const useEventListener = <T extends EventTarget>(
 
   useEffect(() => {
     const target = element
-      ? 'current' in element
+      ? ('current' in element
         ? element.current
-        : element
-      : typeof window === 'undefined'
+        : element)
+      : (typeof window === 'undefined'
       ? undefined
-      : window
+      : window)
 
     if (!target) return
 

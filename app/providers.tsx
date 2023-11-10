@@ -8,6 +8,11 @@ export interface ProvidersProps {
   children: React.ReactNode
 }
 
+/**
+ *
+ * @param root0
+ * @param root0.children
+ */
 export function Providers({ children }: ProvidersProps) {
   return (
     <JotaiProvider>

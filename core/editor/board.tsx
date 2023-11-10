@@ -4,7 +4,6 @@ import type { PropsWithChildren, ReactNode } from 'react'
 
 import clsx from 'clsx'
 import { colord } from 'colord'
-import { motion } from 'framer-motion'
 import { useAtomValue } from 'jotai'
 
 import { boardBackgroundColorAtom, boardBackgroundImageAtom, boardPaddingAtom } from './store'
