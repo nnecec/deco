@@ -15,4 +15,10 @@ export default [
       ...pluginNext.configs['core-web-vitals'].rules,
     },
   },
+  {
+    files: ['**/*.ts', '**/*.tsx'],
+    rules: {
+      '@typescript-eslint/no-explicit-any': 'off',
+    },
+  },
 ]

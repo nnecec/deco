@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   ],
   title: {
     default: 'Deco your Artwork',
-    template: `%s - Deco your Artwork`,
+    template: '%s - Deco your Artwork',
   },
 }
 

@@ -32,9 +32,7 @@ const genColors = (hsl: HslColor, { amount }: Required<Pick<Options, 'amount'>>)
         hsl.l - i * (1 - 2 * (i % 2)) * 1.75
       }%)`
     }
-    return `hsl(${hsl.h - 50 * (1 - 2 * (i % 2))}, ${hsl.s}%, ${
-      hsl.l - i * (1 - 2 * (i % 2)) * 1.25
-    }%)`
+    return `hsl(${hsl.h - 50 * (1 - 2 * (i % 2))}, ${hsl.s}%, ${hsl.l - i * (1 - 2 * (i % 2)) * 1.25}%)`
   })
 }
 

@@ -88,10 +88,7 @@ const getAverage = (data: Data, args: Args): Output => {
     rgb.b += data[i + 2]
   }
 
-  return format(
-    [[Math.round(rgb.r / amount), Math.round(rgb.g / amount), Math.round(rgb.b / amount)]],
-    args,
-  )
+  return format([[Math.round(rgb.r / amount), Math.round(rgb.g / amount), Math.round(rgb.b / amount)]], args)
 }
 
 const getProminent = (data: Data, args: Args): Output => {
@@ -99,11 +96,7 @@ const getProminent = (data: Data, args: Args): Output => {
   const colors: { [key: string]: number } = {}
 
   for (let i = 0; i < data.length; i += gap) {
-    const rgb = [
-      group(data[i], args.group),
-      group(data[i + 1], args.group),
-      group(data[i + 2], args.group),
-    ].join(',')
+    const rgb = [group(data[i], args.group), group(data[i + 1], args.group), group(data[i + 2], args.group)].join(',')
 
     colors[rgb] = colors[rgb] ? colors[rgb] + 1 : 1
   }

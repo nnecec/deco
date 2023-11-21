@@ -1,4 +1,3 @@
-/* eslint-disable eslint-comments/no-unlimited-disable */
 /* eslint-disable unicorn/no-abusive-eslint-disable */
 /* eslint-disable */
 // @ts-nocheck

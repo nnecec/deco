@@ -2,11 +2,7 @@ import { useAtom } from 'jotai'
 
 import { Slider } from '~/core/ui/slider'
 
-import {
-  photoBlurVignetteBlurAtom,
-  photoBlurVignetteInsetAtom,
-  photoBlurVignetteTransitionAtom,
-} from '../store'
+import { photoBlurVignetteBlurAtom, photoBlurVignetteInsetAtom, photoBlurVignetteTransitionAtom } from '../store'
 
 export const PhotoBlurVignette = () => {
   const [blur, setBlur] = useAtom(photoBlurVignetteBlurAtom)
