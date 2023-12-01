@@ -1,11 +1,12 @@
-import type { ButtonProps } from '@nextui-org/react'
-
 import { useRef, useState } from 'react'
 
 import { toJpeg } from 'html-to-image'
 
 import { faker } from '@faker-js/faker'
-import { Button } from '@nextui-org/react'
+
+import type { ButtonProps } from '~/core/ui'
+
+import { Button } from '~/core/ui'
 
 const handleExport = () => {
   const dom = document.querySelector('#board') as HTMLElement
@@ -56,7 +57,7 @@ export const ExportButton = (props: ButtonProps) => {
         onMouseLeave={handleMouseLeave}
         onMouseMove={handleMouseMove}
         {...props}
-        onPress={handleExport}
+        onClick={handleExport}
       >
         Export
       </Button>

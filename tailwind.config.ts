@@ -1,25 +1,11 @@
 import type { Config } from 'tailwindcss'
 
-import { nextui } from '@nextui-org/theme/plugin'
-// @ts-expect-error what
 import animate from 'tailwindcss-animate'
 
 export default {
-  content: [
-    './app/**/*.{js,ts,jsx,tsx}',
-    './core/**/*.{js,ts,jsx,tsx}',
-    'node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}',
-  ],
+  content: ['./app/**/*.{js,ts,jsx,tsx}', './core/**/*.{js,ts,jsx,tsx}'],
   darkMode: 'class',
-  plugins: [
-    nextui({
-      themes: {
-        dark: {},
-        light: {},
-      },
-    }),
-    animate,
-  ],
+  plugins: [animate],
   theme: {
     container: {
       center: true,

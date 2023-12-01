@@ -1,5 +1,4 @@
 /** @type {import('next').NextConfig} */
-module.exports = {
+export default {
   reactStrictMode: true,
-  transpilePackages: ['@nextui-org/react', '@nextui-org/theme'],
 }

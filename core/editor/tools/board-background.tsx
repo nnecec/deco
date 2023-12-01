@@ -6,10 +6,9 @@ import { colord } from 'colord'
 import { motion } from 'framer-motion'
 import { useAtom, useAtomValue, useSetAtom } from 'jotai'
 
-import { Button, Switch, Tooltip } from '@nextui-org/react'
 import { ReloadIcon } from '@radix-ui/react-icons'
 
-import { Label } from '~/core/ui'
+import { Button, Label, Switch, Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '~/core/ui'
 
 import { meshGradient } from '../../ui/color/mesh'
 import { boardBackgroundColorAtom, boardBackgroundImageAtom, boardProminentColorsAtom } from '../store'
@@ -52,15 +51,19 @@ export const BoardBackground = () => {
 
           <div className="flex gap-1">
             {colors.map(c => (
-              <Tooltip content={c} key={c} placement="top" showArrow>
-                <Button
-                  isIconOnly
-                  onPress={() => setColor(colord(c).toRgb())}
-                  radius="full"
-                  size="sm"
-                  style={{ backgroundColor: c }}
-                />
-              </Tooltip>
+              <TooltipProvider key={c}>
+                <Tooltip>
+                  <TooltipTrigger>
+                    <Button
+                      className="rounded-full"
+                      onClick={() => setColor(colord(c).toRgb())}
+                      size="icon"
+                      style={{ backgroundColor: c }}
+                    />
+                  </TooltipTrigger>
+                  <TooltipContent>{c}</TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
             ))}
           </div>
 
@@ -71,25 +74,30 @@ export const BoardBackground = () => {
           </div>
           <div className="flex items-center justify-between">
             <Switch
-              isSelected={enableMesh}
-              onValueChange={value => {
+              checked={enableMesh}
+              onCheckedChange={value => {
                 setEnableMesh(value)
                 mesh(value)
               }}
             />
             {enableMesh ? (
-              <Tooltip content="regenerate" placement="left" showArrow>
-                <MotionButton
-                  isIconOnly
-                  onPress={() => mesh(true)}
-                  radius="full"
-                  size="sm"
-                  // style={{ tranform: 'rotate(60deg)' }}
-                  whileTap={{ rotate: 60 }}
-                >
-                  <ReloadIcon />
-                </MotionButton>
-              </Tooltip>
+              <TooltipProvider>
+                <Tooltip>
+                  <TooltipTrigger>
+                    <MotionButton
+                      className="rounded-full"
+                      onClick={() => mesh(true)}
+                      size="icon"
+                      whileTap={{ rotate: 60 }}
+                    >
+                      <ReloadIcon />
+                    </MotionButton>
+                  </TooltipTrigger>
+                  <TooltipContent side="left">
+                    <p>regenerate</p>
+                  </TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
             ) : null}
           </div>
         </>

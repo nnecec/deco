@@ -3,7 +3,6 @@
 import clsx from 'clsx'
 import { AnimatePresence, motion } from 'framer-motion'
 
-import { Tab, Tabs } from '@nextui-org/react'
 import { UploadIcon } from '@radix-ui/react-icons'
 
 import {
@@ -18,6 +17,7 @@ import {
   PhotoBorderRadius,
 } from '~/core/editor'
 import { robotoMono } from '~/core/fonts'
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '~/core/ui'
 
 export default function Page() {
   return (
@@ -33,16 +33,20 @@ export default function Page() {
           <div className="flex h-full flex-col justify-between p-4 pr-0">
             <div className="flex flex-col gap-2">
               <h1 className={clsx('rounded-lg text-5xl font-bold tracking-wide', robotoMono.variable)}>Deco</h1>
-              <Tabs aria-label="toggle Board mode or Frame mode" fullWidth>
-                <Tab className="flex flex-col gap-4" key="board" title="Board">
+              <Tabs aria-label="toggle Board mode or Frame mode" defaultValue="board">
+                <TabsList className="grid w-full grid-cols-2">
+                  <TabsTrigger value="board">Board</TabsTrigger>
+                  <TabsTrigger value="frame">Frame</TabsTrigger>
+                </TabsList>
+                <TabsContent className="flex flex-col gap-4" value="board">
                   <BoardPadding />
                   <PhotoBorderRadius />
                   <FrameScale />
                   <BoardBackground />
-                </Tab>
-                <Tab key="frame" title="Frame">
+                </TabsContent>
+                <TabsContent value="frame">
                   <FrameMode />
-                </Tab>
+                </TabsContent>
               </Tabs>
             </div>
             <div>
@@ -67,7 +71,7 @@ export default function Page() {
             <Frame>
               <Photo
                 placeholder={
-                  <div className="flex aspect-square w-[50vw] items-center justify-center bg-neutral-900">
+                  <div className="flex aspect-square w-[30vw] items-center justify-center bg-neutral-900">
                     <div className="flex flex-col items-center gap-2">
                       <UploadIcon className="h-8 w-8 text-neutral-500" />
                       <p className="text-2xl text-neutral-500">
