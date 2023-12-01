@@ -25,7 +25,7 @@ export const BoardBackground = () => {
   const mesh = (enable: boolean) => {
     if (enable) {
       const [, i] = meshGradient(colord(color).toHex(), { amount: 5 })
-      setImage(i)
+      setImage(i!)
     } else {
       setImage('none')
     }

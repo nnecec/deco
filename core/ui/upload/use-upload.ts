@@ -27,6 +27,7 @@ export const useUpload = ({ accept = '*', multiple }: UseUploadProps = {}) => {
         input.removeEventListener('change', handleChange)
       }
     }
+    return
   }, [])
 
   return [inputRef, files] as const

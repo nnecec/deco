@@ -6,7 +6,7 @@
     "add": "pnpm dlx shadcn-ui@latest add",
     "build": "next build",
     "dev": "next dev",
-    "lint": "next lint",
+    "lint": "tsc --noEmit",
     "start": "next start"
   },
   "dependencies": {

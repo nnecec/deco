@@ -29,6 +29,7 @@ export const Photo = ({ className, placeholder }: PropsWithChildren<PhotoProps>)
         URL.revokeObjectURL(file)
       }
     }
+    return
   }, [files, setSrc])
 
   return (

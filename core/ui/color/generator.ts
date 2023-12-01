@@ -48,7 +48,7 @@ const format = (input: Input, args: Args): Output => {
     return args.format === 'hex' ? rgbToHex(rgb) : rgb
   })
 
-  return args.amount === 1 || list.length === 1 ? list[0] : list
+  return args.amount === 1 || list.length === 1 ? list[0]! : list
 }
 
 const group = (number: number, grouping: number): number => {
@@ -83,9 +83,9 @@ const getAverage = (data: Data, args: Args): Output => {
   const rgb = { b: 0, g: 0, r: 0 }
 
   for (let i = 0; i < data.length; i += gap) {
-    rgb.r += data[i]
-    rgb.g += data[i + 1]
-    rgb.b += data[i + 2]
+    rgb.r += data[i]!
+    rgb.g += data[i + 1]!
+    rgb.b += data[i + 2]!
   }
 
   return format([[Math.round(rgb.r / amount), Math.round(rgb.g / amount), Math.round(rgb.b / amount)]], args)
@@ -96,9 +96,11 @@ const getProminent = (data: Data, args: Args): Output => {
   const colors: { [key: string]: number } = {}
 
   for (let i = 0; i < data.length; i += gap) {
-    const rgb = [group(data[i], args.group), group(data[i + 1], args.group), group(data[i + 2], args.group)].join(',')
+    const rgb = [group(data[i]!, args.group), group(data[i + 1]!, args.group), group(data[i + 2]!, args.group)].join(
+      ',',
+    )
 
-    colors[rgb] = colors[rgb] ? colors[rgb] + 1 : 1
+    colors[rgb] = colors[rgb] ? colors[rgb]! + 1 : 1
   }
 
   return format(
