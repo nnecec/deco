@@ -13,7 +13,7 @@ export const FrameMode = () => {
 
   return (
     <Select onValueChange={value => setFrameMode(value)} value={frameMode}>
-      <SelectTrigger className="w-[180px]">
+      <SelectTrigger className="w-full">
         <SelectValue placeholder="Select a frame" />
       </SelectTrigger>
       <SelectContent>

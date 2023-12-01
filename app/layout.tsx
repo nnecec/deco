@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 
 import clsx from 'clsx'
 
@@ -15,14 +15,17 @@ export const metadata: Metadata = {
     // shortcut: '/favicon-16x16.png',
     // apple: '/apple-touch-icon.png',
   },
-  themeColor: [
-    { color: 'white', media: '(prefers-color-scheme: light)' },
-    { color: 'black', media: '(prefers-color-scheme: dark)' },
-  ],
   title: {
     default: 'Deco your Artwork',
     template: '%s - Deco your Artwork',
   },
+}
+
+export const viewport: Viewport = {
+  themeColor: [
+    { color: 'white', media: '(prefers-color-scheme: light)' },
+    { color: 'black', media: '(prefers-color-scheme: dark)' },
+  ],
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

@@ -3,7 +3,7 @@ import { atom } from 'jotai'
 import { getColors } from '~/core/ui/color/generator'
 
 // frame
-export const frameModeAtom = atom('')
+export const frameModeAtom = atom('no-frame')
 export const frameScaleAtom = atom(1)
 
 // photo

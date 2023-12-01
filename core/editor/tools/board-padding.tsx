@@ -10,17 +10,19 @@ export const BoardPadding = () => {
   return (
     <div className="flex flex-col gap-2">
       <div className="flex justify-between text-xs text-neutral-400">
-        <Label className="text-xs">Padding</Label>
-        <span>
-          {padding.x}px {padding.y}px
-        </span>
+        <Label className="text-xs">Padding </Label>
+        <div>
+          <span>
+            {padding.x}px {padding.y}px
+          </span>
+        </div>
       </div>
 
       <Slider
         className="mb-1"
         max={120}
         onValueChange={value => {
-          setPadding({ ...padding, x: value[0] })
+          setPadding({ ...padding, x: value[0]! })
         }}
         value={[padding.x]}
       />
@@ -28,7 +30,7 @@ export const BoardPadding = () => {
       <Slider
         max={120}
         onValueChange={value => {
-          setPadding({ ...padding, y: value[0] })
+          setPadding({ ...padding, y: value[0]! })
         }}
         value={[padding.y]}
       />

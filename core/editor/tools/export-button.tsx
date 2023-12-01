@@ -56,6 +56,7 @@ export const ExportButton = (props: ButtonProps) => {
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
         onMouseMove={handleMouseMove}
+        variant="outline"
         {...props}
         onClick={handleExport}
       >

@@ -15,7 +15,7 @@ export const PhotoBorderRadius = () => {
         </Label>
         <span>{borderRadius}px</span>
       </div>
-      <Slider id="border-radius" onValueChange={value => setBorderRadius(value[0])} value={[borderRadius]} />
+      <Slider id="border-radius" onValueChange={value => setBorderRadius(value[0]!)} value={[borderRadius]} />
     </div>
   )
 }
