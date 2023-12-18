@@ -5,16 +5,17 @@ export const XiaomiLeicaFrame: FrameMode = {
     className: 'pb-20 bg-white',
     items: [
       {
-        children: 'Xiaomi x Leica',
+        children: 'XIAOMI 14 PRO',
         props: {
-          className: 'absolute text-black bottom-5 left-5',
+          className: 'absolute text-black bottom-6 left-5 font-bold',
         },
       },
       {
         children: 'logo',
         props: {
-          className: 'absolute text-black bottom-5 right-5',
+          className: 'absolute text-black bottom-6 right-5',
         },
+        type: 'svg',
       },
     ],
   },

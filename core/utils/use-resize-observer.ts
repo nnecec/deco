@@ -21,21 +21,21 @@ export function useResizeObserver<T extends HTMLElement = any>() {
 
   const observer = useMemo(
     () =>
-      typeof window === 'undefined'
-        ? null
-        : new ResizeObserver((entries: any) => {
-            const entry = entries[0]
+      typeof window === 'undefined' ? null : (
+        new ResizeObserver((entries: any) => {
+          const entry = entries[0]
 
-            if (entry) {
-              cancelAnimationFrame(frameID.current)
+          if (entry) {
+            cancelAnimationFrame(frameID.current)
 
-              frameID.current = requestAnimationFrame(() => {
-                if (ref.current) {
-                  setRect(entry.contentRect)
-                }
-              })
-            }
-          }),
+            frameID.current = requestAnimationFrame(() => {
+              if (ref.current) {
+                setRect(entry.contentRect)
+              }
+            })
+          }
+        })
+      ),
     [],
   )
 

@@ -4,7 +4,7 @@ import { useAtom } from 'jotai'
 
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '~/core/ui/select'
 
-import { frameModePresets } from '../presets'
+import { frameModePresets } from '../frame-presets'
 import { frameModeAtom } from '../store'
 
 export const FrameMode = () => {
@@ -30,8 +30,8 @@ export const FrameMode = () => {
 
 export function useFrameMode() {
   return useMemo(() => {
-    const options = Object.keys(frameModePresets).map(key => ({ label: key, value: key }))
     const modes = frameModePresets
+    const options = Object.keys(frameModePresets).map(key => ({ label: key, value: key }))
     return [modes, options] as const
   }, [])
 }
