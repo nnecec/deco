@@ -1,12 +1,10 @@
 'use client'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 
 import { colord } from 'colord'
 import { useAtom, useSetAtom } from 'jotai'
 
-import { SymbolIcon } from '@radix-ui/react-icons'
-
-import { Button, Label, Slider, Switch } from '~/core/ui'
+import { Label, Slider, Switch } from '~/core/ui'
 
 import { meshGradient } from '../../ui/color/mesh'
 import {
