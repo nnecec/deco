@@ -42,7 +42,7 @@ export const Frame = ({ children, className }: PropsWithChildren<FrameProps>) =>
             drag: true,
             dragMomentum: false,
             ...item.props,
-            className: 'hover:cursor-grab active:cursor-grabbing',
+            className: clsx(item.props.className, 'hover:cursor-grab active:cursor-grabbing'),
           } as HTMLMotionProps<'div'>,
           item.children,
         )

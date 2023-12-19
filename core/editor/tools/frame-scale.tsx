@@ -13,7 +13,7 @@ export const FrameScale = () => {
         <Label className="text-xs" htmlFor="frame-scale">
           Scale
         </Label>
-        <span>{scale.toFixed(2)}</span>
+        <span>{(scale * 100).toFixed(0)}%</span>
       </div>
       <Slider
         id="frame-scale"

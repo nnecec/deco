@@ -41,7 +41,9 @@ export const Photo = ({ className, placeholder }: PropsWithChildren<PhotoProps>)
       }}
     >
       <label className="cursor-pointer" htmlFor="artwork">
-        {src ? <motion.img alt="your artwork" layout src={src} /> : placeholder}
+        {src ?
+          <motion.img alt="your artwork" layout src={src} />
+        : placeholder}
       </label>
       <input className="hidden" id="artwork" name="artwork" ref={inputRef} type="file" />
     </div>

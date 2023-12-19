@@ -17,6 +17,8 @@ export const photoBlurVignetteBlurAtom = atom(0)
 // board
 export const boardPaddingAtom = atom({ x: 0, y: 0 })
 export const boardBackgroundImageAtom = atom('none')
+export const boardBackgroundMeshOffsetAtom = atom(1)
+export const boardBackgroundMeshEnableAtom = atom(false)
 
 export const boardProminentColorsAtom = atom<Promise<any[]>>(async get => {
   const photo = get(photoSrcAtom)
