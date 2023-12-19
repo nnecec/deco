@@ -1,6 +1,6 @@
 import type { HTMLMotionProps } from 'framer-motion'
 
-import { createElement, useRef } from 'react'
+import { createElement } from 'react'
 import type { PropsWithChildren } from 'react'
 
 import clsx from 'clsx'
@@ -15,7 +15,6 @@ export type FrameProps = {
 }
 
 export const Frame = ({ children, className }: PropsWithChildren<FrameProps>) => {
-  const ref = useRef<HTMLDivElement>(null)
   const frameMode = useAtomValue(frameModeAtom)
   const frameScale = useAtomValue(frameScaleAtom)
 
@@ -28,13 +27,11 @@ export const Frame = ({ children, className }: PropsWithChildren<FrameProps>) =>
     <div
       className={clsx(className, 'relative', frame?.className)}
       id="frame"
-      ref={ref}
       style={{
         scale: frameScale,
       }}
     >
       {children}
-
       {frame?.items?.map((item: any) => {
         return createElement(
           item.component ?? motion.div,

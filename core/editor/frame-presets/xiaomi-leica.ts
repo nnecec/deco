@@ -1,4 +1,8 @@
+import Image from 'next/image'
+
 import type { FrameMode } from '~/core/utils/types'
+
+import { LeicaLogo } from '../assets'
 
 export const XiaomiLeicaFrame: FrameMode = {
   frame: {
@@ -11,14 +15,16 @@ export const XiaomiLeicaFrame: FrameMode = {
         },
       },
       {
-        children: 'logo',
+        component: Image,
         props: {
+          alt: 'leica svg',
           className: 'absolute text-black bottom-6 right-5',
+          height: 30,
+          src: LeicaLogo,
+          width: 30,
         },
-        type: 'svg',
       },
     ],
   },
-  logo: 'leica',
   name: 'Xiaomi x Leica',
 }

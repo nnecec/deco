@@ -1,4 +1,8 @@
+import { Caveat } from 'next/font/google'
+
 import type { FrameMode } from '~/core/utils/types'
+
+const caveat = Caveat({ subsets: ['latin'] })
 
 export const PolaroidFrame: FrameMode = {
   frame: {
@@ -7,13 +11,13 @@ export const PolaroidFrame: FrameMode = {
       {
         children: 'T.S',
         props: {
-          className: 'absolute text-black bottom-6 left-6 text-4xl',
+          className: ['absolute bottom-8 left-6 text-4xl text-black', caveat.className],
         },
       },
       {
         children: '1989',
         props: {
-          className: 'absolute text-black bottom-6 right-6 text-4xl',
+          className: ['absolute bottom-8 right-6 text-4xl text-black', caveat.className],
         },
       },
     ],

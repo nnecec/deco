@@ -1,6 +1,7 @@
+import { colord } from 'colord'
 import { atom } from 'jotai'
 
-import { getColors } from '~/core/ui/color/generator'
+import { getColors } from '~/core/utils/color/generator'
 
 // frame
 export const frameModeAtom = atom('no-frame')
@@ -23,20 +24,9 @@ export const boardBackgroundMeshEnableAtom = atom(false)
 export const boardProminentColorsAtom = atom<Promise<any[]>>(async get => {
   const photo = get(photoSrcAtom)
   if (photo) {
-    return await getColors(photo, { format: 'hex' })
+    return await getColors(photo, { parser: color => colord(color).toHex() })
   }
   return []
 })
 
-export const boardBackgroundColorAtom = atom({ a: 1, b: 200, g: 200, r: 200 })
-
-// export const boardBackgroundColorAtom = atom(async get => {
-//   const prominentColors = await get(boardProminentColorsAtom)
-//   if (prominentColors.length > 0) {
-//     return {
-//       ...colord(prominentColors[Math.round(5 * Math.random())]).toRgb(),
-//       a: 1,
-//     }
-//   }
-//   return { r: 200, g: 200, b: 200, a: 1 }
-// })
+export const boardBackgroundColorAtom = atom({ a: 1, b: 255, g: 255, r: 255 })

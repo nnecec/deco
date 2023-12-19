@@ -1,7 +1,2 @@
-import LeicaLogo from '../assets/leica.svg'
-import ZeissLogo from '../assets/zeiss.svg'
-
-export const logo = {
-  leica: LeicaLogo,
-  zeiss: ZeissLogo,
-}
+export { default as LeicaLogo } from '../assets/leica.svg'
+export { default as ZeissLogo } from '../assets/zeiss.svg'
