@@ -22,56 +22,58 @@ export const BoardBackgroundProminent = () => {
       </div>
 
       <TooltipProvider>
-        <AnimatePresence>
-          <motion.div
-            animate={colors?.length > 0 ? 'active' : 'inactive'}
-            className="flex gap-1"
-            initial={'inactive'}
-            variants={{
-              active: {
-                transition: { staggerChildren: 0.07 },
-              },
-              inactive: {
-                transition: { staggerChildren: 0.05 },
-              },
-            }}
-          >
-            {colors?.length > 0 ?
-              colors.map(color => (
-                <Tooltip key={color}>
-                  <MotionTooltipTrigger
-                    variants={{
-                      active: {
-                        opacity: 1,
-                      },
-                      inactive: {
-                        opacity: 0,
-                      },
-                    }}
-                  >
-                    <MotionButton
-                      className="rounded-full"
-                      onClick={() => setColor(colord(color).toRgb())}
-                      size="icon"
-                      style={{ backgroundColor: color }}
-                    />
-                  </MotionTooltipTrigger>
-                  <TooltipContent>{color}</TooltipContent>
-                </Tooltip>
-              ))
-            : <Tooltip>
-                <TooltipTrigger className="flex gap-1">
-                  <div className="size-6 rounded-full border border-neutral-500" />
-                  <div className="size-6 rounded-full border border-neutral-500 opacity-80" />
-                  <div className="size-6 rounded-full border border-neutral-500 opacity-60" />
-                  <div className="size-6 rounded-full border border-neutral-500 opacity-40" />
-                  <div className="size-6 rounded-full border border-neutral-500 opacity-20" />
-                </TooltipTrigger>
-                <TooltipContent>Waiting upload...</TooltipContent>
+        <motion.div
+          animate={colors?.length > 0 ? 'active' : 'inactive'}
+          className="flex gap-1"
+          initial="inactive"
+          transition={{ staggerChildren: 0.05 }}
+          variants={{
+            active: {
+              opacity: 1,
+            },
+            inactive: {
+              opacity: 0,
+            },
+          }}
+        >
+          {colors?.length > 0 ?
+            colors.map(color => (
+              <Tooltip key={color}>
+                <MotionTooltipTrigger
+                  transition={{
+                    staggerChildren: 0.05,
+                  }}
+                  variants={{
+                    active: {
+                      opacity: 1,
+                    },
+                    inactive: {
+                      opacity: 0,
+                    },
+                  }}
+                >
+                  <MotionButton
+                    className="rounded-full"
+                    onClick={() => setColor(colord(color).toRgb())}
+                    size="icon"
+                    style={{ backgroundColor: color }}
+                  />
+                </MotionTooltipTrigger>
+                <TooltipContent>{color}</TooltipContent>
               </Tooltip>
-            }
-          </motion.div>
-        </AnimatePresence>
+            ))
+          : <Tooltip>
+              <TooltipTrigger className="flex gap-1">
+                <div className="size-6 rounded-full border border-neutral-500" />
+                <div className="size-6 rounded-full border border-neutral-500 opacity-80" />
+                <div className="size-6 rounded-full border border-neutral-500 opacity-60" />
+                <div className="size-6 rounded-full border border-neutral-500 opacity-40" />
+                <div className="size-6 rounded-full border border-neutral-500 opacity-20" />
+              </TooltipTrigger>
+              <TooltipContent>Waiting upload...</TooltipContent>
+            </Tooltip>
+          }
+        </motion.div>
       </TooltipProvider>
     </div>
   )

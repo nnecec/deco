@@ -1,20 +1,29 @@
+import type { HTMLMotionProps } from 'framer-motion'
+
+import { createElement } from 'react'
 import type { PropsWithChildren } from 'react'
 
-import { Dnd, Droppable, Draggable } from './designer'
+import clsx from 'clsx'
+
+import type { FrameMode } from './types'
 
 export type FrameProps = {
-  className?: string
+  designer: FrameMode['designer']
 }
 
-export const Design = ({ children, className }: PropsWithChildren<FrameProps>) => {
-  return (
-    <Dnd>
-      <Draggable>Drag me</Draggable>
-      <Droppable id="xiaomi">
-        {droppableId === 'xiaomi' ?
-          <Draggable>Drag me</Draggable>
-        : 'Drop here'}
-      </Droppable>
-    </Dnd>
-  )
+export const Design = ({ designer }: PropsWithChildren<FrameProps>) => {
+  const recursiveRenderChildren = children => {
+    return children.map(child =>
+      createElement(
+        child.component ?? 'div',
+        {
+          ...child.props,
+          className: clsx(child.props?.className),
+        } as HTMLMotionProps<'div'>,
+        Array.isArray(child.children) ? recursiveRenderChildren(child.children) : child.children,
+      ),
+    )
+  }
+
+  return <div className={designer.className}>{recursiveRenderChildren(designer.items)}</div>
 }
